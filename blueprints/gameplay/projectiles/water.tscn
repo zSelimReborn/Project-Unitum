@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6rhifi5h1p36"]
+
+[ext_resource type="PackedScene" uid="uid://cpxa5h7iq7wux" path="res://blueprints/gameplay/projectile.tscn" id="1_7uhho"]
+
+[node name="Projectile" instance=ExtResource("1_7uhho")]

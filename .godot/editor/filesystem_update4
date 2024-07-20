@@ -1,0 +1,17 @@
+res://blueprints/characters/player.tscn
+res://scripts/player.gd
+res://scenes/debug.tscn
+res://scripts/projectile.gd
+res://blueprints/gameplay/projectile.tscn
+res://scripts/gameplay/projectile.gd
+res://scripts/base_character.gd
+res://blueprints/gameplay/sample_platform.tscn
+res://blueprints/gameplay/projectiles/water.tscn
+res://blueprints/gameplay/projectiles/fire.tscn
+res://blueprints/gameplay/projectiles/air.tscn
+res://blueprints/gameplay/projectiles/earth.tscn
+res://blueprints/gameplay/base_interactable.tscn
+res://scripts/gameplay/base_interactable.gd
+res://scripts/gameplay/interactables/shadow_portal.gd
+res://blueprints/gameplay/interactables/shadow_portal.tscn
+res://scripts/types.gd

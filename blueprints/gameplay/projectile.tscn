@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpxa5h7iq7wux"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/projectile.gd" id="1_ak1pj"]
+[ext_resource type="Texture2D" uid="uid://beymey1n6c1xi" path="res://assets/projectiles/water_ball.tga" id="2_theiv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md8ra"]
+size = Vector2(20, 23)
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_ak1pj")
+speed = 700.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_theiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_md8ra")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

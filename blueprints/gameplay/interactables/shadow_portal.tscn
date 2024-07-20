@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxdbqiywbkgop"]
+
+[ext_resource type="PackedScene" uid="uid://bxsfyrplbol6m" path="res://blueprints/gameplay/base_interactable.tscn" id="1_a6htx"]
+[ext_resource type="Script" path="res://scripts/gameplay/interactables/shadow_portal.gd" id="2_yegn5"]
+
+[node name="ShadowPortal" instance=ExtResource("1_a6htx")]
+script = ExtResource("2_yegn5")

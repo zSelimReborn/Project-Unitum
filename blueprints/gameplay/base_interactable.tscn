@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxsfyrplbol6m"]
+
+[ext_resource type="Texture2D" uid="uid://bfshf2bv1orw0" path="res://assets/pickup_health.tga" id="1_jd0ds"]
+[ext_resource type="Script" path="res://scripts/gameplay/base_interactable.gd" id="1_nsos8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnep3"]
+
+[node name="BaseInteractable" type="Area2D"]
+script = ExtResource("1_nsos8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jd0ds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_hnep3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

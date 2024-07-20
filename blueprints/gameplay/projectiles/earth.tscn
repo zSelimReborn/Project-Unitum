@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqmuveqfl0ahc"]
+
+[ext_resource type="PackedScene" uid="uid://cpxa5h7iq7wux" path="res://blueprints/gameplay/projectile.tscn" id="1_h2a75"]
+[ext_resource type="Texture2D" uid="uid://bjbsdq7swq1rt" path="res://assets/projectiles/earth_ball.tga" id="2_g0ebi"]
+
+[node name="Projectile" instance=ExtResource("1_h2a75")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_g0ebi")
