@@ -3,8 +3,10 @@ class_name Player
 extends BaseCharacter
 
 # On Ready
-@onready var right_marker = $RightMarker
-@onready var left_marker = $LeftMarker
+@onready var t_right_marker = $TRightMarker
+@onready var t_left_marker = $TLeftMarker
+@onready var b_right_marker = $BRightMarker
+@onready var b_left_marker = $BLeftMarker
 
 #Properties
 @export var fire_ball_class : PackedScene
@@ -16,6 +18,7 @@ extends BaseCharacter
 var current_element : Types.Elements = Types.Elements.FIRE
 var state : Types.PlayerState = Types.PlayerState.Character
 var element_abilities = {}
+var markers = {}
 var marker = null
 var current_interactable : BaseInteractable = null
 
@@ -54,6 +57,7 @@ func fire():
 	owner.add_child(projectile)
 	projectile.instigator = self
 	projectile.transform = marker.global_transform
+	sprite.play("attack")
 		
 func change_element(keycode):
 	if not element_input_mapping.has(keycode):
@@ -63,10 +67,7 @@ func change_element(keycode):
 
 func flip_sprite(left: bool):
 	super(left)
-	if left:
-		marker = left_marker
-	else:
-		marker = right_marker
+	select_marker(left)
 		
 func interact():
 	if current_interactable == null:
@@ -90,6 +91,7 @@ func on_flip_state():
 	sprite.flip_v = not sprite.flip_v
 	jump_velocity = -jump_velocity
 	up_direction.y = -up_direction.y
+	select_marker(sprite.flip_h)
 	if is_shadow():
 		sprite.modulate.a = 0.5
 	else:
@@ -98,7 +100,8 @@ func on_flip_state():
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	setup_projectiles()
-	marker = right_marker
+	setup_markers()
+	select_marker(false)
 	
 func setup_projectiles():
 	element_abilities = {
@@ -107,3 +110,13 @@ func setup_projectiles():
 		Types.Elements.EARTH: earth_ball_class,
 		Types.Elements.AIR: air_ball_class
 	}
+	
+func setup_markers():
+	markers = {
+		Types.PlayerState.Character: [t_right_marker, t_left_marker],
+		Types.PlayerState.Shadow: [b_right_marker, b_left_marker]
+	}
+	
+func select_marker(left: bool):
+	var marker_index = int(left)
+	marker = markers[state][marker_index]

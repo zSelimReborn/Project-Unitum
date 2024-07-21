@@ -3,7 +3,7 @@ class_name BaseCharacter
 extends CharacterBody2D
 
 # On Ready
-@onready var sprite = $Sprite
+@onready var sprite = $AnimatedSprite2D
 
 # Properties
 @export var walk_speed : float
@@ -50,6 +50,15 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	move_and_slide()
+	process_animation(delta)
+	
+func process_animation(delta):
+	if is_on_floor():
+		if velocity.length_squared() > 0:
+			sprite.play("walk")
+			return
+
+	sprite.play("idle")
 
 # Health management
 func die():

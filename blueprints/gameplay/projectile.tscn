@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://beymey1n6c1xi" path="res://assets/projectiles/water_ball.tga" id="2_theiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md8ra"]
-size = Vector2(20, 23)
+size = Vector2(13, 12)
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_ak1pj")
-speed = 700.0
+speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_theiv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_md8ra")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

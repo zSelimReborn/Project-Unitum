@@ -61,7 +61,7 @@ position = Vector2(-378, 115)
 position = Vector2(-504, 115)
 
 [node name="ShadowPortal" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("3_kykmj")]
-position = Vector2(340, 9)
+position = Vector2(340, 38)
 spawn_point = NodePath("../ShadowSpawnPoint")
 
 [node name="ShadowSpawnPoint" type="Node2D" parent="."]
@@ -71,6 +71,6 @@ position = Vector2(343, 207)
 position = Vector2(-383, 46)
 
 [node name="CharaterPortal" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("3_kykmj")]
-position = Vector2(-385, 220)
+position = Vector2(-385, 194)
 rotation = 3.14159
 spawn_point = NodePath("../CharaterSpawnPoint")
