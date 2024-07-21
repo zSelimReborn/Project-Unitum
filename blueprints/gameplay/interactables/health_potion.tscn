@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ym1qxgmtsj32"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/interactables/health_potion.gd" id="2_1tf8p"]
+[ext_resource type="Texture2D" uid="uid://bfshf2bv1orw0" path="res://assets/pickup_health.tga" id="2_7ahir"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xckq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7ahir")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_til6b"]
+size = Vector2(11, 17)
+
+[node name="HealthPotion" type="Area2D"]
+script = ExtResource("2_1tf8p")
+instant_interact = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_3xckq")
+animation = &"idle"
+
+[node name="Volume" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_til6b")

@@ -65,7 +65,14 @@ func die():
 	is_alive = false
 	print("DIE")
 	
-func take_damage(amount : float):
+func heal(amount: float):
+	if not is_alive:
+		return
+	amount = abs(amount)
+	health = clamp(health + amount, 0, max_health)
+	print("health: ", health)
+	
+func take_damage(amount: float):
 	if not is_alive:
 		return
 	health = clamp(health - amount, 0, max_health)

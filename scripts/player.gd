@@ -44,6 +44,8 @@ func _input(event):
 		change_element(event.keycode)
 	if event.is_action_pressed("interact"):
 		interact()
+	if event.is_action_pressed("take"):
+		take_damage(10)
 		
 func fire():
 	if marker == null:

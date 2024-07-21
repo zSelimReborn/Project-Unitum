@@ -52,6 +52,7 @@ animations = [{
 height = 32.0
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 10
 script = ExtResource("1_d67dp")
 fire_ball_class = ExtResource("2_lnnts")
 water_ball_class = ExtResource("3_25mov")

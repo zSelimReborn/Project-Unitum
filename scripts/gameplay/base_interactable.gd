@@ -2,13 +2,15 @@ class_name BaseInteractable
 
 extends Area2D
 
-# Properties
-
 # Interact on player enter
 @export var instant_interact: bool = false
 
+func _ready():
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+
 func interact(player: Player):
-	pass
+	return true
 
 func on_overlap_start(player: Player):
 	if player == null:
@@ -25,7 +27,8 @@ func _on_body_entered(body):
 	if player == null:
 		return
 	if instant_interact:
-		interact(player)
+		if interact(player):
+			queue_free()
 	else:
 		on_overlap_start(player)
 

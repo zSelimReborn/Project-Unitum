@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxdbqiywbkgop"]
+[gd_scene load_steps=4 format=3 uid="uid://bkjrvv8tg7yvx"]
 
-[ext_resource type="PackedScene" uid="uid://bxsfyrplbol6m" path="res://blueprints/gameplay/base_interactable.tscn" id="1_a6htx"]
+[ext_resource type="Texture2D" uid="uid://c4x77efdkdtmg" path="res://icon.svg" id="2_0i1ph"]
 [ext_resource type="Script" path="res://scripts/gameplay/interactables/shadow_portal.gd" id="2_yegn5"]
 
-[node name="ShadowPortal" instance=ExtResource("1_a6htx")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0aqn8"]
+size = Vector2(38, 36)
+
+[node name="ShadowPortal" type="Area2D"]
+z_index = 1
 script = ExtResource("2_yegn5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.200001, -18.8)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_0i1ph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.200001, -18.8)
+shape = SubResource("RectangleShape2D_0aqn8")

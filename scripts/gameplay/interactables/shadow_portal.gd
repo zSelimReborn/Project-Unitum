@@ -7,8 +7,9 @@ extends BaseInteractable
 func interact(player: Player):
 	if spawn_point == null:
 		printerr("unable to use shadow portal, empty spawn point")
-		return
+		return false
 	if player == null:
 		printerr("unable to use shadow portal, empty player")
-		return
+		return false
 	player.flip_state(spawn_point.transform)
+	return true
