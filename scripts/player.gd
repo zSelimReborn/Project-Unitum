@@ -7,12 +7,14 @@ extends BaseCharacter
 @onready var bottom_marker = $BottomAnchor/BottomMarker
 @onready var top_anchor = $TopAnchor
 @onready var bottom_anchor = $BottomAnchor
+@onready var fire_rate_timer = $FireRateTimer
 
 #Properties
 @export var fire_ball_class : PackedScene
 @export var water_ball_class : PackedScene
 @export var earth_ball_class : PackedScene
 @export var air_ball_class : PackedScene
+@export var fire_rate : float = 0.5
 
 #Variables
 var current_element : Types.Elements = Types.Elements.FIRE
@@ -20,6 +22,7 @@ var state : Types.PlayerState = Types.PlayerState.Character
 var element_abilities = {}
 var current_interactable : BaseInteractable = null
 var marker = null
+var can_shoot = true
 
 var element_input_mapping = {
 	KEY_1: Types.Elements.FIRE,
@@ -47,6 +50,9 @@ func _input(event):
 		take_damage(10)
 		
 func fire():
+	if not can_shoot:
+		printerr("unable to fire, cooldown")
+		return
 	if marker == null:
 		printerr("unable to fire, no marker")
 		return
@@ -59,6 +65,8 @@ func fire():
 	projectile.instigator = self
 	projectile.transform = marker.global_transform
 	sprite.play("attack")
+	can_shoot = false
+	fire_rate_timer.start()
 		
 func change_element(keycode):
 	if not element_input_mapping.has(keycode):
@@ -102,6 +110,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	setup_projectiles()
 	select_marker(false)
+	setup_fire_rate()
 	
 func setup_projectiles():
 	element_abilities = {
@@ -111,8 +120,17 @@ func setup_projectiles():
 		Types.Elements.AIR: air_ball_class
 	}
 	
+func setup_fire_rate():
+	fire_rate_timer.one_shot = true
+	fire_rate_timer.wait_time = fire_rate
+	fire_rate_timer.stop()
+	
+func _on_fire_rate_timeout():
+	can_shoot = true
+	
 func select_marker(left: bool):
 	var rotation = 180 if left else 0
 	var selected_anchor = bottom_anchor if is_shadow() else top_anchor
 	selected_anchor.rotation_degrees = rotation
 	marker = bottom_marker if is_shadow() else top_marker
+

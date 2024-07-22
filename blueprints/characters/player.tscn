@@ -58,6 +58,7 @@ fire_ball_class = ExtResource("2_lnnts")
 water_ball_class = ExtResource("3_25mov")
 earth_ball_class = ExtResource("4_0y7ly")
 air_ball_class = ExtResource("5_0qfmo")
+fire_rate = 0.7
 walk_speed = 250.0
 jump_velocity = -220.0
 max_health = 100.0
@@ -91,3 +92,7 @@ position = Vector2(0, -5)
 
 [node name="BottomMarker" type="Marker2D" parent="BottomAnchor"]
 position = Vector2(15, 0)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timeout"]
