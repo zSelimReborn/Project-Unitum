@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beymey1n6c1xi"
-path="res://.godot/imported/water_ball.tga-8d290b2c0a21dab5f4c8a61fd9f2ddbe.ctex"
+uid="uid://6fjindsj3cne"
+path="res://.godot/imported/water_ball_anim.tga-105d5a92ce5a04f98cb1bc004ac4adef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/projectiles/water_ball.tga"
-dest_files=["res://.godot/imported/water_ball.tga-8d290b2c0a21dab5f4c8a61fd9f2ddbe.ctex"]
+source_file="res://assets/projectiles/water_ball_anim.tga"
+dest_files=["res://.godot/imported/water_ball_anim.tga-105d5a92ce5a04f98cb1bc004ac4adef.ctex"]
 
 [params]
 

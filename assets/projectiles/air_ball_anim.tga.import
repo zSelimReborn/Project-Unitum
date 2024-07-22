@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ihrsglgkko43"
-path="res://.godot/imported/air_ball.tga-b8d82677a7459e5102ad6e8d96d9c70d.ctex"
+uid="uid://bpj43q5txako8"
+path="res://.godot/imported/air_ball_anim.tga-894e44109c839e1cf4fc431308f5ca78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/projectiles/air_ball.tga"
-dest_files=["res://.godot/imported/air_ball.tga-b8d82677a7459e5102ad6e8d96d9c70d.ctex"]
+source_file="res://assets/projectiles/air_ball_anim.tga"
+dest_files=["res://.godot/imported/air_ball_anim.tga-894e44109c839e1cf4fc431308f5ca78.ctex"]
 
 [params]
 

@@ -3,8 +3,8 @@ class_name Projectile
 extends Area2D
 
 #On Ready
-@onready var sprite = $Sprite2D
 @onready var timer = $Timer
+@onready var sprite = $AnimSprite
 
 # Properties
 @export var speed : float = 750
@@ -15,9 +15,6 @@ var instigator = null
 
 func _ready():
 	timer.start()
-
-func set_sprite_texture(texture):
-	sprite.set_texture(texture)
 
 func _physics_process(delta):
 	var x_offset = transform.x * speed * delta
@@ -30,3 +27,7 @@ func _on_body_entered(body):
 
 func _on_timer_timeout():
 	queue_free()
+
+func _on_anim_sprite_animation_looped():
+	if sprite.animation == "default":
+		sprite.play("loop")
