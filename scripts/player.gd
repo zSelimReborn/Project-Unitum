@@ -129,8 +129,8 @@ func _on_fire_rate_timeout():
 	can_shoot = true
 	
 func select_marker(left: bool):
-	var rotation = 180 if left else 0
+	var direction_rotation = 180 if left else 0
 	var selected_anchor = bottom_anchor if is_shadow() else top_anchor
-	selected_anchor.rotation_degrees = rotation
+	selected_anchor.rotation_degrees = direction_rotation
 	marker = bottom_marker if is_shadow() else top_marker
 

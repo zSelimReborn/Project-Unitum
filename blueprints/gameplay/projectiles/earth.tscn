@@ -66,7 +66,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -86,6 +86,7 @@ animations = [{
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_d16rn")
 autoplay = "default"
+frame_progress = 0.865931
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -1)
