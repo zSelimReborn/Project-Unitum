@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfshf2bv1orw0"
-path="res://.godot/imported/pickup_health.tga-9ef111a9a084970c75b92239ac6506ed.ctex"
+uid="uid://b4tqov47alwiw"
+path="res://.godot/imported/pickup_health_animated.png-afe5a8c6d4181e7ae2987b13689a8dbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pickup_health.tga"
-dest_files=["res://.godot/imported/pickup_health.tga-9ef111a9a084970c75b92239ac6506ed.ctex"]
+source_file="res://assets/gameplay/pickup_health_animated.png"
+dest_files=["res://.godot/imported/pickup_health_animated.png-afe5a8c6d4181e7ae2987b13689a8dbb.ctex"]
 
 [params]
 

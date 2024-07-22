@@ -64,7 +64,7 @@ position = Vector2(-378, 115)
 position = Vector2(-504, 115)
 
 [node name="HealthPotion" parent="." instance=ExtResource("3_jhxdv")]
-position = Vector2(387, 47)
+position = Vector2(387, 41)
 
 [node name="HealthPotion2" parent="." instance=ExtResource("3_jhxdv")]
 position = Vector2(-407, 44)
@@ -83,3 +83,6 @@ spawn_point = NodePath("../CharacterPoint")
 
 [node name="CharacterPoint" type="Node2D" parent="."]
 position = Vector2(-315, 35)
+
+[node name="HealthPotion3" parent="." instance=ExtResource("3_jhxdv")]
+position = Vector2(83, 40)
