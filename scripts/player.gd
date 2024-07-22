@@ -3,10 +3,10 @@ class_name Player
 extends BaseCharacter
 
 # On Ready
-@onready var t_right_marker = $TRightMarker
-@onready var t_left_marker = $TLeftMarker
-@onready var b_right_marker = $BRightMarker
-@onready var b_left_marker = $BLeftMarker
+@onready var top_marker = $TopAnchor/TopMarker
+@onready var bottom_marker = $BottomAnchor/BottomMarker
+@onready var top_anchor = $TopAnchor
+@onready var bottom_anchor = $BottomAnchor
 
 #Properties
 @export var fire_ball_class : PackedScene
@@ -18,9 +18,8 @@ extends BaseCharacter
 var current_element : Types.Elements = Types.Elements.FIRE
 var state : Types.PlayerState = Types.PlayerState.Character
 var element_abilities = {}
-var markers = {}
-var marker = null
 var current_interactable : BaseInteractable = null
+var marker = null
 
 var element_input_mapping = {
 	KEY_1: Types.Elements.FIRE,
@@ -102,7 +101,6 @@ func on_flip_state():
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	setup_projectiles()
-	setup_markers()
 	select_marker(false)
 	
 func setup_projectiles():
@@ -113,12 +111,8 @@ func setup_projectiles():
 		Types.Elements.AIR: air_ball_class
 	}
 	
-func setup_markers():
-	markers = {
-		Types.PlayerState.Character: [t_right_marker, t_left_marker],
-		Types.PlayerState.Shadow: [b_right_marker, b_left_marker]
-	}
-	
 func select_marker(left: bool):
-	var marker_index = int(left)
-	marker = markers[state][marker_index]
+	var rotation = 180 if left else 0
+	var selected_anchor = bottom_anchor if is_shadow() else top_anchor
+	selected_anchor.rotation_degrees = rotation
+	marker = bottom_marker if is_shadow() else top_marker

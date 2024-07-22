@@ -9,7 +9,7 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
-func interact(player: Player):
+func interact(_player: Player):
 	return true
 
 func on_overlap_start(player: Player):

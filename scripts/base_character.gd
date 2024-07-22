@@ -52,7 +52,7 @@ func _physics_process(delta):
 	move_and_slide()
 	process_animation(delta)
 	
-func process_animation(delta):
+func process_animation(_delta):
 	if is_on_floor():
 		if velocity.length_squared() > 0:
 			sprite.play("walk")

@@ -80,16 +80,14 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[node name="TRightMarker" type="Marker2D" parent="."]
-position = Vector2(10, -28)
+[node name="TopAnchor" type="Node2D" parent="."]
+position = Vector2(0, -24)
 
-[node name="TLeftMarker" type="Marker2D" parent="."]
-position = Vector2(-10, -28)
-rotation = 3.14159
+[node name="TopMarker" type="Marker2D" parent="TopAnchor"]
+position = Vector2(15, 0)
 
-[node name="BLeftMarker" type="Marker2D" parent="."]
-position = Vector2(-10, -4)
-rotation = 3.14159
+[node name="BottomAnchor" type="Node2D" parent="."]
+position = Vector2(0, -5)
 
-[node name="BRightMarker" type="Marker2D" parent="."]
-position = Vector2(10, -4)
+[node name="BottomMarker" type="Marker2D" parent="BottomAnchor"]
+position = Vector2(15, 0)

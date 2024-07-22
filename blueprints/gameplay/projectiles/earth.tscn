@@ -83,9 +83,9 @@ animations = [{
 [node name="Projectile" instance=ExtResource("1_h2a75")]
 
 [node name="AnimSprite" parent="." index="0"]
-position = Vector2(0, -8)
+position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_d16rn")
 autoplay = "default"
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -8)
+position = Vector2(0, -1)
