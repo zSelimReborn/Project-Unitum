@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var walk_animation : String = ""
 
 @export var max_health : float
+@export var hit_flash_duration : float = 0.2
 @onready var health = max_health
 
 @export var base_damage : float
@@ -77,7 +78,6 @@ func process_animation(_delta):
 # Health management
 func die():
 	is_alive = false
-	print("DIE")
 	
 func heal(amount: float):
 	if not is_alive:
@@ -86,10 +86,22 @@ func heal(amount: float):
 	health = clamp(health + amount, 0, max_health)
 	print("health: ", health)
 	
+func can_take_damage(_instigator):
+	return true
+	
 func take_damage(amount: float):
 	if not is_alive:
 		return
 	health = clamp(health - amount, 0, max_health)
 	if health <= 0:
 		die()
-	print("health: ", health)
+		return
+	update_shader_flag("active", true)
+	await get_tree().create_timer(hit_flash_duration).timeout
+	update_shader_flag("active", false)	
+	
+func update_shader_flag(shader: String, active: bool):
+	if not sprite or not sprite.material:
+		printerr("unable to update shader flag, no: ", shader)
+		return
+	sprite.material.set_shader_parameter(shader, active)

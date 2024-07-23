@@ -4,12 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://br08n31udov33" path="res://blueprints/gameplay/sample_platform.tscn" id="2_bm1i2"]
 [ext_resource type="PackedScene" uid="uid://ym1qxgmtsj32" path="res://blueprints/gameplay/interactables/health_potion.tscn" id="3_jhxdv"]
 [ext_resource type="PackedScene" uid="uid://bkjrvv8tg7yvx" path="res://blueprints/gameplay/interactables/shadow_portal.tscn" id="3_kykmj"]
-[ext_resource type="PackedScene" uid="uid://bgrldxlq6x0ob" path="res://blueprints/gameplay/enemies/fire_enemy.tscn" id="7_ga8wq"]
+[ext_resource type="PackedScene" uid="uid://da56rok8u3uq5" path="res://blueprints/gameplay/enemies/air_enemy.tscn" id="6_enxk7"]
 
 [node name="DebugMap" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_qle6k")]
 position = Vector2(0, -8)
+main_group = null
+apply_gravity = null
+idle_animation = null
+hit_flash_duration = null
 
 [node name="Boundaries" type="Node2D" parent="."]
 
@@ -42,6 +46,9 @@ position = Vector2(502, 367)
 
 [node name="Sprite2D2" parent="Boundaries" instance=ExtResource("2_bm1i2")]
 position = Vector2(-129, 115)
+
+[node name="Sprite2D18" parent="Boundaries" instance=ExtResource("2_bm1i2")]
+position = Vector2(-128, 68)
 
 [node name="Sprite2D3" parent="Boundaries" instance=ExtResource("2_bm1i2")]
 position = Vector2(-252, 115)
@@ -88,9 +95,5 @@ position = Vector2(-315, 35)
 [node name="HealthPotion3" parent="." instance=ExtResource("3_jhxdv")]
 position = Vector2(83, 40)
 
-[node name="FireEnemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_ga8wq")]
-position = Vector2(187, 35)
-player = NodePath("../Player")
-patrol_distance = 50
-aggro_player_dist = 200
-walk_speed = 50.0
+[node name="AirEnemy" parent="." instance=ExtResource("6_enxk7")]
+position = Vector2(-215, 48)

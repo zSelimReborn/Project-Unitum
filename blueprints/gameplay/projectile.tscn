@@ -9,6 +9,7 @@ resource_local_to_scene = true
 size = Vector2(16.5, 15)
 
 [node name="Projectile" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_ak1pj")
 speed = 300.0
 
@@ -22,7 +23,7 @@ position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_md8ra")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

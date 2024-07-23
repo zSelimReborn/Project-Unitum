@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dac3xdxvmds7h"]
+[gd_scene load_steps=15 format=3 uid="uid://dac3xdxvmds7h"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_d67dp"]
 [ext_resource type="PackedScene" uid="uid://bn0tekli3d5oi" path="res://blueprints/gameplay/projectiles/fire.tscn" id="2_lnnts"]
@@ -6,10 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://cqmuveqfl0ahc" path="res://blueprints/gameplay/projectiles/earth.tscn" id="4_0y7ly"]
 [ext_resource type="PackedScene" uid="uid://dbxnsgdnf0rt8" path="res://blueprints/gameplay/projectiles/air.tscn" id="5_0qfmo"]
 [ext_resource type="Texture2D" uid="uid://cixs1cvvqcpxi" path="res://assets/character/animations/attack.tga" id="6_bnc62"]
+[ext_resource type="Shader" path="res://assets/shaders/hit_flash.gdshader" id="6_kffuj"]
 [ext_resource type="Texture2D" uid="uid://cfp7bqqx5gxmi" path="res://assets/character/animations/still.tga" id="6_qostj"]
 [ext_resource type="Texture2D" uid="uid://qlng36ryk8u0" path="res://assets/character/animations/walk_frame_1.tga" id="7_dhmqc"]
 [ext_resource type="Texture2D" uid="uid://chyn1qoach1ek" path="res://assets/character/animations/still_frame_2.tga" id="7_dmgbe"]
 [ext_resource type="Texture2D" uid="uid://6beols50ryma" path="res://assets/character/animations/walk_frame_2.tga" id="8_41cl3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgt3y"]
+resource_local_to_scene = true
+shader = ExtResource("6_kffuj")
+shader_parameter/active = false
+shader_parameter/shadow = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tobyk"]
 resource_local_to_scene = true
@@ -60,13 +67,18 @@ water_ball_class = ExtResource("3_25mov")
 earth_ball_class = ExtResource("4_0y7ly")
 air_ball_class = ExtResource("5_0qfmo")
 fire_rate = 0.7
+main_group = null
 walk_speed = 250.0
-jump_velocity = -280.0
+jump_velocity = -350.0
+apply_gravity = null
+idle_animation = null
 walk_animation = "walk"
 max_health = 100.0
+hit_flash_duration = 0.15
 base_damage = 25.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_kgt3y")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_tobyk")
 animation = &"idle"

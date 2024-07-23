@@ -1,9 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://m11syy32y6op"]
+[gd_scene load_steps=30 format=3 uid="uid://m11syy32y6op"]
 
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_c7fa5"]
 [ext_resource type="Texture2D" uid="uid://pfhh1l468oi" path="res://assets/enemies/air_enemy.png" id="1_gb4h2"]
+[ext_resource type="PackedScene" uid="uid://b6rhifi5h1p36" path="res://blueprints/gameplay/projectiles/water.tscn" id="2_d5gi5"]
 [ext_resource type="Texture2D" uid="uid://455o8y7hfv44" path="res://assets/enemies/earth_enemy.png" id="2_epewi"]
+[ext_resource type="PackedScene" uid="uid://ym1qxgmtsj32" path="res://blueprints/gameplay/interactables/health_potion.tscn" id="3_bjd35"]
 [ext_resource type="Texture2D" uid="uid://ykk6o8bd7yk0" path="res://assets/enemies/fire_enemy.png" id="3_u8xxv"]
 [ext_resource type="Texture2D" uid="uid://cwmrl1btq6ep8" path="res://assets/enemies/water_enemy.png" id="4_3ku0h"]
+[ext_resource type="Shader" path="res://assets/shaders/hit_flash.gdshader" id="4_4gkpw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6e1n"]
+resource_local_to_scene = true
+shader = ExtResource("4_4gkpw")
+shader_parameter/active = false
+shader_parameter/shadow = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmvh5"]
 atlas = ExtResource("1_gb4h2")
@@ -21,10 +31,6 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_gb4h2")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5k28i"]
-atlas = ExtResource("1_gb4h2")
-region = Rect2(0, 32, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilb2y"]
 atlas = ExtResource("2_epewi")
 region = Rect2(0, 0, 32, 32)
@@ -40,10 +46,6 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqsfy"]
 atlas = ExtResource("2_epewi")
 region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d734o"]
-atlas = ExtResource("2_epewi")
-region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2pi3"]
 atlas = ExtResource("3_u8xxv")
@@ -95,9 +97,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jtjem")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5k28i")
 }],
 "loop": true,
 "name": &"air",
@@ -115,12 +114,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gqsfy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d734o")
 }],
 "loop": true,
-"name": &"eart",
+"name": &"earth",
 "speed": 5.0
 }, {
 "frames": [{
@@ -164,13 +160,57 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_liesw"]
 size = Vector2(28, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_420gq"]
+size = Vector2(34, 28)
+
 [node name="WaterEnemy" type="CharacterBody2D"]
+script = ExtResource("1_c7fa5")
+patrol_distance = 50
+aggro_player_dist = 100
+push_force = 200
+counter_element = 1
+projectile_class = ExtResource("2_d5gi5")
+heal_class = ExtResource("3_bjd35")
+walk_speed = 50.0
+apply_gravity = false
+idle_animation = "water"
+max_health = 100.0
+base_damage = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_d6e1n")
+position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_j2w6n")
 animation = &"water"
 autoplay = "water"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+[node name="MovementCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_liesw")
+
+[node name="HitCollisionArea" type="Area2D" parent="."]
+position = Vector2(0, -19)
+
+[node name="HitCollisionShape" type="CollisionShape2D" parent="HitCollisionArea"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_420gq")
+
+[node name="MarkerAnchor" type="Node2D" parent="."]
+position = Vector2(0, -28)
+
+[node name="Marker" type="Marker2D" parent="MarkerAnchor"]
+position = Vector2(21, 0)
+
+[node name="FireRate" type="Timer" parent="."]
+
+[node name="LeftCast" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+rotation = 1.5708
+target_position = Vector2(0, 25)
+collide_with_areas = true
+
+[node name="RightCast" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+rotation = -1.5708
+target_position = Vector2(0, 25)
+collide_with_areas = true

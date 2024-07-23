@@ -12,6 +12,8 @@ extends Area2D
 # Variables
 var damage : float = 0
 var instigator = null
+var instigator_group = null
+var element : Types.Elements
 
 func _ready():
 	timer.start()
@@ -23,6 +25,14 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body == instigator:
 		return
+	if body.is_in_group(instigator_group):
+		return
+	
+	var character = body as BaseCharacter
+	if character != null:
+		if not character.can_take_damage(self):
+			return
+		character.take_damage(damage)		
 	queue_free()
 
 func _on_timer_timeout():

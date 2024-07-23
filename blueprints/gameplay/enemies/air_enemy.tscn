@@ -1,29 +1,39 @@
-[gd_scene load_steps=26 format=3 uid="uid://da56rok8u3uq5"]
+[gd_scene load_steps=31 format=3 uid="uid://da56rok8u3uq5"]
 
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_m0vks"]
 [ext_resource type="Texture2D" uid="uid://pfhh1l468oi" path="res://assets/enemies/air_enemy.png" id="1_o6loh"]
 [ext_resource type="Texture2D" uid="uid://455o8y7hfv44" path="res://assets/enemies/earth_enemy.png" id="2_sbihg"]
+[ext_resource type="PackedScene" uid="uid://dbxnsgdnf0rt8" path="res://blueprints/gameplay/projectiles/air.tscn" id="2_u0hvt"]
 [ext_resource type="Texture2D" uid="uid://ykk6o8bd7yk0" path="res://assets/enemies/fire_enemy.png" id="3_t1wwc"]
+[ext_resource type="PackedScene" uid="uid://ym1qxgmtsj32" path="res://blueprints/gameplay/interactables/health_potion.tscn" id="3_y6bwb"]
+[ext_resource type="Shader" path="res://assets/shaders/hit_flash.gdshader" id="4_nwrgb"]
 [ext_resource type="Texture2D" uid="uid://cwmrl1btq6ep8" path="res://assets/enemies/water_enemy.png" id="4_xuk55"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cmvh5"]
-atlas = ExtResource("1_o6loh")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vt524"]
+resource_local_to_scene = true
+shader = ExtResource("4_nwrgb")
+shader_parameter/active = false
+shader_parameter/shadow = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mx6oj"]
-atlas = ExtResource("1_o6loh")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vn71v"]
-atlas = ExtResource("1_o6loh")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtjem"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oc4u3"]
 atlas = ExtResource("1_o6loh")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5k28i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lywj"]
 atlas = ExtResource("1_o6loh")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq0hf"]
+atlas = ExtResource("1_o6loh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opxmt"]
+atlas = ExtResource("1_o6loh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vxlf"]
+atlas = ExtResource("1_o6loh")
+region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilb2y"]
 atlas = ExtResource("2_sbihg")
@@ -40,10 +50,6 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqsfy"]
 atlas = ExtResource("2_sbihg")
 region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d734o"]
-atlas = ExtResource("2_sbihg")
-region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2pi3"]
 atlas = ExtResource("3_t1wwc")
@@ -85,19 +91,19 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cmvh5")
+"texture": SubResource("AtlasTexture_oc4u3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mx6oj")
+"texture": SubResource("AtlasTexture_6lywj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vn71v")
+"texture": SubResource("AtlasTexture_oq0hf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jtjem")
+"texture": SubResource("AtlasTexture_opxmt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5k28i")
+"texture": SubResource("AtlasTexture_3vxlf")
 }],
 "loop": true,
 "name": &"air",
@@ -115,12 +121,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gqsfy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d734o")
 }],
 "loop": true,
-"name": &"eart",
+"name": &"earth",
 "speed": 5.0
 }, {
 "frames": [{
@@ -164,13 +167,58 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_liesw"]
 size = Vector2(27, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n07x4"]
+size = Vector2(34, 28)
+
 [node name="AirEnemy" type="CharacterBody2D"]
+script = ExtResource("1_m0vks")
+patrol_distance = 50
+aggro_player_dist = 100
+push_force = 200
+element = 2
+counter_element = 3
+projectile_class = ExtResource("2_u0hvt")
+heal_class = ExtResource("3_y6bwb")
+walk_speed = 50.0
+apply_gravity = false
+idle_animation = "air"
+max_health = 100.0
+base_damage = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_vt524")
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_j2w6n")
 animation = &"air"
 autoplay = "air"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -1)
+[node name="MovementCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_liesw")
+
+[node name="HitCollisionArea" type="Area2D" parent="."]
+position = Vector2(0, -12)
+
+[node name="HitCollisionShape" type="CollisionShape2D" parent="HitCollisionArea"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_n07x4")
+
+[node name="MarkerAnchor" type="Node2D" parent="."]
+position = Vector2(0, -20)
+
+[node name="Marker" type="Marker2D" parent="MarkerAnchor"]
+position = Vector2(21, 0)
+
+[node name="FireRate" type="Timer" parent="."]
+
+[node name="LeftCast" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+rotation = 1.5708
+target_position = Vector2(0, 25)
+collide_with_areas = true
+
+[node name="RightCast" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+rotation = -1.5708
+target_position = Vector2(0, 25)
+collide_with_areas = true

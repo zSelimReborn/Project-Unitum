@@ -15,6 +15,7 @@ extends BaseCharacter
 @export var earth_ball_class : PackedScene
 @export var air_ball_class : PackedScene
 @export var fire_rate : float = 0.5
+@export var main_group : String = "player"
 
 #Variables
 var current_element : Types.Elements = Types.Elements.FIRE
@@ -58,17 +59,17 @@ func fire():
 	if marker == null:
 		printerr("unable to fire, no marker")
 		return
-	var projectile_class = element_abilities[current_element]
-	if not projectile_class:
+	var projectile = spawn_projectile()
+	if not projectile:
 		printerr("unable to fire, no projectile class")
-		return
-	var projectile = projectile_class.instantiate()
-	owner.add_child(projectile)
-	projectile.instigator = self
-	projectile.transform = marker.global_transform
+		return		
 	sprite.play("attack")
 	can_shoot = false
 	fire_rate_timer.start()
+	
+func spawn_projectile():
+	var projectile_class = element_abilities[current_element]	
+	return Common.spawn_projectile(owner, projectile_class, self, main_group, damage, current_element, marker.global_transform)
 		
 func change_element(keycode):
 	if not element_input_mapping.has(keycode):
@@ -103,13 +104,10 @@ func on_flip_state():
 	jump_velocity = -jump_velocity
 	up_direction.y = -up_direction.y
 	select_marker(sprite.flip_h)
-	if is_shadow():
-		sprite.modulate.a = 0.5
-	else:
-		sprite.modulate.a = 1
+	update_shader_flag("shadow", is_shadow())
 
 func _ready():
-	add_to_group("player")
+	add_to_group(main_group)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	setup_projectiles()
 	select_marker(false)
@@ -136,4 +134,8 @@ func select_marker(left: bool):
 	var selected_anchor = bottom_anchor if is_shadow() else top_anchor
 	selected_anchor.rotation_degrees = direction_rotation
 	marker = bottom_marker if is_shadow() else top_marker
+	
+func die():
+	super()
+	get_tree().reload_current_scene()
 
