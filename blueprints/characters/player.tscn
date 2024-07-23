@@ -53,6 +53,7 @@ height = 32.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
+platform_floor_layers = 4294967167
 script = ExtResource("1_d67dp")
 fire_ball_class = ExtResource("2_lnnts")
 water_ball_class = ExtResource("3_25mov")
@@ -60,7 +61,8 @@ earth_ball_class = ExtResource("4_0y7ly")
 air_ball_class = ExtResource("5_0qfmo")
 fire_rate = 0.7
 walk_speed = 250.0
-jump_velocity = -220.0
+jump_velocity = -280.0
+walk_animation = "walk"
 max_health = 100.0
 base_damage = 25.0
 

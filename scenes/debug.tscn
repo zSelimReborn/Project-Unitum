@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://br08n31udov33" path="res://blueprints/gameplay/sample_platform.tscn" id="2_bm1i2"]
 [ext_resource type="PackedScene" uid="uid://ym1qxgmtsj32" path="res://blueprints/gameplay/interactables/health_potion.tscn" id="3_jhxdv"]
 [ext_resource type="PackedScene" uid="uid://bkjrvv8tg7yvx" path="res://blueprints/gameplay/interactables/shadow_portal.tscn" id="3_kykmj"]
-[ext_resource type="PackedScene" uid="uid://vhiry6lt4r24" path="res://blueprints/gameplay/enemies/enemy.tscn" id="5_xrsou"]
+[ext_resource type="PackedScene" uid="uid://bgrldxlq6x0ob" path="res://blueprints/gameplay/enemies/fire_enemy.tscn" id="7_ga8wq"]
 
 [node name="DebugMap" type="Node2D"]
 
@@ -88,5 +88,9 @@ position = Vector2(-315, 35)
 [node name="HealthPotion3" parent="." instance=ExtResource("3_jhxdv")]
 position = Vector2(83, 40)
 
-[node name="Area2D" parent="." instance=ExtResource("5_xrsou")]
-position = Vector2(-84, 41)
+[node name="FireEnemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_ga8wq")]
+position = Vector2(187, 35)
+player = NodePath("../Player")
+patrol_distance = 50
+aggro_player_dist = 200
+walk_speed = 50.0

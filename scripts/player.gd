@@ -40,6 +40,8 @@ func process_movement_input():
 		jump()
 
 func _input(event):
+	process_movement_input()
+	
 	if event.is_action_pressed("fire"):
 		fire()
 	if event.is_action_pressed("change_element"):
@@ -107,6 +109,7 @@ func on_flip_state():
 		sprite.modulate.a = 1
 
 func _ready():
+	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	setup_projectiles()
 	select_marker(false)
