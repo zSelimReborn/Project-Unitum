@@ -1,19 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=10 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
 [ext_resource type="PackedScene" uid="uid://br08n31udov33" path="res://blueprints/gameplay/sample_platform.tscn" id="2_bm1i2"]
 [ext_resource type="PackedScene" uid="uid://ym1qxgmtsj32" path="res://blueprints/gameplay/interactables/health_potion.tscn" id="3_jhxdv"]
 [ext_resource type="PackedScene" uid="uid://bkjrvv8tg7yvx" path="res://blueprints/gameplay/interactables/shadow_portal.tscn" id="3_kykmj"]
+[ext_resource type="PackedScene" uid="uid://pjebmhfpiq0k" path="res://blueprints/gameplay/interactables/relics/relic_char_one.tscn" id="6_6jhy6"]
 [ext_resource type="PackedScene" uid="uid://da56rok8u3uq5" path="res://blueprints/gameplay/enemies/air_enemy.tscn" id="6_enxk7"]
+[ext_resource type="PackedScene" uid="uid://bjn8g7867qrr4" path="res://blueprints/gameplay/interactables/relics/relic_char_two.tscn" id="7_k7lnh"]
+[ext_resource type="PackedScene" uid="uid://drtleb2qurjj2" path="res://blueprints/gameplay/interactables/relics/relic_shadow_one.tscn" id="8_1qqrj"]
+[ext_resource type="PackedScene" uid="uid://cnqd66mxhojvl" path="res://blueprints/gameplay/interactables/relics/relic_shadow_two.tscn" id="9_vgwpt"]
 
 [node name="DebugMap" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_qle6k")]
 position = Vector2(0, -8)
-main_group = null
-apply_gravity = null
-idle_animation = null
-hit_flash_duration = null
+main_group = "player"
+apply_gravity = true
+idle_animation = "idle"
+hit_flash_duration = 0.2
 
 [node name="Boundaries" type="Node2D" parent="."]
 
@@ -92,8 +96,20 @@ spawn_point = NodePath("../CharacterPoint")
 [node name="CharacterPoint" type="Node2D" parent="."]
 position = Vector2(-315, 35)
 
-[node name="HealthPotion3" parent="." instance=ExtResource("3_jhxdv")]
-position = Vector2(83, 40)
-
 [node name="AirEnemy" parent="." instance=ExtResource("6_enxk7")]
 position = Vector2(-215, 48)
+
+[node name="Relic" parent="." instance=ExtResource("6_6jhy6")]
+position = Vector2(93, 48)
+
+[node name="Relic2" parent="." instance=ExtResource("7_k7lnh")]
+position = Vector2(122, 48)
+
+[node name="Relic3" parent="." instance=ExtResource("8_1qqrj")]
+position = Vector2(152, 48)
+
+[node name="Relic4" parent="." instance=ExtResource("9_vgwpt")]
+position = Vector2(181, 48)
+
+[node name="Relic5" parent="." instance=ExtResource("6_6jhy6")]
+position = Vector2(65, 47)

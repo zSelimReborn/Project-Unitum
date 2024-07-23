@@ -197,7 +197,7 @@ walk_speed = 50.0
 apply_gravity = false
 idle_animation = "fire"
 max_health = 100.0
-base_damage = 10.0
+base_damage_multiplier = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_vf5cv")

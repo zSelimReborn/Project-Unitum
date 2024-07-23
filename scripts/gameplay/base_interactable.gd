@@ -8,6 +8,7 @@ extends Area2D
 func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	add_to_group("interactable")
 
 func interact(_player: Player):
 	return true

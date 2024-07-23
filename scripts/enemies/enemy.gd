@@ -106,7 +106,7 @@ func shoot():
 	if not marker:
 		printerr("enemy cannot shoot, no marker")
 		return
-	var projectile = Common.spawn_projectile(owner, projectile_class, self, main_group, damage, element, marker.global_transform)
+	var projectile = Common.spawn_projectile(owner, projectile_class, self, main_group, get_damage(), element, marker.global_transform)
 	if not projectile:
 		printerr("enemy tried to shoot but failed")
 
@@ -139,7 +139,7 @@ func hit_player(p: Player):
 		return
 	var impulse = Vector2(direction * push_force, 0)
 	p.add_impulse(impulse)
-	p.take_damage(damage)
+	p.take_damage(get_damage())
 	
 func hit_something(body):
 	if not body.is_in_group("player"):
@@ -156,13 +156,11 @@ func spawn_heal():
 	if not heal_class:
 		return
 	var prob = rng.randf()
-	print(prob)
 	if prob > spawn_heal_probability:
 		return
 	var new_heal = heal_class.instantiate()
 	new_heal.transform = global_transform
 	new_heal.position.y += (-heal_y_offset)
-	print(new_heal.position)
 	owner.add_child(new_heal)
 	
 func hit_wall():

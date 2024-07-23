@@ -16,12 +16,12 @@ extends CharacterBody2D
 @export var hit_flash_duration : float = 0.2
 @onready var health = max_health
 
-@export var base_damage : float
-@onready var damage = base_damage
+@export var base_damage_multiplier : float = 0.25
+var base_damage = 100
+@onready var damage_multiplier = base_damage_multiplier
 
 # Variables
 var is_alive : bool = true
-var damage_multiplier : float = 1
 var current_impulse = Vector2()
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -99,6 +99,9 @@ func take_damage(amount: float):
 	update_shader_flag("active", true)
 	await get_tree().create_timer(hit_flash_duration).timeout
 	update_shader_flag("active", false)	
+	
+func get_damage():
+	return base_damage * damage_multiplier
 	
 func update_shader_flag(shader: String, active: bool):
 	if not sprite or not sprite.material:

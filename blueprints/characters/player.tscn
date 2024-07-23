@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dac3xdxvmds7h"]
+[gd_scene load_steps=16 format=3 uid="uid://dac3xdxvmds7h"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_d67dp"]
 [ext_resource type="PackedScene" uid="uid://bn0tekli3d5oi" path="res://blueprints/gameplay/projectiles/fire.tscn" id="2_lnnts"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://qlng36ryk8u0" path="res://assets/character/animations/walk_frame_1.tga" id="7_dhmqc"]
 [ext_resource type="Texture2D" uid="uid://chyn1qoach1ek" path="res://assets/character/animations/still_frame_2.tga" id="7_dmgbe"]
 [ext_resource type="Texture2D" uid="uid://6beols50ryma" path="res://assets/character/animations/walk_frame_2.tga" id="8_41cl3"]
+[ext_resource type="Script" path="res://scripts/components/relic_component.gd" id="12_d3kqb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgt3y"]
 resource_local_to_scene = true
@@ -67,15 +68,11 @@ water_ball_class = ExtResource("3_25mov")
 earth_ball_class = ExtResource("4_0y7ly")
 air_ball_class = ExtResource("5_0qfmo")
 fire_rate = 0.7
-main_group = null
 walk_speed = 250.0
 jump_velocity = -350.0
-apply_gravity = null
-idle_animation = null
 walk_animation = "walk"
 max_health = 100.0
 hit_flash_duration = 0.15
-base_damage = 25.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_kgt3y")
@@ -108,5 +105,8 @@ position = Vector2(0, -5)
 position = Vector2(15, 0)
 
 [node name="FireRateTimer" type="Timer" parent="."]
+
+[node name="RelicComponent" type="Node" parent="."]
+script = ExtResource("12_d3kqb")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timeout"]

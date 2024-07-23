@@ -8,6 +8,7 @@ extends BaseCharacter
 @onready var top_anchor = $TopAnchor
 @onready var bottom_anchor = $BottomAnchor
 @onready var fire_rate_timer = $FireRateTimer
+@onready var relic_component = $RelicComponent
 
 #Properties
 @export var fire_ball_class : PackedScene
@@ -69,7 +70,7 @@ func fire():
 	
 func spawn_projectile():
 	var projectile_class = element_abilities[current_element]	
-	return Common.spawn_projectile(owner, projectile_class, self, main_group, damage, current_element, marker.global_transform)
+	return Common.spawn_projectile(owner, projectile_class, self, main_group, get_damage(), current_element, marker.global_transform)
 		
 func change_element(keycode):
 	if not element_input_mapping.has(keycode):
@@ -112,6 +113,7 @@ func _ready():
 	setup_projectiles()
 	select_marker(false)
 	setup_fire_rate()
+	setup_relic_event()
 	
 func setup_projectiles():
 	element_abilities = {
@@ -125,6 +127,14 @@ func setup_fire_rate():
 	fire_rate_timer.one_shot = true
 	fire_rate_timer.wait_time = fire_rate
 	fire_rate_timer.stop()
+	
+func setup_relic_event():
+	if not relic_component:
+		return
+	relic_component.new_relic_added.connect(on_new_relic)
+	
+func on_new_relic(type: Types.PlayerState, amount: int):
+	damage_multiplier += relic_component.relic_multiplier
 	
 func _on_fire_rate_timeout():
 	can_shoot = true
