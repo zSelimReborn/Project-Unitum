@@ -72,6 +72,7 @@ size = Vector2(32, 31.6)
 
 [node name="ShadowPortal" type="Area2D"]
 z_index = 1
+collision_layer = 4
 script = ExtResource("2_yegn5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=13 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
 [ext_resource type="PackedScene" uid="uid://br08n31udov33" path="res://blueprints/gameplay/sample_platform.tscn" id="2_bm1i2"]
@@ -9,14 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://bjn8g7867qrr4" path="res://blueprints/gameplay/interactables/relics/relic_char_two.tscn" id="7_k7lnh"]
 [ext_resource type="PackedScene" uid="uid://drtleb2qurjj2" path="res://blueprints/gameplay/interactables/relics/relic_shadow_one.tscn" id="8_1qqrj"]
 [ext_resource type="PackedScene" uid="uid://cnqd66mxhojvl" path="res://blueprints/gameplay/interactables/relics/relic_shadow_two.tscn" id="9_vgwpt"]
+[ext_resource type="PackedScene" uid="uid://dirgrgs3onpn1" path="res://blueprints/gameplay/enemies/earth_enemy.tscn" id="10_gykqd"]
+[ext_resource type="PackedScene" uid="uid://bgrldxlq6x0ob" path="res://blueprints/gameplay/enemies/fire_enemy.tscn" id="11_u0shf"]
+[ext_resource type="PackedScene" uid="uid://m11syy32y6op" path="res://blueprints/gameplay/enemies/water_enemy.tscn" id="12_h1ke2"]
 
 [node name="DebugMap" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_qle6k")]
 position = Vector2(0, -8)
-main_group = "player"
-apply_gravity = true
-idle_animation = "idle"
 hit_flash_duration = 0.2
 
 [node name="Boundaries" type="Node2D" parent="."]
@@ -113,3 +113,12 @@ position = Vector2(181, 48)
 
 [node name="Relic5" parent="." instance=ExtResource("6_6jhy6")]
 position = Vector2(65, 47)
+
+[node name="EarthEnemy" parent="." instance=ExtResource("10_gykqd")]
+position = Vector2(-358, 50)
+
+[node name="FireEnemy" parent="." instance=ExtResource("11_u0shf")]
+position = Vector2(212, 47)
+
+[node name="WaterEnemy" parent="." instance=ExtResource("12_h1ke2")]
+position = Vector2(326, 53)

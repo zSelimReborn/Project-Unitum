@@ -49,6 +49,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gy32j"]
 
 [node name="Relic" type="Area2D"]
+collision_layer = 4
 script = ExtResource("1_fdggc")
 relic_type = 1
 instant_interact = true

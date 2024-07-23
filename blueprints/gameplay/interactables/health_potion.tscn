@@ -51,6 +51,7 @@ animations = [{
 size = Vector2(11, 17)
 
 [node name="HealthPotion" type="Area2D"]
+collision_layer = 4
 script = ExtResource("2_1tf8p")
 instant_interact = true
 
