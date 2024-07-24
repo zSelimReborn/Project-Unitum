@@ -108,3 +108,9 @@ func update_shader_flag(shader: String, active: bool):
 		printerr("unable to update shader flag, no: ", shader)
 		return
 	sprite.material.set_shader_parameter(shader, active)
+	
+func update_shader_param(param: String, value: float):
+	if not sprite or not sprite.material:
+		printerr("unable to update shader param, no: ", param)
+		return
+	sprite.material.set_shader_parameter(param, value)

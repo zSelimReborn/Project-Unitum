@@ -6,14 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://455o8y7hfv44" path="res://assets/enemies/earth_enemy.png" id="2_j80ye"]
 [ext_resource type="Texture2D" uid="uid://ykk6o8bd7yk0" path="res://assets/enemies/fire_enemy.png" id="3_8p5ku"]
 [ext_resource type="PackedScene" uid="uid://ym1qxgmtsj32" path="res://blueprints/gameplay/interactables/health_potion.tscn" id="3_m6sdr"]
+[ext_resource type="Shader" path="res://assets/shaders/enemy.gdshader" id="4_83kbq"]
 [ext_resource type="Texture2D" uid="uid://cwmrl1btq6ep8" path="res://assets/enemies/water_enemy.png" id="4_jf3h7"]
-[ext_resource type="Shader" path="res://assets/shaders/hit_flash.gdshader" id="4_wonsd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vf5cv"]
 resource_local_to_scene = true
-shader = ExtResource("4_wonsd")
+shader = ExtResource("4_83kbq")
 shader_parameter/active = false
 shader_parameter/shadow = false
+shader_parameter/should_dissolve = false
+shader_parameter/dissolve_sensitivity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ki6yh"]
 atlas = ExtResource("1_iqxlf")
@@ -194,8 +196,10 @@ projectile_class = ExtResource("2_8podg")
 target_sprite_scale_loading_shoot = 2.0
 heal_class = ExtResource("3_m6sdr")
 walk_speed = 50.0
+jump_velocity = null
 apply_gravity = false
 idle_animation = "fire"
+walk_animation = null
 max_health = 100.0
 base_damage_multiplier = 0.1
 

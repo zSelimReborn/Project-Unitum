@@ -9,6 +9,7 @@ var rng = RandomNumberGenerator.new()
 var directions = [-1, 1]
 var state = EnemyState.PATROL
 var initial_sprite_scale = Vector2(1,1)
+var dissolve_parameter = 0
 
 # Properties
 @export var player : Player
@@ -41,6 +42,7 @@ var initial_sprite_scale = Vector2(1,1)
 @onready var target_sprite_scale_vector = Vector2(target_sprite_scale_loading_shoot, target_sprite_scale_loading_shoot)
 
 @onready var hit_collision = $HitCollisionArea
+@onready var hit_collision_shape = $HitCollisionArea/HitCollisionShape
 @onready var left_cast = $LeftCast
 @onready var right_cast = $RightCast
 
@@ -111,6 +113,9 @@ func shoot():
 		printerr("enemy tried to shoot but failed")
 
 func _physics_process(delta):
+	if not is_alive:
+		update_dissolve(delta)
+		return
 	check_state()
 	process_movement_input()
 		
@@ -122,6 +127,13 @@ func _physics_process(delta):
 
 	process_animation(delta)
 	process_target_scale(delta)
+	
+func update_dissolve(delta):
+	dissolve_parameter += delta
+	update_shader_param("dissolve_sensitivity", dissolve_parameter)
+	update_shader_flag("should_dissolve", true)
+	if dissolve_parameter > 1.0:
+		queue_free()
 	
 func process_target_scale(_delta):
 	if fire_rate_timer.is_stopped():
@@ -150,7 +162,11 @@ func hit_something(body):
 func die():
 	super()
 	spawn_heal()
-	queue_free()
+	sprite.stop()
+	if hit_collision_shape:
+		hit_collision.monitoring = false
+		hit_collision_shape.disabled = true
+
 	
 func spawn_heal():
 	if not heal_class:
