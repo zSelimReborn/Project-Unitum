@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=12 format=3 uid="uid://b75o8vpamtdpb"]
 
+[ext_resource type="Shader" path="res://assets/shaders/greyscale.gdshader" id="1_q7ugf"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
 [ext_resource type="PackedScene" uid="uid://br08n31udov33" path="res://blueprints/gameplay/sample_platform.tscn" id="2_bm1i2"]
 [ext_resource type="PackedScene" uid="uid://ym1qxgmtsj32" path="res://blueprints/gameplay/interactables/health_potion.tscn" id="3_jhxdv"]
@@ -10,10 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://dd60doqqhf8hf" path="res://blueprints/gameplay/puzzles/door.tscn" id="9_7swxy"]
 [ext_resource type="PackedScene" uid="uid://bgrldxlq6x0ob" path="res://blueprints/gameplay/enemies/fire_enemy.tscn" id="11_u0shf"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vueyv"]
+resource_local_to_scene = true
+shader = ExtResource("1_q7ugf")
+shader_parameter/enabled = false
+
 [node name="DebugMap" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_qle6k")]
+[node name="Player" parent="." node_paths=PackedStringArray("greyscale_rect") instance=ExtResource("1_qle6k")]
 position = Vector2(0, 51)
+greyscale_rect = NodePath("../GreyScaleLayer/GreyScaleRect")
 hit_flash_duration = 0.2
 
 [node name="Entrance" type="Node2D" parent="."]
@@ -192,3 +199,15 @@ pieces = [NodePath("../../Cauldron"), NodePath("../../Cauldron2")]
 [node name="DoorRoom" parent="RoomGameplay" node_paths=PackedStringArray("spawn_point") instance=ExtResource("9_7swxy")]
 position = Vector2(0, 1016)
 spawn_point = NodePath("../../EntranceGameplay/DoorEntrance")
+
+[node name="GreyScaleLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="GreyScaleRect" type="ColorRect" parent="GreyScaleLayer"]
+material = SubResource("ShaderMaterial_vueyv")
+offset_left = -706.0
+offset_top = -501.0
+offset_right = -666.0
+offset_bottom = -461.0
+scale = Vector2(35.9973, 48.3481)
+color = Color(1, 1, 1, 0)

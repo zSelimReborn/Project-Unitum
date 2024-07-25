@@ -17,6 +17,7 @@ extends BaseCharacter
 @export var air_ball_class : PackedScene
 @export var fire_rate : float = 0.5
 @export var main_group : String = "player"
+@export var greyscale_rect : ColorRect
 
 #Variables
 var current_element : Types.Elements = Types.Elements.FIRE
@@ -106,6 +107,7 @@ func on_flip_state():
 	up_direction.y = -up_direction.y
 	select_marker(sprite.flip_h)
 	update_shader_flag("shadow", is_shadow())
+	update_greyscale()
 
 func _ready():
 	add_to_group(main_group)
@@ -149,3 +151,7 @@ func die():
 	super()
 	get_tree().reload_current_scene()
 
+func update_greyscale():
+	if not greyscale_rect:
+		return
+	greyscale_rect.material.set_shader_parameter("enabled", is_shadow())

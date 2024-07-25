@@ -38,5 +38,5 @@ func disable_highlight_shader():
 func enable_lit_cauldron():
 	if not lit_cauldron:
 		return
-	var element_string = Types.ElementStrings[element]
+	var element_string = Types.ElementString[element]
 	lit_cauldron.play(element_string)

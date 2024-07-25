@@ -66,8 +66,8 @@ texture = ExtResource("3_8bqwn")
 position = Vector2(0, -24)
 scale = Vector2(0.35, 0.35)
 sprite_frames = SubResource("SpriteFrames_bcrsv")
-animation = &"fire"
-autoplay = "fire"
+animation = &"empty"
+autoplay = "empty"
 
 [node name="ElementSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -26)
