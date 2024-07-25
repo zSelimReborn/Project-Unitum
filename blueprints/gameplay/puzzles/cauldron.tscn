@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bysxvdpqire16"]
+[gd_scene load_steps=21 format=3 uid="uid://bysxvdpqire16"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/puzzle/cauldron.gd" id="1_770te"]
 [ext_resource type="Texture2D" uid="uid://ccpxn1ywqhabe" path="res://assets/gameplay/cauldron_base.tga" id="2_qjgj7"]
 [ext_resource type="Texture2D" uid="uid://bijumamb4vac5" path="res://assets/gameplay/cauldron_top.tga" id="3_8bqwn"]
 [ext_resource type="Shader" path="res://assets/shaders/highlight.gdshader" id="3_bv8a3"]
+[ext_resource type="Texture2D" uid="uid://cui6wudlr4p8i" path="res://assets/gameplay/air_animation.tga" id="5_6qevt"]
 [ext_resource type="Texture2D" uid="uid://puj8gc8qmnrw" path="res://assets/gameplay/triangle_fire.tga" id="5_jvbcy"]
 [ext_resource type="Texture2D" uid="uid://cely0qxrm1i53" path="res://assets/gameplay/fire_animation.tga" id="5_wx5l2"]
+[ext_resource type="Texture2D" uid="uid://drhuqhdejrct7" path="res://assets/gameplay/earth_animation.tga" id="6_aljni"]
+[ext_resource type="Texture2D" uid="uid://5u8fkkn3iaio" path="res://assets/gameplay/water_animation.tga" id="7_gy0h0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qy681"]
 resource_local_to_scene = true
@@ -17,6 +20,22 @@ shader_parameter/angle = 0.0
 shader_parameter/speed = 0.5
 shader_parameter/wait_cycles = 1.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8lsr"]
+atlas = ExtResource("5_6qevt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3s6i"]
+atlas = ExtResource("5_6qevt")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0drx7"]
+atlas = ExtResource("6_aljni")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwak3"]
+atlas = ExtResource("6_aljni")
+region = Rect2(64, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xqwc"]
 atlas = ExtResource("5_wx5l2")
 region = Rect2(0, 0, 64, 64)
@@ -25,8 +44,38 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("5_wx5l2")
 region = Rect2(64, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_876kc"]
+atlas = ExtResource("7_gy0h0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfwq1"]
+atlas = ExtResource("7_gy0h0")
+region = Rect2(64, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_bcrsv"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8lsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3s6i")
+}],
+"loop": true,
+"name": &"air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0drx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwak3")
+}],
+"loop": true,
+"name": &"earth",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"empty",
@@ -41,6 +90,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_876kc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfwq1")
+}],
+"loop": true,
+"name": &"water",
 "speed": 5.0
 }]
 
