@@ -29,12 +29,16 @@ func _on_body_entered(body):
 		return
 	
 	var character = body as BaseCharacter
-	if character != null:
+	var puzzle = body as PuzzlePiece
+	if character:
 		if not character.can_take_damage(self):
 			return
-		character.take_damage(damage)		
+		character.take_damage(damage)
+	elif puzzle:
+		if not puzzle.try_solve_piece(self):
+			return
 	queue_free()
-
+	
 func _on_timer_timeout():
 	queue_free()
 

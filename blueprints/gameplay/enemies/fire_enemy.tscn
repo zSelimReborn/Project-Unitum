@@ -186,6 +186,7 @@ animations = [{
 size = Vector2(24, 25)
 
 [node name="FireEnemy" type="CharacterBody2D"]
+z_index = 5
 collision_layer = 2
 script = ExtResource("1_p6i1m")
 patrol_distance = 50

@@ -81,6 +81,7 @@ animations = [{
 }]
 
 [node name="Projectile" instance=ExtResource("1_7uhho")]
+collision_mask = 19
 
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, 0)

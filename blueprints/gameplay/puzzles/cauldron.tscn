@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://bysxvdpqire16"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/puzzle/cauldron.gd" id="1_770te"]
+[ext_resource type="Texture2D" uid="uid://ccpxn1ywqhabe" path="res://assets/gameplay/cauldron_base.tga" id="2_qjgj7"]
+[ext_resource type="Texture2D" uid="uid://bijumamb4vac5" path="res://assets/gameplay/cauldron_top.tga" id="3_8bqwn"]
+[ext_resource type="Shader" path="res://assets/shaders/highlight.gdshader" id="3_bv8a3"]
+[ext_resource type="Texture2D" uid="uid://puj8gc8qmnrw" path="res://assets/gameplay/triangle_fire.tga" id="5_jvbcy"]
+[ext_resource type="Texture2D" uid="uid://cely0qxrm1i53" path="res://assets/gameplay/fire_animation.tga" id="5_wx5l2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qy681"]
+resource_local_to_scene = true
+shader = ExtResource("3_bv8a3")
+shader_parameter/enabled = true
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.0
+shader_parameter/speed = 0.5
+shader_parameter/wait_cycles = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xqwc"]
+atlas = ExtResource("5_wx5l2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfjhy"]
+atlas = ExtResource("5_wx5l2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcrsv"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xqwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfjhy")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irftq"]
+
+[node name="Cauldron" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 9
+script = ExtResource("1_770te")
+element = null
+
+[node name="CauldronNode" type="Node2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="CauldronBase" type="Sprite2D" parent="CauldronNode"]
+texture = ExtResource("2_qjgj7")
+
+[node name="CauldronTop" type="Sprite2D" parent="CauldronNode"]
+material = SubResource("ShaderMaterial_qy681")
+texture = ExtResource("3_8bqwn")
+
+[node name="LitCauldron" type="AnimatedSprite2D" parent="CauldronNode"]
+position = Vector2(0, -24)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_bcrsv")
+animation = &"fire"
+autoplay = "fire"
+
+[node name="ElementSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -26)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_jvbcy")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_irftq")

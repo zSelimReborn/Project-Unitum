@@ -161,6 +161,7 @@ func hit_something(body):
 	
 func die():
 	super()
+	fire_rate_timer.stop()
 	spawn_heal()
 	sprite.stop()
 	if hit_collision_shape:

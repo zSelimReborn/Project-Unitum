@@ -171,6 +171,7 @@ size = Vector2(27, 24)
 size = Vector2(34, 28)
 
 [node name="AirEnemy" type="CharacterBody2D"]
+z_index = 5
 script = ExtResource("1_m0vks")
 patrol_distance = 50
 aggro_player_dist = 100

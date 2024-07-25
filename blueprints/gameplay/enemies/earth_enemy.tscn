@@ -164,6 +164,7 @@ size = Vector2(28, 28)
 size = Vector2(34, 28)
 
 [node name="EarthEnemy" type="CharacterBody2D"]
+z_index = 5
 script = ExtResource("1_3jdk5")
 patrol_distance = 50
 aggro_player_dist = 100

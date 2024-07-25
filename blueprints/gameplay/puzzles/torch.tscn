@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjvso1bnjknlh"]
+
+[ext_resource type="Texture2D" uid="uid://cds810fravyni" path="res://assets/gameplay/torch_animation.tga" id="1_64x0x"]
+[ext_resource type="Script" path="res://scripts/gameplay/puzzle/torch.gd" id="1_mjo4q"]
+[ext_resource type="Texture2D" uid="uid://d23vciunke5vb" path="res://assets/gameplay/empty_torch.tga" id="2_6k26o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k10g7"]
+atlas = ExtResource("1_64x0x")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjqxr"]
+atlas = ExtResource("1_64x0x")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ten8l"]
+atlas = ExtResource("2_6k26o")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vscg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k10g7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjqxr")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ten8l")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}]
+
+[node name="Torch" type="Node2D"]
+script = ExtResource("1_mjo4q")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_1vscg")
+animation = &"off"
+autoplay = "off"
