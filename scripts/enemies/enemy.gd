@@ -164,10 +164,12 @@ func die():
 	fire_rate_timer.stop()
 	spawn_heal()
 	sprite.stop()
+	call_deferred("disable_collisions")
+
+func disable_collisions():
 	if hit_collision_shape:
 		hit_collision.monitoring = false
 		hit_collision_shape.disabled = true
-
 	
 func spawn_heal():
 	if not heal_class:

@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkcj6q2a5eldp"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/puzzle/transform_puzzle.gd" id="1_bvssr"]
+[ext_resource type="Shader" path="res://assets/shaders/transform_puzzle.gdshader" id="2_d5cgo"]
+[ext_resource type="Texture2D" uid="uid://c2qgxewcgee5q" path="res://assets/gameplay/puzzles/transform_tree/broken_tree.tga" id="3_owdqw"]
+[ext_resource type="Texture2D" uid="uid://bifkuneme18r6" path="res://assets/gameplay/puzzles/transform_tree/empty_tree.tga" id="4_atpge"]
+[ext_resource type="Texture2D" uid="uid://bvq0gjivq1oxc" path="res://assets/gameplay/puzzles/transform_tree/fire_tree.tga" id="5_0ca1b"]
+[ext_resource type="Texture2D" uid="uid://b87v5hfip7u8c" path="res://assets/gameplay/puzzles/transform_tree/full_tree.tga" id="6_bs0if"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_so71u"]
+shader = ExtResource("2_d5cgo")
+shader_parameter/enabled = true
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.785398
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
+shader_parameter/hit_flash = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4k1xq"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_owdqw")
+}],
+"loop": true,
+"name": &"broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_atpge")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0ca1b")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bs0if")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5yk1"]
+size = Vector2(80, 72)
+
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("animated_sprite")]
+collision_layer = 32
+collision_mask = 11
+script = ExtResource("1_bvssr")
+hit_flash_duration = 0.125
+next_state = 1
+animated_sprite = NodePath("SpriteContainer/AnimatedSprite2D")
+block_projectiles = false
+
+[node name="SpriteContainer" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_so71u")
+position = Vector2(-3, -48)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteContainer"]
+sprite_frames = SubResource("SpriteFrames_4k1xq")
+animation = &"empty"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_c5yk1")

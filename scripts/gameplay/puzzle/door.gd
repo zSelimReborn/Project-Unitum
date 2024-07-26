@@ -6,12 +6,15 @@ extends BaseInteractable
 @export var spawn_point : Node2D
 
 # On Ready
-@onready var puzzle_listener_component = $PuzzleListenerComponent
 @onready var sprite = $Sprite
+
+# Variables
+var puzzle_listener_component = null
 
 func _ready():
 	super()
 	instant_interact = false
+	puzzle_listener_component = $PuzzleListenerComponent
 	if not puzzle_listener_component:
 		printerr("door has no puzzle listener attached")
 		on_solved()
