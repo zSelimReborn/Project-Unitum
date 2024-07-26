@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=16 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="Shader" path="res://assets/shaders/greyscale.gdshader" id="1_q7ugf"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dd60doqqhf8hf" path="res://blueprints/gameplay/puzzles/door.tscn" id="9_7swxy"]
 [ext_resource type="PackedScene" uid="uid://dw024ehm7ov8" path="res://blueprints/hud/hud.tscn" id="11_ntrn2"]
 [ext_resource type="PackedScene" uid="uid://bgrldxlq6x0ob" path="res://blueprints/gameplay/enemies/fire_enemy.tscn" id="11_u0shf"]
+[ext_resource type="PackedScene" uid="uid://bjrdo0amddwtf" path="res://blueprints/gameplay/puzzles/fire_wall.tscn" id="12_pvvmp"]
+[ext_resource type="PackedScene" uid="uid://dgxl4jqedkcvn" path="res://blueprints/gameplay/puzzles/ice_wall.tscn" id="13_16q5k"]
+[ext_resource type="PackedScene" uid="uid://cqf6kgo4fo4p5" path="res://blueprints/gameplay/puzzles/air_wall.tscn" id="14_p5qco"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vueyv"]
 resource_local_to_scene = true
@@ -214,3 +217,12 @@ scale = Vector2(35.9973, 48.3481)
 color = Color(1, 1, 1, 0)
 
 [node name="HUD" parent="." instance=ExtResource("11_ntrn2")]
+
+[node name="FireWall" parent="." instance=ExtResource("12_pvvmp")]
+position = Vector2(77, 52)
+
+[node name="IceWall" parent="." instance=ExtResource("13_16q5k")]
+position = Vector2(117, 52)
+
+[node name="AirWall" parent="." instance=ExtResource("14_p5qco")]
+position = Vector2(157, 51)

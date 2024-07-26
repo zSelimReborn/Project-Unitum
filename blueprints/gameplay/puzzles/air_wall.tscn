@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqf6kgo4fo4p5"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/puzzle/secret_wall.gd" id="1_4yhod"]
+[ext_resource type="Shader" path="res://assets/shaders/secret_wall.gdshader" id="2_ns2lk"]
+[ext_resource type="Shader" path="res://assets/shaders/highlight.gdshader" id="3_r7xj3"]
+[ext_resource type="Texture2D" uid="uid://pgwa08yj4e77" path="res://assets/gameplay/puzzles/secret_walls/air_wall.tga" id="4_xgqq7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3rlr"]
+resource_local_to_scene = true
+shader = ExtResource("2_ns2lk")
+shader_parameter/enabled = true
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.21
+shader_parameter/angle = 2.0944
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
+shader_parameter/hit_flash = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2h7l"]
+shader = ExtResource("3_r7xj3")
+shader_parameter/enabled = false
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.785398
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5rda"]
+size = Vector2(31, 94)
+
+[node name="AirWall" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 11
+script = ExtResource("1_4yhod")
+element = 2
+hit_flash_duration = 0.15
+
+[node name="SpriteContainer" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_n3rlr")
+
+[node name="FirstSprite" type="Sprite2D" parent="SpriteContainer"]
+material = SubResource("ShaderMaterial_r2h7l")
+position = Vector2(0, -16)
+texture = ExtResource("4_xgqq7")
+
+[node name="SecondSprite" type="Sprite2D" parent="SpriteContainer"]
+position = Vector2(0, -47)
+texture = ExtResource("4_xgqq7")
+
+[node name="ThirdSprite" type="Sprite2D" parent="SpriteContainer"]
+position = Vector2(0, -78)
+texture = ExtResource("4_xgqq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -48)
+shape = SubResource("RectangleShape2D_r5rda")

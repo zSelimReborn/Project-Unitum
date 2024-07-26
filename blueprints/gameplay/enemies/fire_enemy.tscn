@@ -217,6 +217,7 @@ position = Vector2(2, -13)
 shape = SubResource("RectangleShape2D_liesw")
 
 [node name="HitCollisionArea" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="HitCollisionShape" type="CollisionShape2D" parent="HitCollisionArea"]
 position = Vector2(1, -12)

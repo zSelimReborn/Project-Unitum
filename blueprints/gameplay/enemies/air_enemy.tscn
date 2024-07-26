@@ -172,6 +172,7 @@ size = Vector2(34, 28)
 
 [node name="AirEnemy" type="CharacterBody2D"]
 z_index = 5
+collision_layer = 2
 script = ExtResource("1_m0vks")
 patrol_distance = 50
 aggro_player_dist = 100
@@ -199,6 +200,7 @@ shape = SubResource("RectangleShape2D_liesw")
 
 [node name="HitCollisionArea" type="Area2D" parent="."]
 position = Vector2(0, -12)
+collision_layer = 2
 
 [node name="HitCollisionShape" type="CollisionShape2D" parent="HitCollisionArea"]
 position = Vector2(0, -2)
