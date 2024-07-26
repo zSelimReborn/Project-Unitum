@@ -1,83 +1,29 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6rhifi5h1p36"]
+[gd_scene load_steps=6 format=3 uid="uid://b6rhifi5h1p36"]
 
 [ext_resource type="PackedScene" uid="uid://cpxa5h7iq7wux" path="res://blueprints/gameplay/projectile.tscn" id="1_7uhho"]
-[ext_resource type="Texture2D" uid="uid://6fjindsj3cne" path="res://assets/projectiles/water_ball_anim.tga" id="2_cssas"]
+[ext_resource type="Texture2D" uid="uid://d35v4os4mjmy6" path="res://assets/projectiles/water_ball.png" id="2_ahlli"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcpui"]
-atlas = ExtResource("2_cssas")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjl5l"]
+atlas = ExtResource("2_ahlli")
+region = Rect2(0, 0, 33, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wntwl"]
-atlas = ExtResource("2_cssas")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_62sm1"]
-atlas = ExtResource("2_cssas")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xnjm3"]
-atlas = ExtResource("2_cssas")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1c7e5"]
-atlas = ExtResource("2_cssas")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_plybp"]
-atlas = ExtResource("2_cssas")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eevy7"]
-atlas = ExtResource("2_cssas")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jg875"]
-atlas = ExtResource("2_cssas")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_46f27"]
-atlas = ExtResource("2_cssas")
-region = Rect2(64, 32, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0pwd"]
+atlas = ExtResource("2_ahlli")
+region = Rect2(33, 0, 33, 33)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eg4wd"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xcpui")
+"texture": SubResource("AtlasTexture_bjl5l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wntwl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_62sm1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xnjm3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1c7e5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_plybp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eevy7")
+"texture": SubResource("AtlasTexture_p0pwd")
 }],
 "loop": true,
 "name": &"default",
-"speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jg875")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_46f27")
-}],
-"loop": true,
-"name": &"loop",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [node name="Projectile" instance=ExtResource("1_7uhho")]
@@ -87,7 +33,7 @@ collision_mask = 19
 position = Vector2(0, 0)
 sprite_frames = SubResource("SpriteFrames_eg4wd")
 autoplay = "default"
-frame_progress = 0.359598
+frame_progress = 0.588056
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 0)

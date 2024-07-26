@@ -8,6 +8,7 @@ extends Area2D
 
 # Properties
 @export var speed : float = 750
+@export var loop_animation : bool = false
 
 # Variables
 var damage : float = 0
@@ -43,5 +44,7 @@ func _on_timer_timeout():
 	queue_free()
 
 func _on_anim_sprite_animation_looped():
+	if not loop_animation:
+		return
 	if sprite.animation == "default":
 		sprite.play("loop")

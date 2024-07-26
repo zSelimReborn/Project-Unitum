@@ -28,13 +28,13 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("5_6qevt")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0drx7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6bqd"]
 atlas = ExtResource("6_aljni")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rwak3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkoje"]
 atlas = ExtResource("6_aljni")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xqwc"]
 atlas = ExtResource("5_wx5l2")
@@ -67,10 +67,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0drx7")
+"texture": SubResource("AtlasTexture_c6bqd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rwak3")
+"texture": SubResource("AtlasTexture_bkoje")
 }],
 "loop": true,
 "name": &"earth",

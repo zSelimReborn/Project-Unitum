@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvam0fe6521ds"
-path="res://.godot/imported/fire_ball_anim.tga-a22e5f4339f28e0de9ee27aa8d175fd7.ctex"
+uid="uid://cg1svy6s1w4o2"
+path="res://.godot/imported/old_earth_ball_anim.tga-dd3629650dc3b9fcc4796e6e7671ab8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/projectiles/fire_ball_anim.tga"
-dest_files=["res://.godot/imported/fire_ball_anim.tga-a22e5f4339f28e0de9ee27aa8d175fd7.ctex"]
+source_file="res://assets/projectiles/old_earth_ball_anim.tga"
+dest_files=["res://.godot/imported/old_earth_ball_anim.tga-dd3629650dc3b9fcc4796e6e7671ab8a.ctex"]
 
 [params]
 

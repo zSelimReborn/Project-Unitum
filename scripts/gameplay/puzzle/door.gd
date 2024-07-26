@@ -10,6 +10,7 @@ extends BaseInteractable
 @onready var sprite = $Sprite
 
 func _ready():
+	super()
 	instant_interact = false
 	if not puzzle_listener_component:
 		printerr("door has no puzzle listener attached")

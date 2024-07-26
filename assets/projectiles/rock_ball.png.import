@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg1svy6s1w4o2"
-path="res://.godot/imported/earth_ball_anim.tga-90a2b08f58c8384e5fb83dbccfae1b4c.ctex"
+uid="uid://b3lcaa5eig1ml"
+path="res://.godot/imported/rock_ball.png-efe0ebdc0046ee7ce89ef8f25e0b770d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/projectiles/earth_ball_anim.tga"
-dest_files=["res://.godot/imported/earth_ball_anim.tga-90a2b08f58c8384e5fb83dbccfae1b4c.ctex"]
+source_file="res://assets/projectiles/rock_ball.png"
+dest_files=["res://.godot/imported/rock_ball.png-efe0ebdc0046ee7ce89ef8f25e0b770d.ctex"]
 
 [params]
 
