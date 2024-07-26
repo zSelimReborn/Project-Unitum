@@ -15,7 +15,3 @@ func _ready():
 	
 func on_solved():
 	sprite.play("fire")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

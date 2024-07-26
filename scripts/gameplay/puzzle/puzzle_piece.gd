@@ -13,5 +13,5 @@ func try_solve_piece(interactable):
 	on_solved.emit()
 	return true
 	
-func solve_piece(interactable):
+func solve_piece(_interactable):
 	pass

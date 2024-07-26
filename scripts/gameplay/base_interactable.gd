@@ -6,8 +6,10 @@ extends Area2D
 @export var instant_interact: bool = false
 
 func _ready():
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
+	if not body_exited.is_connected(_on_body_exited):
+		body_exited.connect(_on_body_exited)
 	add_to_group("interactable")
 
 func interact(_player: Player):
