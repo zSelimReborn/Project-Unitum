@@ -27,15 +27,15 @@ animations = [{
 }]
 
 [node name="Projectile" instance=ExtResource("1_h2a75")]
-collision_mask = 19
+collision_mask = 51
 
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, -1)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_d16rn")
 autoplay = "default"
 frame = 1
 frame_progress = 0.186941
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
-position = Vector2(0, -1)
+position = Vector2(-0.5, -1)

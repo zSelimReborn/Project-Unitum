@@ -16,8 +16,8 @@ static var ElementString = {
 }
 
 static var ElementTextures = {
-	Elements.WATER: preload("res://assets/gameplay/triangle_water.tga"),
-	Elements.FIRE: preload("res://assets/gameplay/triangle_fire.tga"),
-	Elements.AIR: preload("res://assets/gameplay/triangle_air.tga"),
-	Elements.EARTH: preload("res://assets/gameplay/triangle_earth.tga"),
+	Elements.WATER: preload("res://assets/gameplay/elements/triangle_water.tga"),
+	Elements.FIRE: preload("res://assets/gameplay/elements/triangle_air.tga"),
+	Elements.AIR: preload("res://assets/gameplay/elements/triangle_air.tga"),
+	Elements.EARTH: preload("res://assets/gameplay/elements/triangle_earth.tga"),
 }
