@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5u8fkkn3iaio"
-path="res://.godot/imported/water_animation.tga-a08fb34fcfc3c9550fc02a7a0ef259a1.ctex"
+uid="uid://cds810fravyni"
+path="res://.godot/imported/torch_animation.tga-a1a2b67a967d35173e09eeb4192c3b23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/water_animation.tga"
-dest_files=["res://.godot/imported/water_animation.tga-a08fb34fcfc3c9550fc02a7a0ef259a1.ctex"]
+source_file="res://assets/gameplay/puzzles/torch/torch_animation.tga"
+dest_files=["res://.godot/imported/torch_animation.tga-a1a2b67a967d35173e09eeb4192c3b23.ctex"]
 
 [params]
 

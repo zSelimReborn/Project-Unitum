@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cds810fravyni"
-path="res://.godot/imported/torch_animation.tga-ab04e74ec9a30454dcdea73de5305d1a.ctex"
+uid="uid://ccpxn1ywqhabe"
+path="res://.godot/imported/cauldron_base.tga-fecea91a537def4e45a1644dbe639f09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/torch_animation.tga"
-dest_files=["res://.godot/imported/torch_animation.tga-ab04e74ec9a30454dcdea73de5305d1a.ctex"]
+source_file="res://assets/gameplay/puzzles/cauldron/cauldron_base.tga"
+dest_files=["res://.godot/imported/cauldron_base.tga-fecea91a537def4e45a1644dbe639f09.ctex"]
 
 [params]
 

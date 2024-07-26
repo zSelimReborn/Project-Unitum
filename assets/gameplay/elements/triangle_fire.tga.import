@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c843ffeuwyreo"
-path="res://.godot/imported/shadow_portal_animated.png-641b658f2a88ef2b3402c8bc3fe03333.ctex"
+uid="uid://puj8gc8qmnrw"
+path="res://.godot/imported/triangle_fire.tga-a786dd23ee1781235cb23d6dc6054b1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/shadow_portal_animated.png"
-dest_files=["res://.godot/imported/shadow_portal_animated.png-641b658f2a88ef2b3402c8bc3fe03333.ctex"]
+source_file="res://assets/gameplay/elements/triangle_fire.tga"
+dest_files=["res://.godot/imported/triangle_fire.tga-a786dd23ee1781235cb23d6dc6054b1d.ctex"]
 
 [params]
 

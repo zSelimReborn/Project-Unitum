@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dd60doqqhf8hf"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/puzzle/door.gd" id="1_3oq0g"]
-[ext_resource type="Texture2D" uid="uid://c5njr4t55vcli" path="res://assets/gameplay/door.tga" id="1_iqr3c"]
-[ext_resource type="Texture2D" uid="uid://srsip0l27xp4" path="res://assets/gameplay/door_open.tga" id="3_563of"]
+[ext_resource type="Texture2D" uid="uid://c5njr4t55vcli" path="res://assets/gameplay/puzzles/cauldron/door.tga" id="1_iqr3c"]
+[ext_resource type="Texture2D" uid="uid://srsip0l27xp4" path="res://assets/gameplay/puzzles/cauldron/door_open.tga" id="3_563of"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w3wp"]
 atlas = ExtResource("1_iqr3c")

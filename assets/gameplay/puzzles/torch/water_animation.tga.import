@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccpxn1ywqhabe"
-path="res://.godot/imported/cauldron_base.tga-54dadd631cb8185595f13533de73cb1f.ctex"
+uid="uid://5u8fkkn3iaio"
+path="res://.godot/imported/water_animation.tga-2712cdbf3042609f24bab1d844b4a729.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/cauldron_base.tga"
-dest_files=["res://.godot/imported/cauldron_base.tga-54dadd631cb8185595f13533de73cb1f.ctex"]
+source_file="res://assets/gameplay/puzzles/torch/water_animation.tga"
+dest_files=["res://.godot/imported/water_animation.tga-2712cdbf3042609f24bab1d844b4a729.ctex"]
 
 [params]
 

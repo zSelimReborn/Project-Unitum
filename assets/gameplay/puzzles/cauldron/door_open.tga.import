@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://puj8gc8qmnrw"
-path="res://.godot/imported/triangle_fire.tga-29a7deb1d57a33e32ba8469e446094ac.ctex"
+uid="uid://srsip0l27xp4"
+path="res://.godot/imported/door_open.tga-6a4f22cb4115a53189d5821ab493d774.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/triangle_fire.tga"
-dest_files=["res://.godot/imported/triangle_fire.tga-29a7deb1d57a33e32ba8469e446094ac.ctex"]
+source_file="res://assets/gameplay/puzzles/cauldron/door_open.tga"
+dest_files=["res://.godot/imported/door_open.tga-6a4f22cb4115a53189d5821ab493d774.ctex"]
 
 [params]
 

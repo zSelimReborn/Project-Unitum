@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bijumamb4vac5"
-path="res://.godot/imported/cauldron_top.tga-e39dc5bb0b47a95d86d5546dc08e874f.ctex"
+uid="uid://c4o5i3mag1k4m"
+path="res://.godot/imported/triangle_earth.tga-2165c31dae100896296662bdd43e3085.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/cauldron_top.tga"
-dest_files=["res://.godot/imported/cauldron_top.tga-e39dc5bb0b47a95d86d5546dc08e874f.ctex"]
+source_file="res://assets/gameplay/elements/triangle_earth.tga"
+dest_files=["res://.godot/imported/triangle_earth.tga-2165c31dae100896296662bdd43e3085.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4o5i3mag1k4m"
-path="res://.godot/imported/triangle_earth.tga-80ab0815437eb11291e35736f1aa74c2.ctex"
+uid="uid://can4rjiehymnc"
+path="res://.godot/imported/triangle_air.tga-dbb65cbb4c19c71b1e34fa52eddf1790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/triangle_earth.tga"
-dest_files=["res://.godot/imported/triangle_earth.tga-80ab0815437eb11291e35736f1aa74c2.ctex"]
+source_file="res://assets/gameplay/elements/triangle_air.tga"
+dest_files=["res://.godot/imported/triangle_air.tga-dbb65cbb4c19c71b1e34fa52eddf1790.ctex"]
 
 [params]
 

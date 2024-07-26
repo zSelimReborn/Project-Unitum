@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bkjrvv8tg7yvx"]
 
-[ext_resource type="Texture2D" uid="uid://c843ffeuwyreo" path="res://assets/gameplay/shadow_portal_animated.png" id="2_0bjys"]
+[ext_resource type="Texture2D" uid="uid://c843ffeuwyreo" path="res://assets/gameplay/interactables/shadow_portal_animated.png" id="2_0bjys"]
 [ext_resource type="Script" path="res://scripts/gameplay/interactables/shadow_portal.gd" id="2_yegn5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sw77p"]

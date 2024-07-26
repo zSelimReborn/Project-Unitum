@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cely0qxrm1i53"
-path="res://.godot/imported/fire_animation.tga-cc2d5dea053ba7e24d82b4463b74f212.ctex"
+uid="uid://c843ffeuwyreo"
+path="res://.godot/imported/shadow_portal_animated.png-48f169c759008c2f72d0c71ed3eded05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/fire_animation.tga"
-dest_files=["res://.godot/imported/fire_animation.tga-cc2d5dea053ba7e24d82b4463b74f212.ctex"]
+source_file="res://assets/gameplay/interactables/shadow_portal_animated.png"
+dest_files=["res://.godot/imported/shadow_portal_animated.png-48f169c759008c2f72d0c71ed3eded05.ctex"]
 
 [params]
 

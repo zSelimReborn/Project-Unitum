@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://srsip0l27xp4"
-path="res://.godot/imported/door_open.tga-f1cfc5c1eba7324cefc0b901bc8ac28a.ctex"
+uid="uid://cui6wudlr4p8i"
+path="res://.godot/imported/air_animation.tga-392fffbf9ef1f6d6682bc276f68043ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/door_open.tga"
-dest_files=["res://.godot/imported/door_open.tga-f1cfc5c1eba7324cefc0b901bc8ac28a.ctex"]
+source_file="res://assets/gameplay/puzzles/torch/air_animation.tga"
+dest_files=["res://.godot/imported/air_animation.tga-392fffbf9ef1f6d6682bc276f68043ed.ctex"]
 
 [params]
 

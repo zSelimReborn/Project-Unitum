@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5njr4t55vcli"
-path="res://.godot/imported/door.tga-28ed08dbba1dfc4797ad9b45d544e239.ctex"
+uid="uid://bijumamb4vac5"
+path="res://.godot/imported/cauldron_top.tga-cffa80e90a0869ab2636deb292f00b1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/door.tga"
-dest_files=["res://.godot/imported/door.tga-28ed08dbba1dfc4797ad9b45d544e239.ctex"]
+source_file="res://assets/gameplay/puzzles/cauldron/cauldron_top.tga"
+dest_files=["res://.godot/imported/cauldron_top.tga-cffa80e90a0869ab2636deb292f00b1f.ctex"]
 
 [params]
 

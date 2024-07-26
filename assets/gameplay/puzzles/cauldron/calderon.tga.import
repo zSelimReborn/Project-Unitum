@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://can4rjiehymnc"
-path="res://.godot/imported/triangle_air.tga-be7f443ea931c042f0f6d16d47c80005.ctex"
+uid="uid://dn1ynuc302k3m"
+path="res://.godot/imported/calderon.tga-9b179e9bfc40ae791c6dd38cf6d82e34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/triangle_air.tga"
-dest_files=["res://.godot/imported/triangle_air.tga-be7f443ea931c042f0f6d16d47c80005.ctex"]
+source_file="res://assets/gameplay/puzzles/cauldron/calderon.tga"
+dest_files=["res://.godot/imported/calderon.tga-9b179e9bfc40ae791c6dd38cf6d82e34.ctex"]
 
 [params]
 

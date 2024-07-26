@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://pjebmhfpiq0k"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/interactables/relic.gd" id="1_xyt46"]
-[ext_resource type="Texture2D" uid="uid://b4tqov47alwiw" path="res://assets/gameplay/pickup_health_animated.png" id="2_n343q"]
+[ext_resource type="Texture2D" uid="uid://b4tqov47alwiw" path="res://assets/gameplay/interactables/pickup_health_animated.png" id="2_n343q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4vju"]
 atlas = ExtResource("2_n343q")

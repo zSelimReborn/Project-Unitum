@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d23vciunke5vb"
-path="res://.godot/imported/empty_torch.tga-1b15f203095b3f0b20b73bbe270b3cb0.ctex"
+uid="uid://drhuqhdejrct7"
+path="res://.godot/imported/earth_animation.tga-02016b45bc7266cb411f80758ad23ef2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/empty_torch.tga"
-dest_files=["res://.godot/imported/empty_torch.tga-1b15f203095b3f0b20b73bbe270b3cb0.ctex"]
+source_file="res://assets/gameplay/puzzles/torch/earth_animation.tga"
+dest_files=["res://.godot/imported/earth_animation.tga-02016b45bc7266cb411f80758ad23ef2.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bjvso1bnjknlh"]
 
-[ext_resource type="Texture2D" uid="uid://cds810fravyni" path="res://assets/gameplay/torch_animation.tga" id="1_64x0x"]
+[ext_resource type="Texture2D" uid="uid://cds810fravyni" path="res://assets/gameplay/puzzles/torch/torch_animation.tga" id="1_64x0x"]
 [ext_resource type="Script" path="res://scripts/gameplay/puzzle/torch.gd" id="1_mjo4q"]
-[ext_resource type="Texture2D" uid="uid://d23vciunke5vb" path="res://assets/gameplay/empty_torch.tga" id="2_6k26o"]
+[ext_resource type="Texture2D" uid="uid://d23vciunke5vb" path="res://assets/gameplay/puzzles/torch/empty_torch.tga" id="2_6k26o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k10g7"]
 atlas = ExtResource("1_64x0x")

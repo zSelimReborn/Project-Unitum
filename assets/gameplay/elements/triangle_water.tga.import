@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cui6wudlr4p8i"
-path="res://.godot/imported/air_animation.tga-9d39c5b168104a3b511d4227d3dcb996.ctex"
+uid="uid://bcfgkoeoee0k5"
+path="res://.godot/imported/triangle_water.tga-df5a7da53b0c2a1763b561d62f1bc72f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/air_animation.tga"
-dest_files=["res://.godot/imported/air_animation.tga-9d39c5b168104a3b511d4227d3dcb996.ctex"]
+source_file="res://assets/gameplay/elements/triangle_water.tga"
+dest_files=["res://.godot/imported/triangle_water.tga-df5a7da53b0c2a1763b561d62f1bc72f.ctex"]
 
 [params]
 

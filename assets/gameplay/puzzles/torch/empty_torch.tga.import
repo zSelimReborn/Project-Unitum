@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn1ynuc302k3m"
-path="res://.godot/imported/calderon.tga-94c2574c6bde690c487937d8e32dc358.ctex"
+uid="uid://d23vciunke5vb"
+path="res://.godot/imported/empty_torch.tga-38ebd6d09fc7c30dd0d3c6aa0792f916.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gameplay/calderon.tga"
-dest_files=["res://.godot/imported/calderon.tga-94c2574c6bde690c487937d8e32dc358.ctex"]
+source_file="res://assets/gameplay/puzzles/torch/empty_torch.tga"
+dest_files=["res://.godot/imported/empty_torch.tga-38ebd6d09fc7c30dd0d3c6aa0792f916.ctex"]
 
 [params]
 
