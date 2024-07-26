@@ -110,7 +110,7 @@ animations = [{
 collision_layer = 16
 collision_mask = 9
 script = ExtResource("1_770te")
-element = null
+element_lit_color = Color(1, 0, 0, 1)
 
 [node name="CauldronNode" type="Node2D" parent="."]
 position = Vector2(0, -16)
