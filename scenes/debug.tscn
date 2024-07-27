@@ -195,6 +195,7 @@ element = 3
 [node name="DoorEntrance" parent="EntranceGameplay" node_paths=PackedStringArray("spawn_point") instance=ExtResource("9_7swxy")]
 position = Vector2(-234, 51)
 spawn_point = NodePath("../../RoomGameplay/DoorRoom")
+interaction_hint = "Closed. Maybe I can use my elements to lit something..."
 
 [node name="PuzzleListenerComponent" type="Node" parent="EntranceGameplay/DoorEntrance" node_paths=PackedStringArray("pieces")]
 script = ExtResource("7_dglby")
@@ -227,6 +228,7 @@ transformed_anim = "full"
 [node name="DoorToFinal" parent="RoomGameplay" node_paths=PackedStringArray("spawn_point") instance=ExtResource("9_7swxy")]
 position = Vector2(-311, 1015)
 spawn_point = NodePath("../../DoorFinalRoom")
+interaction_hint = "Closed. Maybe I need to do something with this tree..."
 
 [node name="PuzzleListenerComponent" type="Node" parent="RoomGameplay/DoorToFinal" node_paths=PackedStringArray("pieces")]
 script = ExtResource("7_dglby")

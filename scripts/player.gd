@@ -27,12 +27,16 @@ var current_interactable : BaseInteractable = null
 var marker = null
 var can_shoot = true
 var in_game = true
+var in_dialogue = false
 
 # Events
 signal on_change_state(old_state, new_state)
 signal on_interactable(interactable: BaseInteractable)
 signal on_change_element(old_element, current_element)
 signal on_pause_menu_requested()
+signal on_interaction_hint_requested(interactable: BaseInteractable)
+signal jump_dialogue_requested()
+signal next_dialogue_requested()
 
 var element_input_mapping = {
 	KEY_1: Types.Elements.FIRE,
@@ -50,9 +54,12 @@ func process_movement_input():
 		jump()
 
 func _input(event):
-	if event.is_action_pressed("pause"):
+
+	if in_dialogue and event.is_action_pressed("jump_dialogue"):
+		handle_jump_dialogue()
+	elif not in_dialogue and event.is_action_pressed("pause"):
 		switch_pause_menu()
-	if in_game:
+	elif not in_dialogue and in_game:
 		process_movement_input()
 		if event.is_action_pressed("fire"):
 			fire()
@@ -97,7 +104,8 @@ func interact():
 	if current_interactable == null:
 		printerr("no interaction available")
 		return
-	current_interactable.interact(self)
+	if not current_interactable.interact(self):
+		on_interaction_hint_requested.emit(current_interactable)
 	
 func flip_state(new_transform: Transform2D):
 	var old_state = state
@@ -179,6 +187,13 @@ func switch_pause_menu():
 		switch_gameplay()
 	on_pause_menu_requested.emit()
 	in_game = not in_game
+	
+func switch_dialogue():
+	in_dialogue = not in_dialogue
+	
+func handle_jump_dialogue():
+	# Handle here next dialogue
+	jump_dialogue_requested.emit()
 	
 func switch_ui(show_cursor, pause_game):
 	if show_cursor:

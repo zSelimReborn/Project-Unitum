@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwyt4ewy36lcr"]
+
+[ext_resource type="Script" path="res://scripts/hud/dialogue_box.gd" id="1_f5tow"]
+[ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_jecs7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gckvx"]
+bg_color = Color(0.986527, 0.893461, 0.663269, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.450567, 0.334104, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="DialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5tow")
+
+[node name="Container" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="Panel" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gckvx")
+
+[node name="Dialogue" type="Label" parent="Container/Box"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_jecs7")
+theme_override_font_sizes/font_size = 30
+
+[node name="Label" type="Label" parent="Container/Box"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = -48.0
+offset_right = -54.0
+offset_bottom = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_jecs7")
+theme_override_font_sizes/font_size = 25
+text = "Press Enter to Close"

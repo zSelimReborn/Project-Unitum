@@ -5,6 +5,7 @@ extends Area2D
 # Interact on player enter
 @export var instant_interact : bool = false
 @export var interaction_text : String = "Interact"
+@export var interaction_hint : String
 
 func _ready():
 	if not body_entered.is_connected(_on_body_entered):

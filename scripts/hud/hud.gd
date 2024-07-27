@@ -13,6 +13,7 @@ extends CanvasLayer
 @onready var level_name_object = $MainContainer/LevelContainer/LevelName
 @onready var pause_menu = $PopupContainer/PopupBackground/PauseMenu
 @onready var popup_container = $PopupContainer
+@onready var dialogue_box = $MainContainer/BottomGrid/DialogueBox
 
 func _ready():
 	setup_player_bar()
@@ -20,6 +21,8 @@ func _ready():
 	setup_attack_controls()
 	setup_level_name()
 	setup_pause_menu()
+	setup_interaction_hint()
+	setup_dialogue_flow()
 	
 func setup_level_name():
 	if not level_name_object:
@@ -64,6 +67,45 @@ func setup_pause_menu():
 	pause_menu.setup_player(player)
 	pause_menu.continue_pressed.connect(on_continue_pressed)
 	pause_menu.exit_pressed.connect(on_exit_pressed)
+	
+func setup_interaction_hint():
+	if not player:
+		printerr("hud cannot setup interaction hint, no selected player")
+		return
+	if not dialogue_box:
+		printerr("hud cannot setup interaction hint, no dialogue box")
+		return
+	player.on_interaction_hint_requested.connect(interaction_hint_requested)
+	
+func setup_dialogue_flow():
+	if not player:
+		printerr("hud cannot setup dialogue flow, no selected player")
+		return
+	if not dialogue_box:
+		printerr("hud cannot setup dialogue flow, no dialogue box")
+		return
+	player.jump_dialogue_requested.connect(on_jump_dialogue)
+	player.next_dialogue_requested.connect(on_next_dialogue)
+	
+func interaction_hint_requested(interactable: BaseInteractable):
+	if not interactable:
+		printerr("hud cannot set interaction hint, interactable empty")
+		return
+	if not interactable.interaction_hint:
+		return
+	dialogue_box.show()
+	dialogue_box.set_dialogue(interactable.interaction_hint)
+	player.switch_dialogue()
+	
+func on_jump_dialogue():
+	if not dialogue_box:
+		return
+	dialogue_box.set_dialogue("")
+	dialogue_box.hide()
+	player.switch_dialogue()
+	
+func on_next_dialogue():
+	pass
 	
 func on_pause_menu_requested():
 	if not pause_menu or not player:
