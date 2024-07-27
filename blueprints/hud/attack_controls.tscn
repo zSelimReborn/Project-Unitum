@@ -1,7 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://b5wr6w0y8wicr"]
 
 [ext_resource type="Script" path="res://scripts/hud/attack_controls.gd" id="1_hta0c"]
-[ext_resource type="Texture2D" uid="uid://68wdi3owoxmp" path="res://assets/hud/character_player.tga" id="1_qnqu2"]
 [ext_resource type="Texture2D" uid="uid://puj8gc8qmnrw" path="res://assets/gameplay/elements/triangle_fire.tga" id="2_jmlhl"]
 [ext_resource type="Texture2D" uid="uid://c1c8wdn5xp56g" path="res://assets/hud/attack_controls/ui_fire_active.tga" id="2_lahea"]
 [ext_resource type="Texture2D" uid="uid://bcfgkoeoee0k5" path="res://assets/gameplay/elements/triangle_water.tga" id="3_i6met"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://qvfqnkvery75" path="res://assets/hud/attack_controls/ui_air_active.tga" id="8_m3pg1"]
 [ext_resource type="Texture2D" uid="uid://c13uu38nlm7m2" path="res://assets/hud/attack_controls/ui_air_inactive.tga" id="9_pbjw7"]
 [ext_resource type="Texture2D" uid="uid://cxkwexven723m" path="res://assets/hud/keyboard/1_key.tga" id="10_n86pq"]
+[ext_resource type="Texture2D" uid="uid://b1jeieyb30eqy" path="res://assets/hud/grey_circle.tga" id="11_oevg2"]
 [ext_resource type="Texture2D" uid="uid://0pbhahpgrn84" path="res://assets/hud/keyboard/2_key.tga" id="13_3avfe"]
 [ext_resource type="Texture2D" uid="uid://bchcxy7ai6bgb" path="res://assets/hud/keyboard/3_key.tga" id="15_jf4wo"]
 [ext_resource type="Texture2D" uid="uid://cm8qj5p6xouyq" path="res://assets/hud/keyboard/4_key.tga" id="17_signa"]
@@ -60,7 +60,7 @@ texture = ExtResource("10_n86pq")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_qnqu2")
+texture = ExtResource("11_oevg2")
 
 [node name="AttackTexture" type="TextureRect" parent="MainContainer/FireContainer/AttackBackground"]
 layout_mode = 1
@@ -88,7 +88,7 @@ texture = ExtResource("13_3avfe")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_qnqu2")
+texture = ExtResource("11_oevg2")
 
 [node name="AttackTexture" type="TextureRect" parent="MainContainer/WaterContainer/AttackBackground"]
 layout_mode = 1
@@ -115,7 +115,7 @@ texture = ExtResource("15_jf4wo")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_qnqu2")
+texture = ExtResource("11_oevg2")
 
 [node name="AttackTexture" type="TextureRect" parent="MainContainer/EarthContainer/AttackBackground"]
 layout_mode = 1
@@ -142,7 +142,7 @@ texture = ExtResource("17_signa")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("1_qnqu2")
+texture = ExtResource("11_oevg2")
 
 [node name="AttackTexture" type="TextureRect" parent="MainContainer/AirContainer/AttackBackground"]
 layout_mode = 1
