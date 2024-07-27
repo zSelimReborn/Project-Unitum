@@ -20,7 +20,7 @@ func on_interactable(interactable: BaseInteractable):
 		printerr("unable to set interact text, no label")
 		return
 	var new_text = ""
-	if interactable and not interactable.instant_interact:
+	if interactable and not interactable.instant_interact and interactable.is_interactable:
 		new_text = interactable.interaction_text
 		image.visible = true		
 	text.text = new_text

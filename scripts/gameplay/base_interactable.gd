@@ -7,6 +7,9 @@ extends Area2D
 @export var interaction_text : String = "Interact"
 @export var interaction_hint : String
 
+# Variables
+var is_interactable : bool = true
+
 func _ready():
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)

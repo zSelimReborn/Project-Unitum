@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://ch4q3lelkhswx"]
+
+[ext_resource type="Script" path="res://scripts/hud/relic_popup.gd" id="1_3pdwg"]
+[ext_resource type="Texture2D" uid="uid://cgra47najjdja" path="res://assets/gameplay/relics/philosopher_stone.tga" id="1_qetqd"]
+[ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="2_bog3n"]
+[ext_resource type="Texture2D" uid="uid://bis0eay2vp4u4" path="res://assets/hud/button.tga" id="3_oyx7a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgovs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klyr5"]
+texture = ExtResource("3_oyx7a")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="RelicPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3pdwg")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -252.5
+offset_right = 183.0
+offset_bottom = 252.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="RelicTexture" type="TextureRect" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_qetqd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bog3n")
+theme_override_font_sizes/font_size = 20
+text = "Relic Type: "
+horizontal_alignment = 1
+
+[node name="RelicType" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bog3n")
+theme_override_font_sizes/font_size = 20
+text = "Anti- Matter"
+horizontal_alignment = 1
+
+[node name="RelicName" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bog3n")
+theme_override_font_sizes/font_size = 20
+text = "Philospher's Stone
+"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bog3n")
+theme_override_font_sizes/font_size = 14
+text = "You found a new relic. You gain a 20% attack boost in for every anti-matter relic and a 10% defense boost for every anti-shadow relic."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseContainer" type="Panel" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cgovs")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/CloseContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -70.0
+offset_right = 123.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_oyx7a")
+
+[node name="CloseButton" type="Button" parent="Panel/VBoxContainer/CloseContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_bog3n")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_klyr5")
+text = "Close"
+flat = true
+
+[connection signal="pressed" from="Panel/VBoxContainer/CloseContainer/CloseButton" to="." method="_on_close_button_pressed"]

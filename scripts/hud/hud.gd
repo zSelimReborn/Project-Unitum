@@ -14,6 +14,7 @@ extends CanvasLayer
 @onready var pause_menu = $PopupContainer/PopupBackground/PauseMenu
 @onready var popup_container = $PopupContainer
 @onready var dialogue_box = $MainContainer/BottomGrid/DialogueBox
+@onready var relic_popup = $PopupContainer/PopupBackground/RelicPopup
 
 func _ready():
 	setup_player_bar()
@@ -21,6 +22,7 @@ func _ready():
 	setup_attack_controls()
 	setup_level_name()
 	setup_pause_menu()
+	setup_relic_popup()
 	setup_interaction_hint()
 	setup_dialogue_flow()
 	
@@ -68,6 +70,16 @@ func setup_pause_menu():
 	pause_menu.continue_pressed.connect(on_continue_pressed)
 	pause_menu.exit_pressed.connect(on_exit_pressed)
 	
+func setup_relic_popup():
+	if not player:
+		printerr("hud cannot setup relic popup, no selected player")
+		return
+	if not relic_popup:
+		printerr("hud canno setup relic popup")
+		return
+	player.on_relic_found.connect(on_relic_found)
+	relic_popup.on_popup_close.connect(on_relic_close)
+	
 func setup_interaction_hint():
 	if not player:
 		printerr("hud cannot setup interaction hint, no selected player")
@@ -112,6 +124,7 @@ func on_pause_menu_requested():
 		printerr("unable to load pause menu, no menu or player")
 		return
 	
+	toggle_relic_popup(false)	
 	toggle_pause_menu(player.in_game)
 	
 func toggle_popup(show: bool):
@@ -122,7 +135,7 @@ func toggle_popup(show: bool):
 		popup_container.show()
 	else:
 		popup_container.hide()
-		
+			
 func toggle_pause_menu(show: bool):
 	if not pause_menu:
 		printerr("unable to toggle pause menu, no menu")
@@ -141,3 +154,23 @@ func on_continue_pressed():
 	
 func on_exit_pressed():
 	get_tree().quit()
+	
+func on_relic_found(type, data):
+	if not relic_popup:
+		printerr("hud unable to show new relic popup")
+		return
+	relic_popup.setup_values(type, data)
+	toggle_relic_popup(player.in_game)
+	
+func toggle_relic_popup(show: bool):
+	if show:
+		relic_popup.show()
+	else:
+		relic_popup.hide()
+	toggle_popup(show)
+	
+func on_relic_close():
+	if not player:
+		printerr("unable to close relic popup, no player")
+		return
+	player.switch_relic_menu(null, null)

@@ -20,7 +20,3 @@ func _on_continue_button_pressed():
 
 func _on_exit_button_pressed():
 	exit_pressed.emit()
-
-
-func _on_button_pressed():
-	print("Hllo")

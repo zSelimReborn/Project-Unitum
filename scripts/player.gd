@@ -33,6 +33,7 @@ var in_dialogue = false
 signal on_change_state(old_state, new_state)
 signal on_interactable(interactable: BaseInteractable)
 signal on_change_element(old_element, current_element)
+signal on_relic_found(type, data)
 signal on_pause_menu_requested()
 signal on_interaction_hint_requested(interactable: BaseInteractable)
 signal jump_dialogue_requested()
@@ -159,8 +160,12 @@ func setup_relic_event():
 		return
 	relic_component.new_relic_added.connect(on_new_relic)
 	
-func on_new_relic(type: Types.PlayerState, amount: int):
-	damage_multiplier += relic_component.relic_multiplier
+func on_new_relic(type: Types.PlayerState, amount: int, relic_data):
+	if type == Types.PlayerState.Character:
+		damage_multiplier += relic_component.relic_attack_multiplier
+	else:
+		defense_multiplier -= relic_component.relic_defense_multiplier
+	switch_relic_menu(type, relic_data)
 	
 func _on_fire_rate_timeout():
 	can_shoot = true
@@ -186,6 +191,14 @@ func switch_pause_menu():
 	else:
 		switch_gameplay()
 	on_pause_menu_requested.emit()
+	in_game = not in_game
+	
+func switch_relic_menu(type, data):
+	if in_game:
+		switch_ui(true, true)
+	else:
+		switch_gameplay()
+	on_relic_found.emit(type, data)			
 	in_game = not in_game
 	
 func switch_dialogue():

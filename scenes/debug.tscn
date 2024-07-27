@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=22 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="Shader" path="res://assets/shaders/greyscale.gdshader" id="1_q7ugf"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://cqf6kgo4fo4p5" path="res://blueprints/gameplay/puzzles/secret_wall/air_wall.tscn" id="14_p5qco"]
 [ext_resource type="PackedScene" uid="uid://dkcj6q2a5eldp" path="res://blueprints/gameplay/puzzles/transform_trees/tree.tscn" id="15_av6ct"]
 [ext_resource type="PackedScene" uid="uid://b75v7ti4j7pwj" path="res://blueprints/gameplay/puzzles/secret_wall/earth_wall.tscn" id="16_ao2kv"]
+[ext_resource type="PackedScene" uid="uid://pjebmhfpiq0k" path="res://blueprints/gameplay/interactables/relics/philosopher_stone.tscn" id="17_0niik"]
+[ext_resource type="PackedScene" uid="uid://c5y4v2hfkqm3k" path="res://blueprints/gameplay/interactables/relics/elixir_of_life.tscn" id="18_62vxp"]
+[ext_resource type="PackedScene" uid="uid://bf22kh7yqsesg" path="res://blueprints/gameplay/interactables/relics/emeral_tablet.tscn" id="19_20mst"]
+[ext_resource type="PackedScene" uid="uid://cd3ajkgf1nma0" path="res://blueprints/gameplay/interactables/relics/magnum_opus.tscn" id="20_1xys5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vueyv"]
 resource_local_to_scene = true
@@ -25,7 +29,7 @@ shader_parameter/enabled = false
 [node name="DebugMap" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("greyscale_rect") instance=ExtResource("1_qle6k")]
-position = Vector2(-33, 51)
+position = Vector2(-37, 51)
 greyscale_rect = NodePath("../GreyScaleLayer/GreyScaleRect")
 hit_flash_duration = 0.2
 
@@ -312,3 +316,18 @@ position = Vector2(-504, 115)
 [node name="DoorFinalRoom" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("9_7swxy")]
 position = Vector2(-912, 1022)
 spawn_point = NodePath("../RoomGameplay/DoorToFinal")
+
+[node name="Relic" parent="." instance=ExtResource("17_0niik")]
+position = Vector2(-364, 52)
+
+[node name="Relic2" parent="." instance=ExtResource("18_62vxp")]
+position = Vector2(-410, 1016)
+
+[node name="Relic3" parent="." instance=ExtResource("19_20mst")]
+position = Vector2(-372, 1016)
+
+[node name="Relic4" parent="." instance=ExtResource("20_1xys5")]
+position = Vector2(-252, 1016)
+
+[node name="Relic5" parent="." instance=ExtResource("17_0niik")]
+position = Vector2(-214, 1016)

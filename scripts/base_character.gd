@@ -19,6 +19,7 @@ extends CharacterBody2D
 @export var base_damage_multiplier : float = 0.25
 var base_damage = 100
 @onready var damage_multiplier = base_damage_multiplier
+@onready var defense_multiplier = 1
 
 # Events
 signal on_change_health(old_health, new_health)
@@ -101,6 +102,8 @@ func take_damage(amount: float):
 	if not is_alive:
 		return
 	var old_health = health
+	amount -= amount * (1 - defense_multiplier)
+	print("taking ", amount)
 	health = clamp(health - amount, 0, max_health)
 	if health <= 0:
 		die()

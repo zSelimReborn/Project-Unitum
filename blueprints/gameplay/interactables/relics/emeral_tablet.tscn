@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bf22kh7yqsesg"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/interactables/relic.gd" id="1_wv2oy"]
+[ext_resource type="Texture2D" uid="uid://b25wn1tpaog8n" path="res://assets/gameplay/relics/emerald_tablet.png" id="2_difpf"]
+[ext_resource type="Texture2D" uid="uid://bvcbmocsoruny" path="res://assets/gameplay/interactables/closed_chest.png" id="3_bow0q"]
+[ext_resource type="Texture2D" uid="uid://b05g5kxj184iq" path="res://assets/gameplay/interactables/opened_chest.png" id="4_gsngg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om5g8"]
+atlas = ExtResource("3_bow0q")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai74f"]
+atlas = ExtResource("4_gsngg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v2g2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om5g8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai74f")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gy32j"]
+size = Vector2(29, 30)
+
+[node name="Relic" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_wv2oy")
+relic_type = 1
+ui_texture = ExtResource("2_difpf")
+ui_text = "Emerald Tablet"
+instant_interact = null
+interaction_text = "Open Chest"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_v2g2e")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -15)
+shape = SubResource("RectangleShape2D_gy32j")
