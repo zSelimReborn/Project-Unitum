@@ -26,11 +26,13 @@ var element_abilities = {}
 var current_interactable : BaseInteractable = null
 var marker = null
 var can_shoot = true
+var in_game = true
 
 # Events
 signal on_change_state(old_state, new_state)
 signal on_interactable(interactable: BaseInteractable)
 signal on_change_element(old_element, current_element)
+signal on_pause_menu_requested()
 
 var element_input_mapping = {
 	KEY_1: Types.Elements.FIRE,
@@ -48,14 +50,17 @@ func process_movement_input():
 		jump()
 
 func _input(event):
-	process_movement_input()
-	
-	if event.is_action_pressed("fire"):
-		fire()
-	if event.is_action_pressed("change_element"):
-		change_element(event.keycode)
-	if event.is_action_pressed("interact"):
-		interact()
+	if event.is_action_pressed("pause"):
+		switch_pause_menu()
+	if in_game:
+		process_movement_input()
+		if event.is_action_pressed("fire"):
+			fire()
+		if event.is_action_pressed("change_element"):
+			change_element(event.keycode)
+		if event.is_action_pressed("interact"):
+			interact()
+
 		
 func fire():
 	if not can_shoot:
@@ -118,7 +123,7 @@ func on_flip_state():
 
 func _ready():
 	add_to_group(main_group)
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	switch_gameplay()
 	setup_projectiles()
 	select_marker(false)
 	setup_fire_rate()
@@ -166,3 +171,23 @@ func update_greyscale():
 	if not greyscale_rect:
 		return
 	greyscale_rect.material.set_shader_parameter("enabled", is_shadow())
+	
+func switch_pause_menu():
+	if in_game:
+		switch_ui(true, true)
+	else:
+		switch_gameplay()
+	on_pause_menu_requested.emit()
+	in_game = not in_game
+	
+func switch_ui(show_cursor, pause_game):
+	if show_cursor:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if pause_game:
+		Engine.time_scale = 0
+	else:
+		Engine.time_scale = 1
+
+func switch_gameplay():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Engine.time_scale = 1

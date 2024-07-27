@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw024ehm7ov8"]
+[gd_scene load_steps=11 format=3 uid="uid://dw024ehm7ov8"]
 
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_olqm0"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_pxjbe"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bc0fu4cwhhmmm" path="res://assets/hud/keyboard/d_key.tga" id="5_djcbw"]
 [ext_resource type="PackedScene" uid="uid://b5wr6w0y8wicr" path="res://blueprints/hud/attack_controls.tscn" id="5_rksd6"]
 [ext_resource type="Texture2D" uid="uid://l2ifs6rljkem" path="res://assets/hud/keyboard/space_key.tga" id="6_tlqk3"]
+[ext_resource type="PackedScene" uid="uid://2m3whgfowc7m" path="res://blueprints/hud/pause_menu.tscn" id="10_hraru"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_olqm0")
@@ -164,4 +165,24 @@ offset_bottom = 288.0
 grow_vertical = 2
 
 [node name="AttackControls" parent="MainContainer/AttackControlsContainer" instance=ExtResource("5_rksd6")]
+layout_mode = 1
+
+[node name="PopupContainer" type="GridContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+mouse_filter = 2
+
+[node name="PopupBackground" type="Panel" parent="PopupContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="PauseMenu" parent="PopupContainer/PopupBackground" instance=ExtResource("10_hraru")]
+visible = false
 layout_mode = 1
