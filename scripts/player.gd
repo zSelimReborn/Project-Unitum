@@ -29,6 +29,7 @@ var marker = null
 var can_shoot = true
 var in_game = true
 var in_dialogue = false
+var last_position = null
 
 # Events
 signal on_change_state(old_state, new_state)
@@ -61,8 +62,15 @@ func process_animation(_delta):
 	else:
 		super(_delta)
 
-func _input(event):
+func _physics_process(delta):
+	if is_on_floor():
+		last_position = transform
+	super(delta)
+	
+func restore_after_fall():
+	transform = last_position
 
+func _input(event):
 	if in_dialogue and event.is_action_pressed("jump_dialogue"):
 		handle_jump_dialogue()
 	elif not in_dialogue and event.is_action_pressed("pause"):
