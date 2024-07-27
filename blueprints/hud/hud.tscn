@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dw024ehm7ov8"]
+[gd_scene load_steps=10 format=3 uid="uid://dw024ehm7ov8"]
 
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_olqm0"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_pxjbe"]
+[ext_resource type="PackedScene" uid="uid://cky3dnlicu5tl" path="res://blueprints/hud/level_name.tscn" id="2_78kd7"]
 [ext_resource type="PackedScene" uid="uid://bexa2bw1ch6qh" path="res://blueprints/hud/player_bar.tscn" id="3_4bxo4"]
 [ext_resource type="Texture2D" uid="uid://de1q7ue1yskrp" path="res://assets/hud/keyboard/a_key.tga" id="4_0kd5y"]
 [ext_resource type="PackedScene" uid="uid://bmj6k7owgeucs" path="res://blueprints/hud/interact_text.tscn" id="4_8h7fv"]
@@ -18,6 +19,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 70.0
+offset_top = 70.0
+offset_right = 70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+
+[node name="LevelName" parent="MainContainer/LevelContainer" instance=ExtResource("2_78kd7")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="TopContainer" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 1

@@ -4,16 +4,24 @@ extends CanvasLayer
 
 # Properties
 @export var player : Player
+@export var level_name : String
 
 # On Ready
 @onready var player_bar = $MainContainer/TopContainer/PlayerBar
 @onready var interact_text = $MainContainer/ControlsContainer/InteractText
 @onready var attack_controls = $MainContainer/AttackControlsContainer/AttackControls
+@onready var level_name_object = $MainContainer/LevelContainer/LevelName
 
 func _ready():
 	setup_player_bar()
 	setup_interact_text()
 	setup_attack_controls()
+	setup_level_name()
+	
+func setup_level_name():
+	if not level_name_object:
+		return
+	level_name_object.set_level_name(level_name)
 	
 func setup_player_bar():
 	if not player:
