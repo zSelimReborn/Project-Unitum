@@ -20,6 +20,10 @@ extends CharacterBody2D
 var base_damage = 100
 @onready var damage_multiplier = base_damage_multiplier
 
+# Events
+signal on_change_health(old_health, new_health)
+signal on_death
+
 # Variables
 var is_alive : bool = true
 var current_impulse = Vector2()
@@ -77,14 +81,18 @@ func process_animation(_delta):
 
 # Health management
 func die():
+	if not is_alive:
+		return
 	is_alive = false
+	on_death.emit()
 	
 func heal(amount: float):
 	if not is_alive:
 		return
 	amount = abs(amount)
+	var old_health = health
 	health = clamp(health + amount, 0, max_health)
-	print("health: ", health)
+	on_change_health.emit(old_health, health)
 	
 func can_take_damage(_instigator):
 	return true
@@ -92,10 +100,12 @@ func can_take_damage(_instigator):
 func take_damage(amount: float):
 	if not is_alive:
 		return
+	var old_health = health
 	health = clamp(health - amount, 0, max_health)
 	if health <= 0:
 		die()
 		return
+	on_change_health.emit(old_health, health)
 	update_shader_flag("active", true)
 	await get_tree().create_timer(hit_flash_duration).timeout
 	update_shader_flag("active", false)	

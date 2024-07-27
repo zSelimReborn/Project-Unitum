@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bexa2bw1ch6qh"]
+
+[ext_resource type="Script" path="res://scripts/hud/player_bar.gd" id="1_472uw"]
+[ext_resource type="Texture2D" uid="uid://68wdi3owoxmp" path="res://assets/hud/character_player.tga" id="1_cldau"]
+[ext_resource type="PackedScene" uid="uid://0rym53ri4cin" path="res://blueprints/hud/health_bar.tscn" id="1_fauw8"]
+[ext_resource type="Texture2D" uid="uid://cjym6ypt5pawc" path="res://assets/hud/shadow_player.tga" id="3_f0v4d"]
+
+[node name="PlayerBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -153.0
+offset_bottom = -448.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_472uw")
+character_texture = ExtResource("1_cldau")
+shadow_texture = ExtResource("3_f0v4d")
+
+[node name="PlayerThumb" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+texture = ExtResource("1_cldau")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_fauw8")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 99.0
+offset_top = -55.0
+offset_right = 509.0
+offset_bottom = 80.0
+grow_horizontal = 1
+grow_vertical = 1

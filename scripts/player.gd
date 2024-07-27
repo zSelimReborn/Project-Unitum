@@ -27,6 +27,9 @@ var current_interactable : BaseInteractable = null
 var marker = null
 var can_shoot = true
 
+# Events
+signal on_change_state(old_state, new_state)
+
 var element_input_mapping = {
 	KEY_1: Types.Elements.FIRE,
 	KEY_2: Types.Elements.WATER,
@@ -90,11 +93,13 @@ func interact():
 	current_interactable.interact(self)
 	
 func flip_state(new_transform: Transform2D):
+	var old_state = state
 	if is_shadow():
 		state = Types.PlayerState.Character
 	else:
 		state = Types.PlayerState.Shadow
 	transform = new_transform
+	on_change_state.emit(old_state, state)
 	on_flip_state()
 	
 func is_shadow():

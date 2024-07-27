@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://0rym53ri4cin"]
+
+[ext_resource type="Texture2D" uid="uid://couplodtt1dvn" path="res://assets/hud/empty_lifebar.tga" id="1_2v42n"]
+[ext_resource type="Script" path="res://scripts/hud/health_bar.gd" id="1_xyroa"]
+[ext_resource type="Texture2D" uid="uid://djsm3hyumyag5" path="res://assets/hud/filled_lifebar.tga" id="2_d18sc"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -652.0
+offset_bottom = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xyroa")
+
+[node name="Bar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_under = ExtResource("1_2v42n")
+texture_progress = ExtResource("2_d18sc")

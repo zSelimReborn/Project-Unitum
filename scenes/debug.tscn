@@ -24,7 +24,7 @@ shader_parameter/enabled = false
 [node name="DebugMap" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("greyscale_rect") instance=ExtResource("1_qle6k")]
-position = Vector2(56, 1015)
+position = Vector2(-33, 51)
 greyscale_rect = NodePath("../GreyScaleLayer/GreyScaleRect")
 hit_flash_duration = 0.2
 
@@ -240,7 +240,8 @@ offset_bottom = -461.0
 scale = Vector2(35.9973, 48.3481)
 color = Color(1, 1, 1, 0)
 
-[node name="HUD" parent="." instance=ExtResource("11_ntrn2")]
+[node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_ntrn2")]
+player = NodePath("../Player")
 
 [node name="FinalRoom" type="Node2D" parent="."]
 position = Vector2(-1286, 970)
