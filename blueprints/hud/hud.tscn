@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw024ehm7ov8"]
+[gd_scene load_steps=9 format=3 uid="uid://dw024ehm7ov8"]
 
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_olqm0"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_pxjbe"]
 [ext_resource type="PackedScene" uid="uid://bexa2bw1ch6qh" path="res://blueprints/hud/player_bar.tscn" id="3_4bxo4"]
+[ext_resource type="Texture2D" uid="uid://de1q7ue1yskrp" path="res://assets/hud/keyboard/a_key.tga" id="4_0kd5y"]
 [ext_resource type="PackedScene" uid="uid://bmj6k7owgeucs" path="res://blueprints/hud/interact_text.tscn" id="4_8h7fv"]
+[ext_resource type="Texture2D" uid="uid://bc0fu4cwhhmmm" path="res://assets/hud/keyboard/d_key.tga" id="5_djcbw"]
 [ext_resource type="PackedScene" uid="uid://b5wr6w0y8wicr" path="res://blueprints/hud/attack_controls.tscn" id="5_rksd6"]
+[ext_resource type="Texture2D" uid="uid://l2ifs6rljkem" path="res://assets/hud/keyboard/space_key.tga" id="6_tlqk3"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_olqm0")
@@ -60,16 +63,79 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -302.0
-offset_top = -20.0
-offset_right = -92.0
-offset_bottom = 9.0
+offset_left = -325.0
+offset_top = -112.0
+offset_right = -174.0
+offset_bottom = 184.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="MoveContainer" type="Control" parent="MainContainer/ControlsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/ControlsContainer/MoveContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/ControlsContainer/MoveContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AKey" type="TextureRect" parent="MainContainer/ControlsContainer/MoveContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_0kd5y")
+
+[node name="DKey" type="TextureRect" parent="MainContainer/ControlsContainer/MoveContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_djcbw")
+
+[node name="Label" type="Label" parent="MainContainer/ControlsContainer/MoveContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_pxjbe")
+theme_override_font_sizes/font_size = 25
+text = "Move"
+horizontal_alignment = 1
+
+[node name="JumpContainer" type="Control" parent="MainContainer/ControlsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/ControlsContainer/JumpContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JumpKey" type="TextureRect" parent="MainContainer/ControlsContainer/JumpContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_tlqk3")
+
+[node name="Label" type="Label" parent="MainContainer/ControlsContainer/JumpContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_pxjbe")
+theme_override_font_sizes/font_size = 25
+text = "Jump"
+horizontal_alignment = 1
 
 [node name="InteractText" parent="MainContainer/ControlsContainer" instance=ExtResource("4_8h7fv")]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
 
 [node name="AttackControlsContainer" type="Control" parent="MainContainer"]
 layout_mode = 1

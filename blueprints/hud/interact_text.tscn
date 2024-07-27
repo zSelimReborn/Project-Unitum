@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmj6k7owgeucs"]
+[gd_scene load_steps=4 format=3 uid="uid://bmj6k7owgeucs"]
 
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_3bw8b"]
 [ext_resource type="Script" path="res://scripts/hud/interact_text.gd" id="1_hgfas"]
+[ext_resource type="Texture2D" uid="uid://8k8h1lxbkjj2" path="res://assets/hud/keyboard/e_key.tga" id="2_ttuxy"]
 
 [node name="InteractText" type="Control"]
 layout_mode = 3
@@ -12,20 +13,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hgfas")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -157.0
-offset_bottom = 25.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Image" type="TextureRect" parent="HBoxContainer"]
+[node name="Image" type="TextureRect" parent="Container"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ttuxy")
 
-[node name="Text" type="Label" parent="HBoxContainer"]
+[node name="Text" type="Label" parent="Container"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_3bw8b")
 theme_override_font_sizes/font_size = 25
