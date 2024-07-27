@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dac3xdxvmds7h"]
+[gd_scene load_steps=20 format=3 uid="uid://dac3xdxvmds7h"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_d67dp"]
 [ext_resource type="PackedScene" uid="uid://bn0tekli3d5oi" path="res://blueprints/gameplay/projectiles/fire.tscn" id="2_lnnts"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://qlng36ryk8u0" path="res://assets/character/animations/walk_frame_1.tga" id="7_dhmqc"]
 [ext_resource type="Texture2D" uid="uid://chyn1qoach1ek" path="res://assets/character/animations/still_frame_2.tga" id="7_dmgbe"]
 [ext_resource type="Texture2D" uid="uid://6beols50ryma" path="res://assets/character/animations/walk_frame_2.tga" id="8_41cl3"]
+[ext_resource type="Texture2D" uid="uid://dxy72x42enwxn" path="res://assets/character/pg_shadow.png" id="10_mndta"]
 [ext_resource type="Script" path="res://scripts/components/relic_component.gd" id="12_d3kqb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgt3y"]
@@ -18,6 +19,18 @@ resource_local_to_scene = true
 shader = ExtResource("6_kffuj")
 shader_parameter/active = false
 shader_parameter/shadow = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td1kh"]
+atlas = ExtResource("10_mndta")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dssch"]
+atlas = ExtResource("10_mndta")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y8jd"]
+atlas = ExtResource("10_mndta")
+region = Rect2(64, 0, 32, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tobyk"]
 resource_local_to_scene = true
@@ -39,6 +52,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td1kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dssch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y8jd")
+}],
+"loop": true,
+"name": &"shadow",
 "speed": 5.0
 }, {
 "frames": [{
@@ -79,7 +106,8 @@ hit_flash_duration = 0.15
 material = SubResource("ShaderMaterial_kgt3y")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_tobyk")
-animation = &"idle"
+animation = &"shadow"
+frame_progress = 0.161038
 
 [node name="CollisionVolume" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)

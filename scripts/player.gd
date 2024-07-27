@@ -18,6 +18,7 @@ extends BaseCharacter
 @export var fire_rate : float = 0.5
 @export var main_group : String = "player"
 @export var greyscale_rect : ColorRect
+@export var shadow_anim_name : String = "shadow"
 
 #Variables
 var current_element : Types.Elements = Types.Elements.FIRE
@@ -53,6 +54,12 @@ func process_movement_input():
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		jump()
+
+func process_animation(_delta):
+	if is_shadow():
+		sprite.play(shadow_anim_name)
+	else:
+		super(_delta)
 
 func _input(event):
 
@@ -127,7 +134,6 @@ func on_flip_state():
 	jump_velocity = -jump_velocity
 	up_direction.y = -up_direction.y
 	select_marker(sprite.flip_h)
-	update_shader_flag("shadow", is_shadow())
 	update_greyscale()
 
 func _ready():
