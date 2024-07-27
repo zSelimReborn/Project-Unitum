@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://b75v7ti4j7pwj"]
+
+[ext_resource type="Script" path="res://scripts/gameplay/puzzle/transform_puzzle.gd" id="1_l6qli"]
+[ext_resource type="Shader" path="res://assets/shaders/transform_puzzle.gdshader" id="2_2j7pk"]
+[ext_resource type="Shader" path="res://assets/shaders/highlight.gdshader" id="3_36ud5"]
+[ext_resource type="Texture2D" uid="uid://bb5o3blxflq2g" path="res://assets/gameplay/puzzles/secret_walls/thorns_wall.png" id="4_ptvcn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3rlr"]
+resource_local_to_scene = true
+shader = ExtResource("2_2j7pk")
+shader_parameter/enabled = true
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.21
+shader_parameter/angle = 2.0944
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
+shader_parameter/hit_flash = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2h7l"]
+shader = ExtResource("3_36ud5")
+shader_parameter/enabled = false
+shader_parameter/shine_color = Color(1, 1, 1, 0.25)
+shader_parameter/line_width = 0.1
+shader_parameter/angle = 0.785398
+shader_parameter/speed = 1.0
+shader_parameter/wait_cycles = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5rda"]
+size = Vector2(31, 94)
+
+[node name="EarthWall" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 11
+script = ExtResource("1_l6qli")
+element = 1
+hit_flash_duration = 0.15
+
+[node name="SpriteContainer" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_n3rlr")
+
+[node name="FirstSprite" type="Sprite2D" parent="SpriteContainer"]
+material = SubResource("ShaderMaterial_r2h7l")
+position = Vector2(0, -16)
+texture = ExtResource("4_ptvcn")
+
+[node name="SecondSprite" type="Sprite2D" parent="SpriteContainer"]
+position = Vector2(0, -47)
+texture = ExtResource("4_ptvcn")
+
+[node name="ThirdSprite" type="Sprite2D" parent="SpriteContainer"]
+position = Vector2(0, -78)
+texture = ExtResource("4_ptvcn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -48)
+shape = SubResource("RectangleShape2D_r5rda")

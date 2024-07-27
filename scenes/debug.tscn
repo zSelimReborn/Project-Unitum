@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=18 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="Shader" path="res://assets/shaders/greyscale.gdshader" id="1_q7ugf"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dgxl4jqedkcvn" path="res://blueprints/gameplay/puzzles/secret_wall/ice_wall.tscn" id="13_16q5k"]
 [ext_resource type="PackedScene" uid="uid://cqf6kgo4fo4p5" path="res://blueprints/gameplay/puzzles/secret_wall/air_wall.tscn" id="14_p5qco"]
 [ext_resource type="PackedScene" uid="uid://dkcj6q2a5eldp" path="res://blueprints/gameplay/puzzles/transform_trees/tree.tscn" id="15_av6ct"]
+[ext_resource type="PackedScene" uid="uid://b75v7ti4j7pwj" path="res://blueprints/gameplay/puzzles/secret_wall/earth_wall.tscn" id="16_ao2kv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vueyv"]
 resource_local_to_scene = true
@@ -207,6 +208,9 @@ position = Vector2(117, 52)
 
 [node name="AirWall" parent="EntranceGameplay" instance=ExtResource("14_p5qco")]
 position = Vector2(157, 51)
+
+[node name="EarthWall" parent="EntranceGameplay" instance=ExtResource("16_ao2kv")]
+position = Vector2(27, 50)
 
 [node name="RoomGameplay" type="Node2D" parent="."]
 
