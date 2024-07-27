@@ -30,6 +30,7 @@ var can_shoot = true
 # Events
 signal on_change_state(old_state, new_state)
 signal on_interactable(interactable: BaseInteractable)
+signal on_change_element(old_element, current_element)
 
 var element_input_mapping = {
 	KEY_1: Types.Elements.FIRE,
@@ -55,8 +56,6 @@ func _input(event):
 		change_element(event.keycode)
 	if event.is_action_pressed("interact"):
 		interact()
-	if event.is_action_pressed("take"):
-		take_damage(10)
 		
 func fire():
 	if not can_shoot:
@@ -81,7 +80,9 @@ func change_element(keycode):
 	if not element_input_mapping.has(keycode):
 		printerr("unable to change element")
 		return
+	var old_element = current_element
 	current_element = element_input_mapping[keycode]
+	on_change_element.emit(old_element, current_element)
 
 func flip_sprite(left: bool):
 	super(left)

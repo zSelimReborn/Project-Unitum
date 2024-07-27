@@ -1,0 +1,141 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqtltx6orwl42"]
+
+[ext_resource type="Texture2D" uid="uid://68wdi3owoxmp" path="res://assets/hud/character_player.tga" id="1_3ydn3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s50nr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d6mqo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b56ue"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdtw7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_psb48"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_soj51"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3e1pa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0uy1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fx2a6"]
+
+[node name="AttackControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3ydn3")
+
+[node name="GridContainer" type="GridContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="R11" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_s50nr")
+
+[node name="TopAttack" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d6mqo")
+
+[node name="Container" type="VBoxContainer" parent="Background/GridContainer/TopAttack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonTexture" type="TextureRect" parent="Background/GridContainer/TopAttack/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ElementTexture" type="TextureRect" parent="Background/GridContainer/TopAttack/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="R13" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_b56ue")
+
+[node name="LeftAttack" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tdtw7")
+
+[node name="Container" type="VBoxContainer" parent="Background/GridContainer/LeftAttack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="R22" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_psb48")
+
+[node name="RightAttack" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_soj51")
+
+[node name="Container" type="VBoxContainer" parent="Background/GridContainer/RightAttack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="R31" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3e1pa")
+
+[node name="BottomAttack" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_v0uy1")
+
+[node name="Container" type="VBoxContainer" parent="Background/GridContainer/BottomAttack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="R33" type="Panel" parent="Background/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fx2a6")

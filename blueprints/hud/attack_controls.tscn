@@ -1,0 +1,155 @@
+[gd_scene load_steps=19 format=3 uid="uid://b5wr6w0y8wicr"]
+
+[ext_resource type="Script" path="res://scripts/hud/attack_controls.gd" id="1_hta0c"]
+[ext_resource type="Texture2D" uid="uid://68wdi3owoxmp" path="res://assets/hud/character_player.tga" id="1_qnqu2"]
+[ext_resource type="Texture2D" uid="uid://puj8gc8qmnrw" path="res://assets/gameplay/elements/triangle_fire.tga" id="2_jmlhl"]
+[ext_resource type="Texture2D" uid="uid://c1c8wdn5xp56g" path="res://assets/hud/attack_controls/ui_fire_active.tga" id="2_lahea"]
+[ext_resource type="Texture2D" uid="uid://bcfgkoeoee0k5" path="res://assets/gameplay/elements/triangle_water.tga" id="3_i6met"]
+[ext_resource type="Texture2D" uid="uid://bolp31q1muh2h" path="res://assets/hud/attack_controls/ui_fire_inactive.tga" id="3_xm8ft"]
+[ext_resource type="Texture2D" uid="uid://cv7arpse42n3v" path="res://assets/hud/attack_controls/ui_water_active.tga" id="4_bkku4"]
+[ext_resource type="Texture2D" uid="uid://c4o5i3mag1k4m" path="res://assets/gameplay/elements/triangle_earth.tga" id="4_fcxo7"]
+[ext_resource type="Texture2D" uid="uid://can4rjiehymnc" path="res://assets/gameplay/elements/triangle_air.tga" id="5_kwtvu"]
+[ext_resource type="Texture2D" uid="uid://bmanvhpgy1kkx" path="res://assets/hud/attack_controls/ui_water_inactive.tga" id="5_sr45r"]
+[ext_resource type="Texture2D" uid="uid://c5xdnmcx1x77l" path="res://assets/hud/attack_controls/ui_earth_active.tga" id="6_12fyk"]
+[ext_resource type="Texture2D" uid="uid://1wydbw1aqmal" path="res://assets/hud/attack_controls/ui_earth_inactive.tga" id="7_wxmq3"]
+[ext_resource type="Texture2D" uid="uid://qvfqnkvery75" path="res://assets/hud/attack_controls/ui_air_active.tga" id="8_m3pg1"]
+[ext_resource type="Texture2D" uid="uid://c13uu38nlm7m2" path="res://assets/hud/attack_controls/ui_air_inactive.tga" id="9_pbjw7"]
+[ext_resource type="Texture2D" uid="uid://cxkwexven723m" path="res://assets/hud/keyboard/1_key.tga" id="10_n86pq"]
+[ext_resource type="Texture2D" uid="uid://0pbhahpgrn84" path="res://assets/hud/keyboard/2_key.tga" id="13_3avfe"]
+[ext_resource type="Texture2D" uid="uid://bchcxy7ai6bgb" path="res://assets/hud/keyboard/3_key.tga" id="15_jf4wo"]
+[ext_resource type="Texture2D" uid="uid://cm8qj5p6xouyq" path="res://assets/hud/keyboard/4_key.tga" id="17_signa"]
+
+[node name="AttackControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hta0c")
+fire_active = ExtResource("2_lahea")
+fire_inactive = ExtResource("3_xm8ft")
+water_active = ExtResource("4_bkku4")
+water_inactive = ExtResource("5_sr45r")
+earth_active = ExtResource("6_12fyk")
+earth_inactive = ExtResource("7_wxmq3")
+air_active = ExtResource("8_m3pg1")
+air_inactive = ExtResource("9_pbjw7")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="FireContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonTexture" type="TextureRect" parent="MainContainer/FireContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("10_n86pq")
+
+[node name="AttackBackground" type="NinePatchRect" parent="MainContainer/FireContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_qnqu2")
+
+[node name="AttackTexture" type="TextureRect" parent="MainContainer/FireContainer/AttackBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("2_jmlhl")
+
+[node name="WaterContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonTexture" type="TextureRect" parent="MainContainer/WaterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("13_3avfe")
+
+[node name="AttackBackground" type="NinePatchRect" parent="MainContainer/WaterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_qnqu2")
+
+[node name="AttackTexture" type="TextureRect" parent="MainContainer/WaterContainer/AttackBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("3_i6met")
+
+[node name="EarthContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonTexture" type="TextureRect" parent="MainContainer/EarthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("15_jf4wo")
+
+[node name="AttackBackground" type="NinePatchRect" parent="MainContainer/EarthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_qnqu2")
+
+[node name="AttackTexture" type="TextureRect" parent="MainContainer/EarthContainer/AttackBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("4_fcxo7")
+
+[node name="AirContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonTexture" type="TextureRect" parent="MainContainer/AirContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("17_signa")
+
+[node name="AttackBackground" type="NinePatchRect" parent="MainContainer/AirContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_qnqu2")
+
+[node name="AttackTexture" type="TextureRect" parent="MainContainer/AirContainer/AttackBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("5_kwtvu")
