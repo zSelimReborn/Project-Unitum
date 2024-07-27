@@ -3,7 +3,8 @@ class_name BaseInteractable
 extends Area2D
 
 # Interact on player enter
-@export var instant_interact: bool = false
+@export var instant_interact : bool = false
+@export var interaction_text : String = "Interact"
 
 func _ready():
 	if not body_entered.is_connected(_on_body_entered):
@@ -18,12 +19,12 @@ func interact(_player: Player):
 func on_overlap_start(player: Player):
 	if player == null:
 		return
-	player.current_interactable = self
+	player.set_interactable(self)
 
 func on_overlap_leave(player: Player):
 	if player == null:
 		return
-	player.current_interactable = null
+	player.set_interactable(null)
 
 func _on_body_entered(body):
 	var player := body as Player

@@ -37,6 +37,7 @@ size = Vector2(20, 23)
 [node name="Door" type="Area2D"]
 collision_layer = 4
 script = ExtResource("1_3oq0g")
+interaction_text = "Open Door"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)

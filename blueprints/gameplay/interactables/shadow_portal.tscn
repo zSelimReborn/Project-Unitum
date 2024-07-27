@@ -74,6 +74,7 @@ size = Vector2(32, 31.6)
 z_index = 1
 collision_layer = 4
 script = ExtResource("2_yegn5")
+interaction_text = "Go into Portal"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)

@@ -29,6 +29,7 @@ var can_shoot = true
 
 # Events
 signal on_change_state(old_state, new_state)
+signal on_interactable(interactable: BaseInteractable)
 
 var element_input_mapping = {
 	KEY_1: Types.Elements.FIRE,
@@ -129,6 +130,10 @@ func setup_projectiles():
 		Types.Elements.EARTH: earth_ball_class,
 		Types.Elements.AIR: air_ball_class
 	}
+	
+func set_interactable(interactable: BaseInteractable):
+	current_interactable = interactable
+	on_interactable.emit(interactable)
 	
 func setup_fire_rate():
 	fire_rate_timer.one_shot = true
