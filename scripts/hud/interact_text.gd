@@ -2,8 +2,8 @@ class_name InteractText
 
 extends Control
 
-@onready var text = $Container/Text
-@onready var image = $Container/Image
+@onready var image = $Container/PanelImage/Image
+@onready var text = $Container/PanelText/Text
 
 func _ready():
 	image.visible = false

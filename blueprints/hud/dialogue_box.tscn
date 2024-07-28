@@ -4,16 +4,21 @@
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_jecs7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gckvx"]
-bg_color = Color(0.986527, 0.893461, 0.663269, 1)
+bg_color = Color(0.99925, 0.993977, 0.980857, 1)
 border_width_left = 10
 border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
-border_color = Color(0.450567, 0.334104, 0, 1)
+border_color = Color(0.0107511, 0.00573514, 1.50409e-09, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+corner_detail = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
 
 [node name="DialogueBox" type="Control"]
 layout_mode = 3
@@ -39,6 +44,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_gckvx")
 
 [node name="Dialogue" type="Label" parent="Container/Box"]
+custom_minimum_size = Vector2(850, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,6 +60,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_jecs7")
 theme_override_font_sizes/font_size = 30
+autowrap_mode = 2
 
 [node name="Label" type="Label" parent="Container/Box"]
 layout_mode = 1

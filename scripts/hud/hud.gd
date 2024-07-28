@@ -9,14 +9,14 @@ extends CanvasLayer
 
 # On Ready
 @onready var player_bar = $MainContainer/TopContainer/PlayerBar
-@onready var interact_text = $MainContainer/ControlsContainer/InteractText
 @onready var attack_controls = $MainContainer/AttackControlsContainer/AttackControls
 @onready var level_name_object = $MainContainer/LevelContainer/LevelName
 @onready var pause_menu = $PopupContainer/PopupBackground/PauseMenu
 @onready var popup_container = $PopupContainer
-@onready var dialogue_box = $MainContainer/BottomGrid/DialogueBox
 @onready var relic_popup = $PopupContainer/PopupBackground/RelicPopup
 @onready var death_menu = $PopupContainer/PopupBackground/DeathMenu
+@onready var interact_text = $MainContainer/BottomGrid/InteractPanel/InteractText
+@onready var dialogue_box = $MainContainer/BottomGrid/DialoguePanel/DialogueBox
 
 # Variables
 var initial_level_path = null

@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmj6k7owgeucs"]
+[gd_scene load_steps=6 format=3 uid="uid://bmj6k7owgeucs"]
 
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_3bw8b"]
 [ext_resource type="Script" path="res://scripts/hud/interact_text.gd" id="1_hgfas"]
 [ext_resource type="Texture2D" uid="uid://8k8h1lxbkjj2" path="res://assets/hud/keyboard/e_key.tga" id="2_ttuxy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r4ame"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_divcn"]
 
 [node name="InteractText" type="Control"]
 layout_mode = 3
@@ -13,23 +17,67 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hgfas")
 
-[node name="Container" type="VBoxContainer" parent="."]
+[node name="Container" type="GridContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -16.0
+offset_right = 25.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
+theme_override_constants/h_separation = 50
+columns = 2
 
-[node name="Image" type="TextureRect" parent="Container"]
+[node name="PanelImage" type="Panel" parent="Container"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r4ame")
+
+[node name="Image" type="TextureRect" parent="Container/PanelImage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -60.0
+offset_right = 16.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
 texture = ExtResource("2_ttuxy")
 
-[node name="Text" type="Label" parent="Container"]
+[node name="PanelText" type="Panel" parent="Container"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_divcn")
+
+[node name="Text" type="Label" parent="Container/PanelText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 46.0
+offset_top = -60.0
+offset_right = 127.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.8
 theme_override_fonts/font = ExtResource("1_3bw8b")
 theme_override_font_sizes/font_size = 25
+vertical_alignment = 1

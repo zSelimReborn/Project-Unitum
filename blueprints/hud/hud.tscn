@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dw024ehm7ov8"]
+[gd_scene load_steps=16 format=3 uid="uid://dw024ehm7ov8"]
 
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_olqm0"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_pxjbe"]
@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://2m3whgfowc7m" path="res://blueprints/hud/pause_menu.tscn" id="10_hraru"]
 [ext_resource type="PackedScene" uid="uid://ch4q3lelkhswx" path="res://blueprints/hud/relic_popup.tscn" id="12_r67a1"]
 [ext_resource type="PackedScene" uid="uid://c1li8lp13xiwl" path="res://blueprints/hud/death_menu.tscn" id="13_u61i7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cn1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x0qpw"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_olqm0")
@@ -49,7 +53,7 @@ offset_bottom = 300.0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BottomGrid" type="VBoxContainer" parent="MainContainer"]
+[node name="BottomGrid" type="GridContainer" parent="MainContainer"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -60,9 +64,38 @@ offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="DialogueBox" parent="MainContainer/BottomGrid" instance=ExtResource("4_r3vgv")]
+[node name="InteractPanel" type="Panel" parent="MainContainer/BottomGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0cn1t")
+
+[node name="InteractText" parent="MainContainer/BottomGrid/InteractPanel" instance=ExtResource("4_8h7fv")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.3
+
+[node name="DialoguePanel" type="Panel" parent="MainContainer/BottomGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.9
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x0qpw")
+
+[node name="DialogueBox" parent="MainContainer/BottomGrid/DialoguePanel" instance=ExtResource("4_r3vgv")]
 visible = false
 layout_mode = 2
+anchors_preset = 0
+offset_top = -4.0
+offset_bottom = -4.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ControlsContainer" type="VBoxContainer" parent="MainContainer"]
@@ -73,9 +106,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -325.0
-offset_top = -112.0
-offset_right = -174.0
-offset_bottom = 184.0
+offset_top = -174.0
+offset_right = -169.0
+offset_bottom = 325.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -90,6 +123,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -125,6 +161,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -129.0
+offset_right = 67.0
+offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -140,11 +180,6 @@ theme_override_fonts/font = ExtResource("1_pxjbe")
 theme_override_font_sizes/font_size = 25
 text = "Jump"
 horizontal_alignment = 1
-
-[node name="InteractText" parent="MainContainer/ControlsContainer" instance=ExtResource("4_8h7fv")]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.3
 
 [node name="AttackControlsContainer" type="Control" parent="MainContainer"]
 layout_mode = 1
