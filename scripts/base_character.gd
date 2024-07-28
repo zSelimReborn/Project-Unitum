@@ -103,12 +103,11 @@ func take_damage(amount: float):
 		return
 	var old_health = health
 	amount -= amount * (1 - defense_multiplier)
-	print("taking ", amount)
 	health = clamp(health - amount, 0, max_health)
+	on_change_health.emit(old_health, health)	
 	if health <= 0:
 		die()
 		return
-	on_change_health.emit(old_health, health)
 	update_shader_flag("active", true)
 	await get_tree().create_timer(hit_flash_duration).timeout
 	update_shader_flag("active", false)	

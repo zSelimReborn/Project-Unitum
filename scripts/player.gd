@@ -57,8 +57,12 @@ func process_movement_input():
 		jump()
 
 func process_animation(_delta):
+	if not is_alive:
+		return
 	if is_shadow():
 		sprite.play(shadow_anim_name)
+	elif not is_on_floor():
+		sprite.play("jump")
 	else:
 		super(_delta)
 
@@ -75,7 +79,7 @@ func _input(event):
 		handle_jump_dialogue()
 	elif not in_dialogue and event.is_action_pressed("pause"):
 		switch_pause_menu()
-	elif not in_dialogue and in_game:
+	elif not in_dialogue and in_game and is_alive:
 		process_movement_input()
 		if event.is_action_pressed("fire"):
 			fire()
@@ -83,7 +87,6 @@ func _input(event):
 			change_element(event.keycode)
 		if event.is_action_pressed("interact"):
 			interact()
-
 		
 func fire():
 	if not can_shoot:
@@ -192,8 +195,15 @@ func select_marker(left: bool):
 	
 func die():
 	super()
-	get_tree().reload_current_scene()
+	sprite.play("death")
 
+func _on_animation_finished():
+	if sprite.animation == "death":
+		on_death_animation_finished()
+	
+func on_death_animation_finished():
+	get_tree().reload_current_scene()
+	
 func update_greyscale():
 	if not greyscale_rect:
 		return

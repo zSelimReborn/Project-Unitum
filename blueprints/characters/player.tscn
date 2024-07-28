@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dac3xdxvmds7h"]
+[gd_scene load_steps=30 format=3 uid="uid://dac3xdxvmds7h"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_d67dp"]
 [ext_resource type="PackedScene" uid="uid://bn0tekli3d5oi" path="res://blueprints/gameplay/projectiles/fire.tscn" id="2_lnnts"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://qlng36ryk8u0" path="res://assets/character/animations/walk_frame_1.tga" id="7_dhmqc"]
 [ext_resource type="Texture2D" uid="uid://chyn1qoach1ek" path="res://assets/character/animations/still_frame_2.tga" id="7_dmgbe"]
 [ext_resource type="Texture2D" uid="uid://6beols50ryma" path="res://assets/character/animations/walk_frame_2.tga" id="8_41cl3"]
+[ext_resource type="Texture2D" uid="uid://dv4uu7uxbggke" path="res://assets/character/animations/pg_death_frames.png" id="8_id83u"]
 [ext_resource type="Texture2D" uid="uid://dxy72x42enwxn" path="res://assets/character/pg_shadow.png" id="10_mndta"]
+[ext_resource type="Texture2D" uid="uid://ch7uoul0q8ema" path="res://assets/character/animations/jump.png" id="11_tmv0d"]
 [ext_resource type="Script" path="res://scripts/components/relic_component.gd" id="12_d3kqb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgt3y"]
@@ -19,6 +21,38 @@ resource_local_to_scene = true
 shader = ExtResource("6_kffuj")
 shader_parameter/active = false
 shader_parameter/shadow = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbc2v"]
+atlas = ExtResource("8_id83u")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fhod"]
+atlas = ExtResource("8_id83u")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5xhx"]
+atlas = ExtResource("8_id83u")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7eif5"]
+atlas = ExtResource("8_id83u")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7wb0"]
+atlas = ExtResource("8_id83u")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtihr"]
+atlas = ExtResource("8_id83u")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a4jh"]
+atlas = ExtResource("8_id83u")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_552b8"]
+atlas = ExtResource("11_tmv0d")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td1kh"]
 atlas = ExtResource("10_mndta")
@@ -45,6 +79,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sbc2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fhod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5xhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7eif5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7wb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtihr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a4jh")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_qostj")
 }, {
 "duration": 1.0,
@@ -52,6 +112,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_552b8")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -106,8 +174,9 @@ hit_flash_duration = 0.15
 material = SubResource("ShaderMaterial_kgt3y")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_tobyk")
-animation = &"idle"
-frame_progress = 0.460454
+animation = &"death"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionVolume" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
@@ -137,4 +206,5 @@ position = Vector2(15, 0)
 [node name="RelicComponent" type="Node" parent="."]
 script = ExtResource("12_d3kqb")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timeout"]
