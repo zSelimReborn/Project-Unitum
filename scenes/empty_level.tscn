@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brj3fngmcr1ei"]
+[gd_scene load_steps=6 format=3 uid="uid://brj3fngmcr1ei"]
 
 [ext_resource type="PackedScene" uid="uid://br08n31udov33" path="res://blueprints/gameplay/sample_platform.tscn" id="1_1aa0g"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="2_s3tap"]
 [ext_resource type="PackedScene" uid="uid://dd60doqqhf8hf" path="res://blueprints/gameplay/puzzles/cauldron/door.tscn" id="3_ss3jn"]
 [ext_resource type="PackedScene" uid="uid://b75o8vpamtdpb" path="res://scenes/debug.tscn" id="4_etdj5"]
+[ext_resource type="PackedScene" uid="uid://dw024ehm7ov8" path="res://blueprints/hud/hud.tscn" id="5_sjtuq"]
 
 [node name="EmptyLevel" type="Node2D"]
 
@@ -63,7 +64,7 @@ position = Vector2(-378, 115)
 [node name="Sprite2D9" parent="Entrance" instance=ExtResource("1_1aa0g")]
 position = Vector2(-504, 115)
 
-[node name="Player" parent="." node_paths=PackedStringArray("greyscale_rect") instance=ExtResource("2_s3tap")]
+[node name="Player" parent="." instance=ExtResource("2_s3tap")]
 position = Vector2(-296, 51)
 hit_flash_duration = null
 main_group = null
@@ -71,10 +72,13 @@ shadow_anim_name = null
 apply_gravity = null
 idle_animation = null
 base_damage_multiplier = null
-greyscale_rect = NodePath("")
 
 [node name="Door" parent="." instance=ExtResource("3_ss3jn")]
 position = Vector2(-297, 51)
 is_fake = true
 is_next_level = true
 next_level_path = ExtResource("4_etdj5")
+
+[node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_sjtuq")]
+player = NodePath("../Player")
+level_name = "Empty"
