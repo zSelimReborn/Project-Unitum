@@ -41,7 +41,7 @@ script = ExtResource("1_wv2oy")
 relic_type = 1
 ui_texture = ExtResource("2_difpf")
 ui_text = "Emerald Tablet"
-instant_interact = null
+tag = "emerald"
 interaction_text = "Open Chest"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

@@ -109,6 +109,7 @@ func fire():
 	
 func spawn_projectile():
 	var projectile_class = element_abilities[current_element]	
+	print("damage: ", get_damage())
 	return Common.spawn_projectile(owner, projectile_class, self, main_group, get_damage(), current_element, marker.global_transform)
 		
 func change_element(keycode):

@@ -10,13 +10,18 @@ extends BaseInteractable
 @export var relic_type : Types.PlayerState
 @export var ui_texture : Texture2D
 @export var ui_text : String
+@export var tag : String
 
 # Variables
 var opened = false
 
 func _ready():
 	super()
-	instant_interact = false
+	instant_interact = false	
+	print(PlayerStorage.opened_chest)
+	if PlayerStorage.opened_chest.has(tag):
+		open()
+		return
 
 func interact(player: Player):
 	if opened:
@@ -28,10 +33,15 @@ func interact(player: Player):
 		return false
 	opened = relic_component.add_relic(self)
 	if (opened):
-		on_opened()
-		is_interactable = false
+		open()
 	return opened
 
+func open():
+	opened = true
+	on_opened()
+	is_interactable = false
+	PlayerStorage.opened_chest.append(tag)
+	
 func on_opened():
 	if not sprite:
 		printerr("relic cannot change state, no sprite")

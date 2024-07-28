@@ -40,7 +40,7 @@ collision_layer = 4
 script = ExtResource("1_xyt46")
 ui_texture = ExtResource("2_tcop4")
 ui_text = "Philosphers Stone"
-instant_interact = null
+tag = "philo"
 interaction_text = "Open Chest"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

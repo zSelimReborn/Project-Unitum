@@ -40,7 +40,7 @@ collision_layer = 4
 script = ExtResource("1_p1ugn")
 ui_texture = ExtResource("2_q04fy")
 ui_text = "Elixir Of Life"
-instant_interact = null
+tag = "elixir"
 interaction_text = "Open Chest"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

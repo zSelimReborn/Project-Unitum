@@ -4,8 +4,8 @@ extends Node
 
 # Properties
 @export var max_num_relics : int = 2
-@export var relic_attack_multiplier : float = 0.25
-@export var relic_defense_multiplier : float = 0.2
+@export var relic_attack_multiplier : float = 0.20
+@export var relic_defense_multiplier : float = 0.1
 
 # Events
 signal new_relic_added(type, amount, relic_data)

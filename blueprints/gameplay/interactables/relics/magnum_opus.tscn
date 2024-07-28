@@ -41,7 +41,7 @@ script = ExtResource("1_i51cj")
 relic_type = 1
 ui_texture = ExtResource("2_gp4tw")
 ui_text = "Magnum Opus"
-instant_interact = null
+tag = "magnum"
 interaction_text = "Open Chest"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
