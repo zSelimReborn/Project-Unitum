@@ -4,7 +4,6 @@ extends PuzzlePiece
 
 # Properties
 @export var element : Types.Elements
-@export var element_lit_color: Color
 
 # OnReady
 @onready var cauldron_top = $CauldronNode/CauldronTop
@@ -15,7 +14,7 @@ extends PuzzlePiece
 func _ready():
 	if not element_sprite:
 		return
-	element_sprite.texture = Types.ElementTextures[element]
+	element_sprite.texture = Types.ElementTextures[element]["inactive"]
 	
 func solve_piece(interactable):
 	if not interactable or is_solved:
@@ -47,4 +46,4 @@ func enable_lit_cauldron():
 func lit_element():
 	if not element_sprite:
 		return
-	element_sprite.modulate = element_lit_color
+	element_sprite.texture = Types.ElementTextures[element]["active"]

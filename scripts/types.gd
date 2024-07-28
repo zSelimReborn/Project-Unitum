@@ -16,8 +16,20 @@ static var ElementString = {
 }
 
 static var ElementTextures = {
-	Elements.WATER: preload("res://assets/gameplay/elements/triangle_water.tga"),
-	Elements.FIRE: preload("res://assets/gameplay/elements/triangle_air.tga"),
-	Elements.AIR: preload("res://assets/gameplay/elements/triangle_air.tga"),
-	Elements.EARTH: preload("res://assets/gameplay/elements/triangle_earth.tga"),
+	Elements.WATER: {
+		"inactive": preload("res://assets/gameplay/elements/fire_ui_inactive.png"),
+		"active": preload("res://assets/gameplay/elements/fire_ui_active.png")
+	},
+	Elements.FIRE: {
+		"inactive": preload("res://assets/gameplay/elements/water_ui_inactive.png"),
+		"active": preload("res://assets/gameplay/elements/water_ui_active.png")
+	},
+	Elements.AIR: {
+		"inactive": preload("res://assets/gameplay/elements/air_ui_inactive.tga"),
+		"active": preload("res://assets/gameplay/elements/air_ui.tga")
+	},
+	Elements.EARTH: {
+		"inactive": preload("res://assets/gameplay/elements/earth_ui_inactive.png"),
+		"active": preload("res://assets/gameplay/elements/earth_ui_active.png")
+	},
 }

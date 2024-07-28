@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bijumamb4vac5" path="res://assets/gameplay/puzzles/cauldron/cauldron_top.tga" id="3_8bqwn"]
 [ext_resource type="Shader" path="res://assets/shaders/highlight.gdshader" id="3_bv8a3"]
 [ext_resource type="Texture2D" uid="uid://cui6wudlr4p8i" path="res://assets/gameplay/puzzles/torch/air_animation.tga" id="5_6qevt"]
-[ext_resource type="Texture2D" uid="uid://puj8gc8qmnrw" path="res://assets/gameplay/elements/triangle_fire.tga" id="5_jvbcy"]
 [ext_resource type="Texture2D" uid="uid://cely0qxrm1i53" path="res://assets/gameplay/puzzles/torch/fire_animation.tga" id="5_wx5l2"]
 [ext_resource type="Texture2D" uid="uid://drhuqhdejrct7" path="res://assets/gameplay/puzzles/torch/earth_animation.tga" id="6_aljni"]
 [ext_resource type="Texture2D" uid="uid://5u8fkkn3iaio" path="res://assets/gameplay/puzzles/torch/water_animation.tga" id="7_gy0h0"]
+[ext_resource type="Texture2D" uid="uid://bjdp56f7cdnge" path="res://assets/gameplay/elements/fire_ui_inactive.png" id="9_338ir"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qy681"]
 resource_local_to_scene = true
@@ -28,13 +28,13 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("5_6qevt")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c6bqd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5caj"]
 atlas = ExtResource("6_aljni")
-region = Rect2(0, 64, 64, 64)
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bkoje"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4vr4"]
 atlas = ExtResource("6_aljni")
-region = Rect2(64, 64, 64, 64)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xqwc"]
 atlas = ExtResource("5_wx5l2")
@@ -67,10 +67,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c6bqd")
+"texture": SubResource("AtlasTexture_a5caj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bkoje")
+"texture": SubResource("AtlasTexture_h4vr4")
 }],
 "loop": true,
 "name": &"earth",
@@ -110,7 +110,6 @@ animations = [{
 collision_layer = 16
 collision_mask = 9
 script = ExtResource("1_770te")
-element_lit_color = Color(1, 0, 0, 1)
 
 [node name="CauldronNode" type="Node2D" parent="."]
 position = Vector2(0, -16)
@@ -132,7 +131,7 @@ autoplay = "empty"
 [node name="ElementSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -26)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_jvbcy")
+texture = ExtResource("9_338ir")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -25)
