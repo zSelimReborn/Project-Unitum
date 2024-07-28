@@ -2,6 +2,8 @@ class_name Player
 
 extends BaseCharacter
 
+const CAMERA_SHAKE_TRESHOLD = 2.0
+
 # On Ready
 @onready var top_marker = $TopAnchor/TopMarker
 @onready var bottom_marker = $BottomAnchor/BottomMarker
@@ -9,6 +11,7 @@ extends BaseCharacter
 @onready var bottom_anchor = $BottomAnchor
 @onready var fire_rate_timer = $FireRateTimer
 @onready var relic_component = $RelicComponent
+@onready var camera = $Camera2D
 
 #Properties
 @export var fire_ball_class : PackedScene
@@ -19,6 +22,7 @@ extends BaseCharacter
 @export var main_group : String = "player"
 @export var greyscale_rect : ColorRect
 @export var shadow_anim_name : String = "shadow"
+@export var shake_random_strength : float = 20.0
 
 #Variables
 var current_element : Types.Elements = Types.Elements.FIRE
@@ -31,6 +35,10 @@ var in_game = true
 var in_dialogue = false
 var last_position = null
 
+var shake_duration : float = 5.0
+var shake_strength : float = 0
+var rng = RandomNumberGenerator.new()
+
 # Events
 signal on_change_state(old_state, new_state)
 signal on_interactable(interactable: BaseInteractable)
@@ -41,6 +49,7 @@ signal on_death_menu_requested()
 signal on_interaction_hint_requested(interactable: BaseInteractable)
 signal jump_dialogue_requested()
 signal next_dialogue_requested()
+signal camera_shake_ended()
 
 var element_input_mapping = {
 	KEY_1: Types.Elements.FIRE,
@@ -71,6 +80,7 @@ func process_animation(_delta):
 func _physics_process(delta):
 	if is_on_floor():
 		last_position = transform
+	process_camera_shake(delta)
 	super(delta)
 	
 func restore_after_fall():
@@ -109,7 +119,6 @@ func fire():
 	
 func spawn_projectile():
 	var projectile_class = element_abilities[current_element]	
-	print("damage: ", get_damage())
 	return Common.spawn_projectile(owner, projectile_class, self, main_group, get_damage(), current_element, marker.global_transform)
 		
 func change_element(keycode):
@@ -273,3 +282,23 @@ func restore_state():
 	for relic in relics:
 		handle_new_relic(relic, relics[relic])
 	print("kill count: ", kill_count)
+	
+func apply_camera_shake(duration):
+	shake_duration = duration
+	shake_strength = shake_random_strength
+	
+func process_camera_shake(delta):
+	if shake_strength > 0:
+		shake_strength = lerpf(shake_strength, 0, shake_duration * delta)
+		if camera:
+			camera.offset = camera_shake_offset()
+		if shake_strength < CAMERA_SHAKE_TRESHOLD:
+			shake_strength = 0.0
+			camera_shake_ended.emit()
+
+func camera_shake_offset() -> Vector2:
+	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))
+	
+func turn_in_shadow():
+	state = Types.PlayerState.Shadow
+	sprite.play(shadow_anim_name)

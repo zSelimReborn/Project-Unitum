@@ -1,0 +1,11 @@
+[gd_scene load_steps=6 format=3 uid="uid://8kpjfdmm4ti7"]
+
+[ext_resource type="Script" path="res://scripts/level/enemy_spawner.gd" id="1_x7sak"]
+[ext_resource type="PackedScene" uid="uid://bgrldxlq6x0ob" path="res://blueprints/gameplay/enemies/fire_enemy.tscn" id="2_y2vpf"]
+[ext_resource type="PackedScene" uid="uid://m11syy32y6op" path="res://blueprints/gameplay/enemies/water_enemy.tscn" id="3_mbadf"]
+[ext_resource type="PackedScene" uid="uid://dirgrgs3onpn1" path="res://blueprints/gameplay/enemies/earth_enemy.tscn" id="4_v4bci"]
+[ext_resource type="PackedScene" uid="uid://da56rok8u3uq5" path="res://blueprints/gameplay/enemies/air_enemy.tscn" id="5_x04tg"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_x7sak")
+enemy_classes = Array[PackedScene]([ExtResource("2_y2vpf"), ExtResource("3_mbadf"), ExtResource("5_x04tg"), ExtResource("4_v4bci")])

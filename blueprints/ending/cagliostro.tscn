@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://daqg4uolcf6yy"]
+
+[ext_resource type="Script" path="res://scripts/level/cagliostro.gd" id="1_8wmgq"]
+[ext_resource type="Texture2D" uid="uid://2u86ujqar6p3" path="res://assets/ending/cagliostro_shadow.png" id="2_1x5hy"]
+[ext_resource type="PackedScene" uid="uid://vta7e23qonpm" path="res://blueprints/characters/shadow.tscn" id="2_3hd5b"]
+[ext_resource type="PackedScene" uid="uid://opecqgxt8fyr" path="res://scenes/end_menu_level.tscn" id="3_ohrnm"]
+[ext_resource type="Texture2D" uid="uid://ccwvpkj7ckp0v" path="res://assets/ending/tomb.png" id="3_vowep"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2vur"]
+atlas = ExtResource("2_1x5hy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4de0"]
+atlas = ExtResource("2_1x5hy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yofuq"]
+atlas = ExtResource("2_1x5hy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bvpl2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2vur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4de0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yofuq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjoya"]
+size = Vector2(91, 32)
+
+[node name="Cagliostro" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_8wmgq")
+shake_duration = 1.0
+shadow_class = ExtResource("2_3hd5b")
+end_menu_wait = null
+end_menu = ExtResource("3_ohrnm")
+instant_interact = null
+interaction_text = "Speak to Cagliostro"
+interaction_hint = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -16)
+sprite_frames = SubResource("SpriteFrames_bvpl2")
+autoplay = "default"
+frame_progress = 0.687718
+flip_h = true
+
+[node name="TombStone" type="Sprite2D" parent="."]
+position = Vector2(28, -16)
+texture = ExtResource("3_vowep")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, -16)
+shape = SubResource("RectangleShape2D_rjoya")

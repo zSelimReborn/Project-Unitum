@@ -4,9 +4,12 @@ extends Node
 
 const DISTANCE_INTERNAL_EPSILON = 5
 
+# Oh yeah, consistency
 enum PlayerState { Character, Shadow }
 
 enum Elements { WATER, FIRE, AIR, EARTH }
+
+enum Ending { None, Human, Shadow, Good, Pacifist }
 
 static var ElementString = {
 	Elements.WATER: "water",

@@ -36,7 +36,7 @@ func _ready():
 func setup_initial_level_path():
 	if not initial_level:
 		printerr("hud, initial level empty, fall back to main menu")
-		initial_level_path = "res://scenes/main_menu.tscn"
+		initial_level_path = "res://scenes/main_menu_level.tscn"
 	else:
 		initial_level_path = initial_level.resource_path
 	
@@ -101,10 +101,10 @@ func on_death_menu_requested():
 	
 func on_death_restart_pressed():
 	PlayerStorage.reset()
-	get_tree().change_scene_to_file(initial_level_path)
+	SceneManager.goto_scene(initial_level_path)
 	
 func on_death_back_pressed():
-	get_tree().reload_current_scene()
+	SceneManager.goto_scene(get_tree().current_scene.scene_file_path)
 	
 func setup_relic_popup():
 	if not player:

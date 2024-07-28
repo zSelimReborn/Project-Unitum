@@ -1,0 +1,185 @@
+[gd_scene load_steps=9 format=3 uid="uid://fdye2c0ta25j"]
+
+[ext_resource type="Script" path="res://scripts/hud/the_end_menu.gd" id="1_u8x3o"]
+[ext_resource type="PackedScene" uid="uid://lv8tte70fy6x" path="res://scenes/main_menu_level.tscn" id="2_m42et"]
+[ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="2_qsy35"]
+[ext_resource type="Texture2D" uid="uid://bis0eay2vp4u4" path="res://assets/hud/button.tga" id="3_12sva"]
+[ext_resource type="Texture2D" uid="uid://dqjy4rnqysw7i" path="res://assets/hud/menu/sky.png" id="3_u450q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkuev"]
+texture = ExtResource("3_u450q")
+modulate_color = Color(1, 1, 1, 0.196078)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4litf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8yvhp"]
+texture = ExtResource("3_12sva")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="EndMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8x3o")
+initial_level = ExtResource("2_m42et")
+human_description = "It seems that you lost your shadow... but don't give up skeleton! You'll find a way."
+shadow_description = "You're just a shadow now... you took freedom a bit too seriously."
+good_description = "You and your shadow are now free. Are you two still going to be together or are you going to go your separate ways?"
+pacifist_description = "You truly are formidable. Live your life with or without your shadow."
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kkuev")
+
+[node name="Container" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 609.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+
+[node name="EndLabel" type="Label" parent="Background/Container"]
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("2_qsy35")
+theme_override_font_sizes/font_size = 50
+text = "THE END"
+horizontal_alignment = 1
+
+[node name="EndDescription" type="Label" parent="Background/Container"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("2_qsy35")
+theme_override_font_sizes/font_size = 20
+text = "
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="GenericDescription" type="Label" parent="Background/Container"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("2_qsy35")
+theme_override_font_sizes/font_size = 20
+text = "This journey doesn't end here. Who knows what happens if you act differently."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ThankYouDescription" type="Label" parent="Background/Container"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.2
+theme_override_fonts/font = ExtResource("2_qsy35")
+theme_override_font_sizes/font_size = 20
+text = "Thank you for playing our game. Take care of your shadow, she's always with you, from the very beginning."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Background/Container"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+mouse_filter = 2
+theme_override_constants/separation = 50
+
+[node name="RestartContainer" type="Panel" parent="Background/Container/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4litf")
+
+[node name="TextureRect" type="TextureRect" parent="Background/Container/Buttons/RestartContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -70.0
+offset_right = 123.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_12sva")
+
+[node name="RestartButton" type="Button" parent="Background/Container/Buttons/RestartContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_qsy35")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_8yvhp")
+text = "Start Over"
+flat = true
+
+[node name="ExitContainer" type="Panel" parent="Background/Container/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4litf")
+
+[node name="TextureRect" type="TextureRect" parent="Background/Container/Buttons/ExitContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -70.0
+offset_right = 123.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_12sva")
+
+[node name="ExitButton" type="Button" parent="Background/Container/Buttons/ExitContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_qsy35")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_8yvhp")
+text = "Exit Game"
+flat = true
+
+[connection signal="pressed" from="Background/Container/Buttons/RestartContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Background/Container/Buttons/ExitContainer/ExitButton" to="." method="_on_exit_button_pressed"]

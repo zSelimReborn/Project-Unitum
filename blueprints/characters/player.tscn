@@ -174,9 +174,7 @@ hit_flash_duration = 0.15
 material = SubResource("ShaderMaterial_kgt3y")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_tobyk")
-animation = &"death"
-frame = 6
-frame_progress = 1.0
+animation = &"shadow"
 
 [node name="CollisionVolume" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)

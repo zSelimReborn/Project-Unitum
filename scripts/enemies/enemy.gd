@@ -46,6 +46,11 @@ var dissolve_parameter = 0
 @onready var left_cast = $LeftCast
 @onready var right_cast = $RightCast
 
+func calculate_destinations():
+	left_point = position + Vector2.LEFT * patrol_distance
+	right_point = position + Vector2.RIGHT * patrol_distance
+	destinations = {-1: left_point, 1: right_point}
+
 func _ready():
 	initial_sprite_scale = sprite.scale
 	

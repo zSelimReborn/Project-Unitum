@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://opecqgxt8fyr"]
+
+[ext_resource type="PackedScene" uid="uid://fdye2c0ta25j" path="res://blueprints/hud/the_end_menu.tscn" id="1_v7gl6"]
+
+[node name="EndMenuLevel" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EndMenu" parent="CanvasLayer" instance=ExtResource("1_v7gl6")]
+pacifist_description = null

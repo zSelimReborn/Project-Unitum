@@ -18,7 +18,6 @@ var opened = false
 func _ready():
 	super()
 	instant_interact = false	
-	print(PlayerStorage.opened_chest)
 	if PlayerStorage.opened_chest.has(tag):
 		open()
 		return

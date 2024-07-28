@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://cawk7r7h1ai4c"]
+
+[ext_resource type="PackedScene" uid="uid://br08n31udov33" path="res://blueprints/gameplay/sample_platform.tscn" id="1_hpsnp"]
+[ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_w7ek4"]
+[ext_resource type="PackedScene" uid="uid://dw024ehm7ov8" path="res://blueprints/hud/hud.tscn" id="3_b42l0"]
+[ext_resource type="PackedScene" uid="uid://daqg4uolcf6yy" path="res://blueprints/ending/cagliostro.tscn" id="4_r3hcq"]
+[ext_resource type="PackedScene" uid="uid://8kpjfdmm4ti7" path="res://blueprints/ending/enemy_spawner.tscn" id="5_lgwse"]
+
+[node name="DebugEnding" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_w7ek4")]
+position = Vector2(-19, 50)
+hit_flash_duration = 0.2
+
+[node name="Entrance" type="Node2D" parent="."]
+
+[node name="Sprite2D" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-3, 115)
+
+[node name="Sprite2D10" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(502, -9)
+
+[node name="Sprite2D13" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-503, -10)
+
+[node name="Sprite2D11" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(502, -136)
+
+[node name="Sprite2D12" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-504, -136)
+
+[node name="Sprite2D14" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-504, 240)
+
+[node name="Sprite2D16" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(502, 240)
+
+[node name="Sprite2D15" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-504, 367)
+
+[node name="Sprite2D17" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(502, 367)
+
+[node name="Sprite2D2" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-129, 115)
+
+[node name="Sprite2D3" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-252, 115)
+
+[node name="Sprite2D4" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(122, 115)
+
+[node name="Sprite2D5" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(248, 115)
+
+[node name="Sprite2D6" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(376, 115)
+
+[node name="Sprite2D7" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(502, 115)
+
+[node name="Sprite2D8" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-378, 115)
+
+[node name="Sprite2D9" parent="Entrance" instance=ExtResource("1_hpsnp")]
+position = Vector2(-504, 115)
+
+[node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_b42l0")]
+player = NodePath("../Player")
+level_name = "DebugEnding"
+
+[node name="Cagliostro" parent="." node_paths=PackedStringArray("enemy_spawner", "shadow_spawn_point") instance=ExtResource("4_r3hcq")]
+position = Vector2(149, 52)
+enemy_spawner = NodePath("../EnemySpawner")
+shadow_spawn_point = NodePath("../ShadowSpawnPoint")
+end_menu_wait = 2.0
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("spawn_points") instance=ExtResource("5_lgwse")]
+position = Vector2(152, -6)
+spawn_points = [NodePath("../SpawnPoint1"), NodePath("../SpawnPoint2"), NodePath("../SpawnPoint3"), NodePath("../SpawnPoint4")]
+total_enemies = 1
+enemy_per_stage = 1
+
+[node name="SpawnPoint1" type="Node2D" parent="."]
+position = Vector2(-364, 44)
+
+[node name="SpawnPoint2" type="Node2D" parent="."]
+position = Vector2(-155, 44)
+
+[node name="SpawnPoint3" type="Node2D" parent="."]
+position = Vector2(258, 44)
+
+[node name="SpawnPoint4" type="Node2D" parent="."]
+position = Vector2(383, 44)
+
+[node name="ShadowSpawnPoint" type="Node2D" parent="."]
+position = Vector2(58, 52)

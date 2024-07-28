@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bouy5qlcenfn7"]
+[gd_scene load_steps=12 format=3 uid="uid://bouy5qlcenfn7"]
 
-[ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_mvrpb"]
-[ext_resource type="Texture2D" uid="uid://di4xifhmeul7k" path="res://logo.svg" id="1_nseft"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_y5hoe"]
-[ext_resource type="PackedScene" uid="uid://b75o8vpamtdpb" path="res://scenes/debug.tscn" id="2_n4vba"]
-[ext_resource type="Texture2D" uid="uid://bis0eay2vp4u4" path="res://assets/hud/button.tga" id="3_b4c1i"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_i3gxv"]
+[ext_resource type="PackedScene" uid="uid://b75o8vpamtdpb" path="res://scenes/debug.tscn" id="2_smh5x"]
+[ext_resource type="Texture2D" uid="uid://dqjy4rnqysw7i" path="res://assets/hud/menu/sky.png" id="3_b4430"]
+[ext_resource type="Texture2D" uid="uid://di4xifhmeul7k" path="res://logo.svg" id="4_rnj4d"]
+[ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="5_4wnv4"]
+[ext_resource type="Texture2D" uid="uid://bis0eay2vp4u4" path="res://assets/hud/button.tga" id="6_c8fsm"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65l1u"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xtac"]
+texture = ExtResource("3_b4430")
+modulate_color = Color(1, 1, 1, 0.196078)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i76eg"]
 
@@ -15,7 +18,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x11rw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0sgr4"]
-texture = ExtResource("3_b4c1i")
+texture = ExtResource("6_c8fsm")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -28,8 +31,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_y5hoe")
-first_level = ExtResource("2_n4vba")
+script = ExtResource("1_i3gxv")
+first_level = ExtResource("2_smh5x")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -38,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_65l1u")
+theme_override_styles/panel = SubResource("StyleBoxTexture_3xtac")
 
 [node name="Container" type="GridContainer" parent="Panel"]
 layout_mode = 1
@@ -48,9 +51,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -224.5
-offset_top = -274.0
+offset_top = -309.0
 offset_right = 224.5
-offset_bottom = 344.0
+offset_bottom = 309.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -66,9 +69,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -119.5
+offset_right = 116.5
+offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_nseft")
+texture = ExtResource("4_rnj4d")
 
 [node name="PanelName" type="Panel" parent="Panel/Container"]
 layout_mode = 2
@@ -82,11 +88,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -55.0
+offset_left = -163.0
+offset_top = 70.0
+offset_right = 168.0
+offset_bottom = 149.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_mvrpb")
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 75
 text = "Unitum"
 horizontal_alignment = 1
 
@@ -102,30 +111,30 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -122.5
-offset_top = -210.0
-offset_right = 126.5
-offset_bottom = -75.0
+offset_left = -195.5
+offset_top = -145.0
+offset_right = 204.5
+offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_b4c1i")
+texture = ExtResource("6_c8fsm")
 
 [node name="NewGameButton" type="Button" parent="Panel/Container/NewGameContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -91.5
-offset_top = -160.0
-offset_right = 98.5
-offset_bottom = -120.0
+offset_left = -126.0
+offset_top = -53.0
+offset_right = 132.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_mvrpb")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_0sgr4")
 text = "New Game"
 flat = true
@@ -143,30 +152,30 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -122.5
-offset_top = -250.0
-offset_right = 126.5
-offset_bottom = -115.0
+offset_left = -195.5
+offset_top = -150.0
+offset_right = 203.5
+offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_b4c1i")
+texture = ExtResource("6_c8fsm")
 
 [node name="ExitButton" type="Button" parent="Panel/Container/ExitContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.5
-offset_top = -200.0
-offset_right = 107.5
-offset_bottom = -160.0
+offset_left = -102.0
+offset_top = -72.0
+offset_right = 106.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_mvrpb")
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_0sgr4")
 text = "Exit"
 flat = true

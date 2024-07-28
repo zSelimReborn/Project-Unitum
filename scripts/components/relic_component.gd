@@ -45,3 +45,8 @@ func get_relics():
 	
 func get_relic(type: Types.PlayerState):
 	return relics[type]
+	
+func collected_all_relics():
+	var human_relic = get_relic(Types.PlayerState.Character)
+	var shadow_relic = get_relic(Types.PlayerState.Shadow)
+	return human_relic >= max_num_relics and shadow_relic >= max_num_relics
