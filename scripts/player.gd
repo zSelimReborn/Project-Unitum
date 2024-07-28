@@ -48,6 +48,7 @@ var element_input_mapping = {
 	KEY_4: Types.Elements.AIR
 }
 
+
 func process_movement_input():
 	var movement_direction = Input.get_axis("move_left", "move_right")
 	add_movement(movement_direction)
@@ -154,6 +155,7 @@ func _ready():
 	select_marker(false)
 	setup_fire_rate()
 	setup_relic_event()
+	restore_state()	
 	
 func setup_projectiles():
 	element_abilities = {
@@ -178,11 +180,16 @@ func setup_relic_event():
 	relic_component.new_relic_added.connect(on_new_relic)
 	
 func on_new_relic(type: Types.PlayerState, amount: int, relic_data):
-	if type == Types.PlayerState.Character:
-		damage_multiplier += relic_component.relic_attack_multiplier
-	else:
-		defense_multiplier -= relic_component.relic_defense_multiplier
+	handle_new_relic(type, 1)
 	switch_relic_menu(type, relic_data)
+	PlayerStorage.relics = relic_component.get_relics()
+	
+func handle_new_relic(type: Types.PlayerState, amount: int):
+	for i in amount:
+		if type == Types.PlayerState.Character:
+			damage_multiplier += relic_component.relic_attack_multiplier
+		else:
+			defense_multiplier -= relic_component.relic_defense_multiplier
 	
 func _on_fire_rate_timeout():
 	can_shoot = true
@@ -246,4 +253,16 @@ func switch_gameplay():
 	
 func new_kill():
 	super()
-	print("player killed someone: ", kill_count)
+	PlayerStorage.kill_count = kill_count
+
+func restore_state():
+	kill_count = PlayerStorage.kill_count
+	if not relic_component:
+		return
+	relic_component.restore_relics()
+	var relics = relic_component.get_relics()
+	for relic in relics:
+		handle_new_relic(relic, relics[relic])
+	print("restored kill_count: ", kill_count)
+	print("restored dmg mul: ", damage_multiplier)
+	print("restored def mul: ", defense_multiplier)

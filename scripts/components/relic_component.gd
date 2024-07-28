@@ -37,6 +37,9 @@ func add_relic(relic: Relic):
 	new_relic_added.emit(type, relics[type], data)
 	return true
 	
+func restore_relics():
+	relics = PlayerStorage.relics
+	
 func get_relics():
 	return relics
 	

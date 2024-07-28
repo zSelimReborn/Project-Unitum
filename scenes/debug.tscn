@@ -31,8 +31,13 @@ size = Vector2(3400, 20)
 
 [node name="Player" parent="." node_paths=PackedStringArray("greyscale_rect") instance=ExtResource("1_qle6k")]
 position = Vector2(-499, -200)
+hit_flash_duration = null
+main_group = null
+shadow_anim_name = null
+apply_gravity = null
+idle_animation = null
+base_damage_multiplier = null
 greyscale_rect = NodePath("../GreyScaleLayer/GreyScaleRect")
-hit_flash_duration = 0.2
 
 [node name="Entrance" type="Node2D" parent="."]
 
