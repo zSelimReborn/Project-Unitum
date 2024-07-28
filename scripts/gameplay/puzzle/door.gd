@@ -3,6 +3,9 @@ class_name Door
 extends BaseInteractable
 
 # Properties
+@export var is_fake : bool = false
+@export var is_next_level : bool = false
+@export var next_level_path : PackedScene
 @export var spawn_point : Node2D
 
 # On Ready
@@ -12,6 +15,9 @@ extends BaseInteractable
 var puzzle_listener_component = null
 
 func _ready():
+	is_interactable = not is_fake
+	if is_fake:
+		return
 	super()
 	instant_interact = false
 	puzzle_listener_component = $PuzzleListenerComponent
@@ -27,6 +33,8 @@ func on_solved():
 	sprite.play("opened")
 	
 func interact(player: Player):
+	if not is_interactable:
+		return false
 	if not player:
 		return false
 	if not puzzle_listener_component:
@@ -38,10 +46,22 @@ func interact(player: Player):
 	return false
 	
 func teleport(player):
+	if is_next_level:
+		go_new_level()
+	else:
+		go_new_room(player)
+
+func go_new_room(player: Player):
 	if not spawn_point:
 		printerr("door unable to teleport: ", get_name())
-		return
+		return false
 	if not player:
 		printerr("door unable to teleport, no player")
-		return
+		return false
 	player.transform = spawn_point.transform
+
+func go_new_level():
+	if not next_level_path:
+		printerr("door unable to load next level, empty path")
+		return false
+	SceneManager.goto_scene(next_level_path.resource_path)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=22 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="Shader" path="res://assets/shaders/greyscale.gdshader" id="1_q7ugf"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/components/puzzle_listener_component.gd" id="7_dglby"]
 [ext_resource type="PackedScene" uid="uid://bysxvdpqire16" path="res://blueprints/gameplay/puzzles/cauldron/cauldron.tscn" id="7_se3yf"]
 [ext_resource type="PackedScene" uid="uid://dd60doqqhf8hf" path="res://blueprints/gameplay/puzzles/cauldron/door.tscn" id="9_7swxy"]
+[ext_resource type="PackedScene" uid="uid://brj3fngmcr1ei" path="res://scenes/empty_level.tscn" id="10_8jwo1"]
 [ext_resource type="PackedScene" uid="uid://dw024ehm7ov8" path="res://blueprints/hud/hud.tscn" id="11_ntrn2"]
 [ext_resource type="PackedScene" uid="uid://bgrldxlq6x0ob" path="res://blueprints/gameplay/enemies/fire_enemy.tscn" id="11_u0shf"]
 [ext_resource type="PackedScene" uid="uid://bjrdo0amddwtf" path="res://blueprints/gameplay/puzzles/secret_wall/fire_wall.tscn" id="12_pvvmp"]
@@ -205,6 +206,8 @@ element = 3
 
 [node name="DoorEntrance" parent="EntranceGameplay" node_paths=PackedStringArray("spawn_point") instance=ExtResource("9_7swxy")]
 position = Vector2(-234, 51)
+is_next_level = true
+next_level_path = ExtResource("10_8jwo1")
 spawn_point = NodePath("../../RoomGameplay/DoorRoom")
 interaction_hint = "Closed. Maybe I can use my elements to lit something..."
 
