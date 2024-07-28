@@ -6,7 +6,15 @@ extends Control
 @onready var relic_texture = $Panel/VBoxContainer/RelicTexture
 @onready var relic_type = $Panel/VBoxContainer/HBoxContainer/RelicType
 @onready var relic_name = $Panel/VBoxContainer/RelicName
+@onready var relic_description = $Panel/VBoxContainer/Description
 
+# Properties
+@export var base_description = "New relic found. You gained %1 boost in %2"
+
+var boost = {
+	Types.PlayerState.Character: {"value": "20%", "label": "Attack"},
+	Types.PlayerState.Shadow: {"value": "10%", "label": "Defense"}
+}
 
 signal on_popup_close()
 
@@ -31,6 +39,9 @@ func setup_values(type, data):
 	if not relic_name: 
 		printerr("unable to show relic name, no name")
 		return
+	if not relic_description:
+		printerr("unable to show relic description, no description")
+		return
 	
 	var texture = data["texture"]
 	var name = data["name"]
@@ -38,3 +49,11 @@ func setup_values(type, data):
 	relic_texture.texture = texture
 	relic_name.text = name
 	relic_type.text = type_string
+	relic_description.text = build_description(type)
+	
+func build_description(type: Types.PlayerState):
+	var description = base_description
+	var stats = boost[type]
+	description = description.replace("%1", stats["value"])
+	description = description.replace("%2", stats["label"])
+	return description
