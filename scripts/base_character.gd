@@ -28,6 +28,7 @@ signal on_death
 # Variables
 var is_alive : bool = true
 var current_impulse = Vector2()
+var kill_count = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -126,3 +127,6 @@ func update_shader_param(param: String, value: float):
 		printerr("unable to update shader param, no: ", param)
 		return
 	sprite.material.set_shader_parameter(param, value)
+
+func new_kill():
+	kill_count += 1

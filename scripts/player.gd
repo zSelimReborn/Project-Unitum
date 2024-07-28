@@ -243,3 +243,7 @@ func switch_ui(show_cursor, pause_game):
 func switch_gameplay():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Engine.time_scale = 1
+	
+func new_kill():
+	super()
+	print("player killed someone: ", kill_count)

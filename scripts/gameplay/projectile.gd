@@ -35,6 +35,8 @@ func _on_body_entered(body):
 		if not character.can_take_damage(self):
 			return
 		character.take_damage(damage)
+		if not character.is_alive:
+			increment_instigator_kill_count()
 	elif puzzle:
 		if not puzzle.try_solve_piece(self):
 			return
@@ -48,3 +50,8 @@ func _on_anim_sprite_animation_looped():
 		return
 	if sprite.animation == "default":
 		sprite.play("loop")
+		
+func increment_instigator_kill_count():
+	var character = instigator as BaseCharacter
+	if character:
+		character.new_kill()
