@@ -5,6 +5,7 @@ extends CanvasLayer
 # Properties
 @export var player : Player
 @export var level_name : String
+@export var initial_level : PackedScene
 
 # On Ready
 @onready var player_bar = $MainContainer/TopContainer/PlayerBar
@@ -15,16 +16,29 @@ extends CanvasLayer
 @onready var popup_container = $PopupContainer
 @onready var dialogue_box = $MainContainer/BottomGrid/DialogueBox
 @onready var relic_popup = $PopupContainer/PopupBackground/RelicPopup
+@onready var death_menu = $PopupContainer/PopupBackground/DeathMenu
+
+# Variables
+var initial_level_path = null
 
 func _ready():
+	setup_initial_level_path()
 	setup_player_bar()
 	setup_interact_text()
 	setup_attack_controls()
 	setup_level_name()
 	setup_pause_menu()
+	setup_death_menu()
 	setup_relic_popup()
 	setup_interaction_hint()
 	setup_dialogue_flow()
+	
+func setup_initial_level_path():
+	if not initial_level:
+		printerr("hud, initial level empty, fall back to main menu")
+		initial_level_path = "res://scenes/main_menu.tscn"
+	else:
+		initial_level_path = initial_level.resource_path
 	
 func setup_level_name():
 	if not level_name_object:
@@ -69,6 +83,28 @@ func setup_pause_menu():
 	pause_menu.setup_player(player)
 	pause_menu.continue_pressed.connect(on_continue_pressed)
 	pause_menu.exit_pressed.connect(on_exit_pressed)
+	
+func setup_death_menu():
+	if not player:
+		printerr("hud cannot setup death menu, no selected player")
+		return
+	if not death_menu:
+		printerr("hud cannot setup death menu")
+		return
+	player.on_death_menu_requested.connect(on_death_menu_requested)
+	death_menu.restart_pressed.connect(on_death_restart_pressed)
+	death_menu.back_pressed.connect(on_death_back_pressed)
+	death_menu.exit_pressed.connect(on_exit_pressed)
+	
+func on_death_menu_requested():
+	game_over()
+	
+func on_death_restart_pressed():
+	PlayerStorage.reset()
+	get_tree().change_scene_to_file(initial_level_path)
+	
+func on_death_back_pressed():
+	get_tree().reload_current_scene()
 	
 func setup_relic_popup():
 	if not player:
@@ -145,6 +181,15 @@ func toggle_pause_menu(show: bool):
 	else:
 		pause_menu.hide()
 	toggle_popup(show)
+	
+func game_over():
+	if not death_menu:
+		printerr("unable to toggle death menu, no menu")
+		return
+	relic_popup.hide()
+	pause_menu.hide()
+	death_menu.show()
+	toggle_popup(true)
 	
 func on_continue_pressed():
 	if not player:

@@ -37,6 +37,7 @@ signal on_interactable(interactable: BaseInteractable)
 signal on_change_element(old_element, current_element)
 signal on_relic_found(type, data)
 signal on_pause_menu_requested()
+signal on_death_menu_requested()
 signal on_interaction_hint_requested(interactable: BaseInteractable)
 signal jump_dialogue_requested()
 signal next_dialogue_requested()
@@ -76,11 +77,13 @@ func restore_after_fall():
 	transform = last_position
 
 func _input(event):
+	if not is_alive:
+		return
 	if in_dialogue and event.is_action_pressed("jump_dialogue"):
 		handle_jump_dialogue()
 	elif not in_dialogue and event.is_action_pressed("pause"):
 		switch_pause_menu()
-	elif not in_dialogue and in_game and is_alive:
+	elif not in_dialogue and in_game:
 		process_movement_input()
 		if event.is_action_pressed("fire"):
 			fire()
@@ -209,7 +212,7 @@ func _on_animation_finished():
 		on_death_animation_finished()
 	
 func on_death_animation_finished():
-	get_tree().reload_current_scene()
+	game_over()
 	
 func update_greyscale():
 	if not greyscale_rect:
@@ -224,6 +227,11 @@ func switch_pause_menu():
 	on_pause_menu_requested.emit()
 	in_game = not in_game
 	
+func game_over():
+	switch_ui(true, true)
+	on_death_menu_requested.emit()
+	in_game = false
+
 func switch_relic_menu(type, data):
 	if in_game:
 		switch_ui(true, true)
@@ -263,6 +271,4 @@ func restore_state():
 	var relics = relic_component.get_relics()
 	for relic in relics:
 		handle_new_relic(relic, relics[relic])
-	print("restored kill_count: ", kill_count)
-	print("restored dmg mul: ", damage_multiplier)
-	print("restored def mul: ", defense_multiplier)
+	print("kill count: ", kill_count)

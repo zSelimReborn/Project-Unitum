@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=23 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="Shader" path="res://assets/shaders/greyscale.gdshader" id="1_q7ugf"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b75v7ti4j7pwj" path="res://blueprints/gameplay/puzzles/secret_wall/earth_wall.tscn" id="16_ao2kv"]
 [ext_resource type="PackedScene" uid="uid://dwm2sk8klrsoo" path="res://blueprints/gameplay/level/fall_area.tscn" id="17_0s1fa"]
 [ext_resource type="PackedScene" uid="uid://c5y4v2hfkqm3k" path="res://blueprints/gameplay/interactables/relics/elixir_of_life.tscn" id="18_62vxp"]
+[ext_resource type="PackedScene" uid="uid://m11syy32y6op" path="res://blueprints/gameplay/enemies/water_enemy.tscn" id="20_14hsb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vueyv"]
 resource_local_to_scene = true
@@ -180,7 +181,7 @@ position = Vector2(-315, 35)
 position = Vector2(224, 48)
 jump_velocity = 0.0
 walk_animation = ""
-base_damage_multiplier = 0.2
+base_damage_multiplier = 1.0
 
 [node name="Torch" parent="EntranceGameplay" instance=ExtResource("6_u06n0")]
 position = Vector2(-247, 5)
@@ -336,3 +337,6 @@ shape = SubResource("RectangleShape2D_ivp4y")
 
 [node name="Relic" parent="." instance=ExtResource("18_62vxp")]
 position = Vector2(-362, 51)
+
+[node name="WaterEnemy" parent="." instance=ExtResource("20_14hsb")]
+position = Vector2(-320, 58)

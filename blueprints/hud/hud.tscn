@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dw024ehm7ov8"]
+[gd_scene load_steps=14 format=3 uid="uid://dw024ehm7ov8"]
 
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_olqm0"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_pxjbe"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://l2ifs6rljkem" path="res://assets/hud/keyboard/space_key.tga" id="6_tlqk3"]
 [ext_resource type="PackedScene" uid="uid://2m3whgfowc7m" path="res://blueprints/hud/pause_menu.tscn" id="10_hraru"]
 [ext_resource type="PackedScene" uid="uid://ch4q3lelkhswx" path="res://blueprints/hud/relic_popup.tscn" id="12_r67a1"]
+[ext_resource type="PackedScene" uid="uid://c1li8lp13xiwl" path="res://blueprints/hud/death_menu.tscn" id="13_u61i7"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_olqm0")
@@ -180,5 +181,9 @@ visible = false
 layout_mode = 1
 
 [node name="RelicPopup" parent="PopupContainer/PopupBackground" instance=ExtResource("12_r67a1")]
+visible = false
+layout_mode = 1
+
+[node name="DeathMenu" parent="PopupContainer/PopupBackground" instance=ExtResource("13_u61i7")]
 visible = false
 layout_mode = 1
