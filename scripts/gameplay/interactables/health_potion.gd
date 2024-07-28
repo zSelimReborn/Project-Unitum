@@ -10,5 +10,7 @@ func interact(player: Player):
 		return false
 	if player.health >= player.max_health:
 		return false
+	if not player.is_alive:
+		return false
 	player.heal(amount)
 	return true

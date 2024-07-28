@@ -6,14 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://dbxnsgdnf0rt8" path="res://blueprints/gameplay/projectiles/air.tscn" id="2_u0hvt"]
 [ext_resource type="Texture2D" uid="uid://ykk6o8bd7yk0" path="res://assets/enemies/fire_enemy.png" id="3_t1wwc"]
 [ext_resource type="PackedScene" uid="uid://ym1qxgmtsj32" path="res://blueprints/gameplay/interactables/health_potion.tscn" id="3_y6bwb"]
-[ext_resource type="Shader" path="res://assets/shaders/hit_flash.gdshader" id="4_nwrgb"]
+[ext_resource type="Shader" path="res://assets/shaders/enemy.gdshader" id="4_mshhh"]
 [ext_resource type="Texture2D" uid="uid://cwmrl1btq6ep8" path="res://assets/enemies/water_enemy.png" id="4_xuk55"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vt524"]
 resource_local_to_scene = true
-shader = ExtResource("4_nwrgb")
+shader = ExtResource("4_mshhh")
 shader_parameter/active = false
 shader_parameter/shadow = false
+shader_parameter/should_dissolve = false
+shader_parameter/dissolve_sensitivity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oc4u3"]
 atlas = ExtResource("1_o6loh")
