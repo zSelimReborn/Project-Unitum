@@ -43,7 +43,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3xtac")
 
-[node name="Container" type="GridContainer" parent="Panel"]
+[node name="MainContainer" type="GridContainer" parent="Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,14 +58,14 @@ offset_bottom = 309.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelLogo" type="Panel" parent="Panel/Container"]
+[node name="PanelLogo" type="Panel" parent="Panel/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_i76eg")
 
-[node name="TextureRect" type="TextureRect" parent="Panel/Container/PanelLogo"]
+[node name="TextureRect" type="TextureRect" parent="Panel/MainContainer/PanelLogo"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,14 +77,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_rnj4d")
 
-[node name="PanelName" type="Panel" parent="Panel/Container"]
+[node name="PanelName" type="Panel" parent="Panel/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_7rxt7")
 
-[node name="GameName" type="Label" parent="Panel/Container/PanelName"]
+[node name="GameName" type="Label" parent="Panel/MainContainer/PanelName"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,36 +100,36 @@ theme_override_font_sizes/font_size = 75
 text = "Unitum"
 horizontal_alignment = 1
 
-[node name="NewGameContainer" type="Panel" parent="Panel/Container"]
+[node name="NewGameContainer" type="Panel" parent="Panel/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_x11rw")
 
-[node name="TextureRect" type="TextureRect" parent="Panel/Container/NewGameContainer"]
+[node name="TextureRect" type="TextureRect" parent="Panel/MainContainer/NewGameContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -195.5
-offset_top = -145.0
-offset_right = 204.5
-offset_bottom = 107.0
+offset_left = -195.0
+offset_top = -113.0
+offset_right = 205.0
+offset_bottom = 49.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_c8fsm")
 
-[node name="NewGameButton" type="Button" parent="Panel/Container/NewGameContainer"]
+[node name="NewGameButton" type="Button" parent="Panel/MainContainer/NewGameContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -126.0
-offset_top = -53.0
-offset_right = 132.0
-offset_bottom = 18.0
+offset_left = -126.5
+offset_top = -65.0
+offset_right = 131.5
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -139,7 +140,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_0sgr4")
 text = "New Game"
 flat = true
 
-[node name="ExitContainer" type="Panel" parent="Panel/Container"]
+[node name="CreditsContainer" type="Panel" parent="Panel/MainContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -147,29 +148,70 @@ size_flags_stretch_ratio = 0.2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_x11rw")
 
-[node name="TextureRect" type="TextureRect" parent="Panel/Container/ExitContainer"]
+[node name="TextureRect" type="TextureRect" parent="Panel/MainContainer/CreditsContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -195.5
-offset_top = -150.0
-offset_right = 203.5
-offset_bottom = 81.0
+offset_left = -195.0
+offset_top = -158.0
+offset_right = 204.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_c8fsm")
 
-[node name="ExitButton" type="Button" parent="Panel/Container/ExitContainer"]
+[node name="CreditsButton" type="Button" parent="Panel/MainContainer/CreditsContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -102.0
-offset_top = -72.0
-offset_right = 106.0
-offset_bottom = 7.0
+offset_left = -104.5
+offset_top = -116.0
+offset_right = 109.5
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_0sgr4")
+text = "Credits"
+flat = true
+
+[node name="ExitContainer" type="Panel" parent="Panel/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x11rw")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MainContainer/ExitContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -195.0
+offset_top = -108.0
+offset_right = 204.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_c8fsm")
+
+[node name="ExitButton" type="Button" parent="Panel/MainContainer/ExitContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -102.5
+offset_top = -66.0
+offset_right = 105.5
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -180,5 +222,162 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_0sgr4")
 text = "Exit"
 flat = true
 
-[connection signal="pressed" from="Panel/Container/NewGameContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="Panel/Container/ExitContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="CreditsContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -124.0
+offset_right = 20.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelCredits" type="Panel" parent="Panel/CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7rxt7")
+
+[node name="Heading" type="Label" parent="Panel/CreditsContainer/PanelCredits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -156.0
+offset_right = 194.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 75
+text = "Credits
+"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Panel/CreditsContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CreditsContainer/Panel"]
+layout_mode = 0
+offset_left = -225.0
+offset_top = -78.0
+offset_right = 270.0
+offset_bottom = -14.0
+theme_override_constants/separation = 15
+
+[node name="Code" type="Label" parent="Panel/CreditsContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 30
+text = "Programmer"
+horizontal_alignment = 1
+
+[node name="Code2" type="Label" parent="Panel/CreditsContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 30
+text = "Pasquale \"Pako\" Giaccio"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Panel/CreditsContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CreditsContainer/Panel2"]
+offset_left = -225.0
+offset_top = 20.0
+offset_right = 270.0
+offset_bottom = 150.0
+theme_override_constants/separation = 15
+
+[node name="Art" type="Label" parent="Panel/CreditsContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 30
+text = "Artists"
+horizontal_alignment = 1
+
+[node name="Art1" type="Label" parent="Panel/CreditsContainer/Panel2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 30
+text = "Angelo Bellotti
+Domenico Giaccio
+Martina Verde"
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Panel/CreditsContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/CreditsContainer/Panel3"]
+offset_left = -225.0
+offset_top = 193.0
+offset_right = 270.0
+offset_bottom = 257.0
+theme_override_constants/separation = 15
+
+[node name="Sound" type="Label" parent="Panel/CreditsContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 30
+text = "Sound"
+horizontal_alignment = 1
+
+[node name="Sound1" type="Label" parent="Panel/CreditsContainer/Panel3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 30
+text = "Emanuele Nacarlo"
+horizontal_alignment = 1
+
+[node name="Panel4" type="Panel" parent="Panel/CreditsContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/CreditsContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -199.0
+offset_top = 234.0
+offset_right = 201.0
+offset_bottom = 396.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_c8fsm")
+
+[node name="BackButton" type="Button" parent="Panel/CreditsContainer/Panel4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = 283.0
+offset_right = 129.0
+offset_bottom = 354.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("5_4wnv4")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_0sgr4")
+text = "Back"
+flat = true
+
+[connection signal="pressed" from="Panel/MainContainer/NewGameContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Panel/MainContainer/CreditsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Panel/MainContainer/ExitContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Panel/CreditsContainer/Panel4/BackButton" to="." method="_on_back_button_pressed"]
