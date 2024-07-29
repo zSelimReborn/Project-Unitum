@@ -41,9 +41,8 @@ size = Vector2(91, 32)
 [node name="Cagliostro" type="Area2D"]
 collision_layer = 4
 script = ExtResource("1_8wmgq")
-shake_duration = 1.0
+shake_duration = 2.0
 shadow_class = ExtResource("2_3hd5b")
-end_menu_wait = null
 end_menu = ExtResource("3_ohrnm")
 instant_interact = null
 interaction_text = "Speak to Cagliostro"

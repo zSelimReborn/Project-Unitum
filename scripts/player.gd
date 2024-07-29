@@ -39,6 +39,10 @@ var shake_duration : float = 5.0
 var shake_strength : float = 0
 var rng = RandomNumberGenerator.new()
 
+var dialogue = []
+var current_dialogue_index = 0
+var current_dialogue_tag = ""
+
 # Events
 signal on_change_state(old_state, new_state)
 signal on_interactable(interactable: BaseInteractable)
@@ -47,8 +51,8 @@ signal on_relic_found(type, data)
 signal on_pause_menu_requested()
 signal on_death_menu_requested()
 signal on_interaction_hint_requested(interactable: BaseInteractable)
-signal jump_dialogue_requested()
-signal next_dialogue_requested()
+signal jump_dialogue_requested(tag)
+signal next_dialogue_requested(line: String)
 signal camera_shake_ended()
 
 var element_input_mapping = {
@@ -81,6 +85,8 @@ func _physics_process(delta):
 	if is_on_floor():
 		last_position = transform
 	process_camera_shake(delta)
+	if in_dialogue:
+		velocity.x = 0
 	super(delta)
 	
 func restore_after_fall():
@@ -255,7 +261,17 @@ func switch_dialogue():
 	
 func handle_jump_dialogue():
 	# Handle here next dialogue
-	jump_dialogue_requested.emit()
+	if dialogue.size() > 0 and current_dialogue_index + 1 < dialogue.size():
+		current_dialogue_index += 1
+		next_dialogue_requested.emit(dialogue[current_dialogue_index])
+	else:
+		jump_dialogue_requested.emit(current_dialogue_tag)
+		reset_dialogue()
+		
+func reset_dialogue():
+	dialogue = []
+	current_dialogue_index = 0
+	current_dialogue_tag = ""
 	
 func switch_ui(show_cursor, pause_game):
 	if show_cursor:
@@ -302,3 +318,26 @@ func camera_shake_offset() -> Vector2:
 func turn_in_shadow():
 	state = Types.PlayerState.Shadow
 	sprite.play(shadow_anim_name)
+
+func init_dialogue(text_file_path, dialogue_tag):
+	if not text_file_path or not FileAccess.file_exists(text_file_path):
+		printerr("unable to initialize dialogue, failed to load ", text_file_path)
+		return false
+	var handler = FileAccess.open(text_file_path, FileAccess.READ)
+	if not handler:
+		printerr("unable to initialize dialogue, handler empty")
+		return false
+	dialogue = []
+	current_dialogue_index = 0
+	current_dialogue_tag = dialogue_tag
+	while not handler.eof_reached():
+		var line = handler.get_line()
+		if line:
+			dialogue.append(line)
+	return true
+	
+func start_dialogue():
+	if not dialogue or dialogue.size() <= 0:
+		printerr("no dialogue initialized")
+		return
+	next_dialogue_requested.emit(dialogue[current_dialogue_index])

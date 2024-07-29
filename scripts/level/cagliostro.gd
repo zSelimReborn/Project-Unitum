@@ -12,6 +12,27 @@ extends BaseInteractable
 @export var end_menu_wait : float = 2
 @export var end_menu : PackedScene
 
+# On Ready
+@onready var sprite = $AnimatedSprite2D
+
+@onready var pacifist_initial_dialogue = "res://assets/dialogues/cagliostro_initial_pacifist.txt"
+@onready var pacifist_initial_dialogue_tag = "cagliostro_initial_pacifist"
+
+@onready var pacifist_final_dialogue = "res://assets/dialogues/cagliostro_final_pacifist.txt"
+@onready var pacifist_final_dialogue_tag = "cagliostro_final_pacifist"
+
+@onready var initial_dialogue = "res://assets/dialogues/cagliostro_initial.txt"
+@onready var initial_dialogue_tag = "cagliostro_initial"
+
+@onready var final_dialogue_bad = "res://assets/dialogues/cagliostro_final_bad.txt"
+@onready var final_dialogue_good = "res://assets/dialogues/cagliostro_final_good.txt"
+
+@onready var final_dialogue_tag_bad = "cagliostro_final_bad"
+@onready var final_dialogue_tag_good = "cagliostro_final_good"
+
+# Variables
+var selected_ending = Types.Ending.Human
+
 func _ready():
 	super()
 	if not player:
@@ -21,8 +42,12 @@ func _ready():
 		return
 	enemy_spawner.on_stage_completed.connect(on_stage_completed)
 	player.camera_shake_ended.connect(handle_endings)
+	player.jump_dialogue_requested.connect(on_end_dialogue)
+	selected_ending = pick_current_ending()
 
 func on_stage_completed():
+	if not wait_time_after_stage:
+		wait_time_after_stage = 2.0
 	await get_tree().create_timer(wait_time_after_stage).timeout	
 	player.apply_camera_shake(shake_duration)
 
@@ -31,64 +56,102 @@ func interact(player: Player):
 		return false
 	if not player:
 		return false
-	if PlayerStorage.kill_count <= 0:
-		on_stage_completed()
-		is_interactable = false
+	if selected_ending == Types.Ending.Pacifist:
+		if not start_dialogue(pacifist_initial_dialogue, pacifist_initial_dialogue_tag):
+			on_stage_completed()
+			is_interactable = false
 		return true
 	if not enemy_spawner:
 		printerr("cagliostro error, enemy spawner missing")
 		return false
-	start_stage()
+	
+	if not start_dialogue(initial_dialogue, initial_dialogue_tag):
+		start_stage()
+
+func start_dialogue(selected_dialogue, dialogue_tag):
+	if not player:
+		printerr("unable to start dialogue, no player")
+		return false
+	if not selected_dialogue:
+		printerr("unable to start dialogue, no resource")
+		return false
+	if not player.init_dialogue(selected_dialogue, dialogue_tag):
+		printerr("unable to start dialogue, initialization failed")
+		return false
+	player.start_dialogue()
+	return true
+
+func on_end_dialogue(dialogue_tag):
+	if dialogue_tag == initial_dialogue_tag:
+		start_stage()
+	elif dialogue_tag == pacifist_initial_dialogue_tag:
+		on_stage_completed()
+		is_interactable = false
+	elif dialogue_tag == final_dialogue_tag_bad:
+		sprite.visible = false		
+		go_end_menu()
+	elif dialogue_tag == final_dialogue_tag_good:
+		go_end_menu()
+	elif dialogue_tag == pacifist_final_dialogue_tag:
+		go_end_menu()
 
 func start_stage():
 	is_interactable = false
 	enemy_spawner.start_stage()	
 	
 func handle_endings():
+	match (selected_ending):
+		Types.Ending.Pacifist:
+			pacifist_ending()
+			pass
+		Types.Ending.Human:
+			human_ending()
+			pass
+		Types.Ending.Shadow:
+			shadow_ending()
+			pass
+		Types.Ending.Good:
+			good_ending()
+			pass
+		
+func pick_current_ending():
 	if PlayerStorage.kill_count <= 0:
-		pacifist_ending()
-		return
+		return Types.Ending.Pacifist
 	var relic_component = player.get_node("RelicComponent") as RelicComponent
 	if not relic_component:
-		printerr("player has no relic component, going to good ending")
-		return
+		printerr("player has no relic component, going to human ending")
+		return Types.Ending.Human
 	var human_relic = relic_component.get_relic(Types.PlayerState.Character)
 	var shadow_relic = relic_component.get_relic(Types.PlayerState.Shadow)
 	if shadow_relic > human_relic:
-		shadow_ending()
+		return Types.Ending.Shadow
 	elif (not relic_component.collected_all_relics()):
-		human_ending()
+		return Types.Ending.Human
 	else:
-		good_ending()
+		return Types.Ending.Good
 	
 func human_ending():
-	print("human ending")
 	PlayerStorage.ending = Types.Ending.Human
-	go_end_menu()
-	# Nothing fancy
-	# TODO Game over
-	# TODO Cagliostro speak
+	if not start_dialogue(final_dialogue_bad, final_dialogue_tag_bad):
+		on_end_dialogue(final_dialogue_tag_bad)
 
 func shadow_ending():
-	print("shadow ending")
 	PlayerStorage.ending = Types.Ending.Shadow	
-	# TODO switch to shadow
-	# TODO Game over
-	player.turn_in_shadow()
-	go_end_menu()	
+	player.turn_in_shadow()	
+	if not start_dialogue(final_dialogue_bad, final_dialogue_tag_bad):
+		on_end_dialogue(final_dialogue_tag_bad)
 	
 func good_ending():
-	print("good ending")
 	PlayerStorage.ending = Types.Ending.Good	
 	spawn_shadow()
-	go_end_menu()	
-	# TODO Cagliostro speak
+	if not start_dialogue(final_dialogue_good, final_dialogue_tag_good):
+		on_end_dialogue(final_dialogue_tag_good)
 	
 func pacifist_ending():
-	print("pacifist ending")
 	PlayerStorage.ending = Types.Ending.Pacifist	
 	spawn_shadow()
-	go_end_menu()	
+	if not start_dialogue(pacifist_final_dialogue, pacifist_final_dialogue_tag):
+		on_end_dialogue(pacifist_final_dialogue_tag)
 
 func spawn_shadow():
 	if not shadow_class:

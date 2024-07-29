@@ -71,9 +71,10 @@ level_name = "DebugEnding"
 
 [node name="Cagliostro" parent="." node_paths=PackedStringArray("enemy_spawner", "shadow_spawn_point") instance=ExtResource("4_r3hcq")]
 position = Vector2(149, 52)
+wait_time_after_stage = null
+end_menu_wait = null
 enemy_spawner = NodePath("../EnemySpawner")
 shadow_spawn_point = NodePath("../ShadowSpawnPoint")
-end_menu_wait = 2.0
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("spawn_points") instance=ExtResource("5_lgwse")]
 position = Vector2(152, -6)

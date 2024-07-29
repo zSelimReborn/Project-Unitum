@@ -145,15 +145,18 @@ func interaction_hint_requested(interactable: BaseInteractable):
 	dialogue_box.set_dialogue(interactable.interaction_hint)
 	player.switch_dialogue()
 	
-func on_jump_dialogue():
+func on_jump_dialogue(tag):
 	if not dialogue_box:
 		return
 	dialogue_box.set_dialogue("")
 	dialogue_box.hide()
 	player.switch_dialogue()
 	
-func on_next_dialogue():
-	pass
+func on_next_dialogue(line: String):
+	dialogue_box.set_dialogue(line)	
+	dialogue_box.show()
+	if not player.in_dialogue:
+		player.switch_dialogue()
 	
 func on_pause_menu_requested():
 	if not pause_menu or not player:

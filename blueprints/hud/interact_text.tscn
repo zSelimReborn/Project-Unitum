@@ -24,19 +24,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
+offset_left = -108.5
 offset_top = -16.0
-offset_right = 25.0
+offset_right = 108.5
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 50
 columns = 2
 
 [node name="PanelImage" type="Panel" parent="Container"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_r4ame")
 
 [node name="Image" type="TextureRect" parent="Container/PanelImage"]
@@ -58,8 +55,6 @@ texture = ExtResource("2_ttuxy")
 
 [node name="PanelText" type="Panel" parent="Container"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_divcn")
 
 [node name="Text" type="Label" parent="Container/PanelText"]
@@ -69,10 +64,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 46.0
-offset_top = -60.0
-offset_right = 127.0
-offset_bottom = 12.0
+offset_left = 25.5
+offset_top = -57.0
+offset_right = 375.5
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
