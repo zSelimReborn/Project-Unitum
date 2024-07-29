@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6rhifi5h1p36"]
+[gd_scene load_steps=7 format=3 uid="uid://b6rhifi5h1p36"]
 
 [ext_resource type="PackedScene" uid="uid://cpxa5h7iq7wux" path="res://blueprints/gameplay/projectile.tscn" id="1_7uhho"]
 [ext_resource type="Texture2D" uid="uid://d35v4os4mjmy6" path="res://assets/projectiles/water_ball.png" id="2_ahlli"]
+[ext_resource type="PackedScene" uid="uid://1efmmrccenmm" path="res://blueprints/particles/water_explosion.tscn" id="2_kvqs4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjl5l"]
 atlas = ExtResource("2_ahlli")
@@ -28,6 +29,7 @@ animations = [{
 
 [node name="Projectile" instance=ExtResource("1_7uhho")]
 collision_mask = 51
+particle = ExtResource("2_kvqs4")
 
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, 0)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqmuveqfl0ahc"]
+[gd_scene load_steps=7 format=3 uid="uid://cqmuveqfl0ahc"]
 
 [ext_resource type="PackedScene" uid="uid://cpxa5h7iq7wux" path="res://blueprints/gameplay/projectile.tscn" id="1_h2a75"]
+[ext_resource type="PackedScene" uid="uid://drqytjtpvbyys" path="res://blueprints/particles/earth_explosion.tscn" id="2_c1ipo"]
 [ext_resource type="Texture2D" uid="uid://b3lcaa5eig1ml" path="res://assets/projectiles/rock_ball.png" id="2_xwq0q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_561dr"]
@@ -28,6 +29,7 @@ animations = [{
 
 [node name="Projectile" instance=ExtResource("1_h2a75")]
 collision_mask = 51
+particle = ExtResource("2_c1ipo")
 
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, -1)

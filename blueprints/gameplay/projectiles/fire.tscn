@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn0tekli3d5oi"]
+[gd_scene load_steps=7 format=3 uid="uid://bn0tekli3d5oi"]
 
 [ext_resource type="PackedScene" uid="uid://cpxa5h7iq7wux" path="res://blueprints/gameplay/projectile.tscn" id="1_e8q7e"]
+[ext_resource type="PackedScene" uid="uid://rx2uj4qv55vo" path="res://blueprints/particles/fire_explosion.tscn" id="2_gqo0x"]
 [ext_resource type="Texture2D" uid="uid://c546wnco1nhr5" path="res://assets/projectiles/fire_ball.png" id="2_ym3gl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3h83"]
@@ -29,6 +30,7 @@ animations = [{
 [node name="Projectile" instance=ExtResource("1_e8q7e")]
 collision_layer = 8
 collision_mask = 51
+particle = ExtResource("2_gqo0x")
 
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, 0)

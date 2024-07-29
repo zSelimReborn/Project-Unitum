@@ -9,6 +9,7 @@ extends Area2D
 # Properties
 @export var speed : float = 750
 @export var loop_animation : bool = false
+@export var particle : PackedScene
 
 # Variables
 var damage : float = 0
@@ -40,6 +41,7 @@ func _on_body_entered(body):
 	elif puzzle:
 		if not puzzle.try_solve_piece(self):
 			return
+	spawn_particle()
 	queue_free()
 	
 func _on_timer_timeout():
@@ -55,3 +57,11 @@ func increment_instigator_kill_count():
 	var character = instigator as BaseCharacter
 	if character:
 		character.new_kill()
+
+func spawn_particle():
+	if not particle:
+		return
+	var p = particle.instantiate()
+	p.emitting = true
+	p.transform = transform
+	get_tree().current_scene.add_child(p)
