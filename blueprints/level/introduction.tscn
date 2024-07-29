@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0irx8y3qk4xp"]
+
+[ext_resource type="Script" path="res://scripts/level/introduction.gd" id="1_p0i66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s7m6"]
+size = Vector2(78, 42)
+
+[node name="Introduction" type="Area2D"]
+script = ExtResource("1_p0i66")
+instant_interact = true
+interaction_text = ""
+interaction_hint = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_1s7m6")

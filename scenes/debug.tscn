@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=27 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="Shader" path="res://assets/shaders/greyscale.gdshader" id="1_q7ugf"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bf22kh7yqsesg" path="res://blueprints/gameplay/interactables/relics/emeral_tablet.tscn" id="21_4rm0m"]
 [ext_resource type="PackedScene" uid="uid://cd3ajkgf1nma0" path="res://blueprints/gameplay/interactables/relics/magnum_opus.tscn" id="22_bepma"]
 [ext_resource type="PackedScene" uid="uid://pjebmhfpiq0k" path="res://blueprints/gameplay/interactables/relics/philosopher_stone.tscn" id="23_36vnc"]
+[ext_resource type="PackedScene" uid="uid://b0irx8y3qk4xp" path="res://blueprints/level/introduction.tscn" id="24_iilgb"]
 [ext_resource type="PackedScene" uid="uid://btkfsgdxo0aeu" path="res://blueprints/gameplay/puzzles/transform_trees/tree_border.tscn" id="24_uefcw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vueyv"]
@@ -35,7 +36,7 @@ size = Vector2(3400, 20)
 [node name="DebugMap" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("greyscale_rect") instance=ExtResource("1_qle6k")]
-position = Vector2(142, 1014)
+position = Vector2(-493, -210)
 greyscale_rect = NodePath("../GreyScaleLayer/GreyScaleRect")
 hit_flash_duration = 0.2
 
@@ -347,3 +348,7 @@ position = Vector2(414, 52)
 
 [node name="TreeBorder" parent="." instance=ExtResource("24_uefcw")]
 position = Vector2(-256, 1016)
+
+[node name="FirstDialogue" parent="." instance=ExtResource("24_iilgb")]
+position = Vector2(-130, 5)
+interaction_hint = ""
