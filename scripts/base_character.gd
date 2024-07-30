@@ -41,6 +41,8 @@ func add_movement(direction : float):
 	velocity.x = direction * walk_speed
 	
 func add_impulse(impulse: Vector2):
+	if current_impulse.length_squared() > 0:
+		return
 	current_impulse = impulse
 	velocity = current_impulse
 		
