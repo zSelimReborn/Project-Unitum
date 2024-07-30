@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5y4v2hfkqm3k"]
+[gd_scene load_steps=10 format=3 uid="uid://c5y4v2hfkqm3k"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/interactables/relic.gd" id="1_p1ugn"]
 [ext_resource type="Texture2D" uid="uid://bgieuxche5oxk" path="res://assets/gameplay/relics/elixir_of_life.tga" id="2_q04fy"]
+[ext_resource type="AudioStream" uid="uid://nwuk55ldp0k4" path="res://assets/sounds/locker.wav" id="3_a2lud"]
 [ext_resource type="Texture2D" uid="uid://bvcbmocsoruny" path="res://assets/gameplay/interactables/closed_chest.png" id="3_nwxcl"]
 [ext_resource type="Texture2D" uid="uid://b05g5kxj184iq" path="res://assets/gameplay/interactables/opened_chest.png" id="4_iew6s"]
 
@@ -41,6 +42,7 @@ script = ExtResource("1_p1ugn")
 ui_texture = ExtResource("2_q04fy")
 ui_text = "Elixir Of Life"
 tag = "elixir"
+opening_sound = ExtResource("3_a2lud")
 interaction_text = "Open Chest"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -51,3 +53,5 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -15)
 shape = SubResource("RectangleShape2D_gy32j")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]

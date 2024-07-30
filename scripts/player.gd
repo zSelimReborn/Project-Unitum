@@ -12,6 +12,7 @@ const CAMERA_SHAKE_TRESHOLD = 2.0
 @onready var fire_rate_timer = $FireRateTimer
 @onready var relic_component = $RelicComponent
 @onready var camera = $Camera2D
+@onready var audio = $Audio
 
 #Properties
 @export var fire_ball_class : PackedScene
@@ -23,6 +24,11 @@ const CAMERA_SHAKE_TRESHOLD = 2.0
 @export var greyscale_rect : ColorRect
 @export var shadow_anim_name : String = "shadow"
 @export var shake_random_strength : float = 20.0
+
+@export var audio_footstep_dx : AudioStream
+@export var audio_footstep_sx : AudioStream
+@export var audio_jump : AudioStream
+@export var audio_landing : AudioStream
 
 #Variables
 var current_element : Types.Elements = Types.Elements.FIRE
@@ -88,6 +94,7 @@ func _physics_process(delta):
 	if in_dialogue:
 		velocity.x = 0
 	super(delta)
+	process_footsteps()
 	
 func restore_after_fall():
 	transform = last_position
@@ -341,3 +348,35 @@ func start_dialogue():
 		printerr("no dialogue initialized")
 		return
 	next_dialogue_requested.emit(dialogue[current_dialogue_index])
+
+func process_footsteps():
+	if not audio:
+		return
+	var track = audio.stream
+	if track == audio_footstep_dx:
+		track = audio_footstep_sx
+	else:
+		track = audio_footstep_dx
+	if audio.is_playing():
+		return
+	if abs(velocity.x) > 0 and is_on_floor():
+		audio.stream = track
+		audio.play()
+		
+func jump():
+	super()
+	process_jump_audio()
+		
+func landed():
+	if not audio:
+		return
+	var track = audio_landing
+	audio.stream = track
+	audio.play()
+	
+func process_jump_audio():
+	if not audio:
+		return
+	var track = audio_jump
+	audio.stream = track
+	audio.play()

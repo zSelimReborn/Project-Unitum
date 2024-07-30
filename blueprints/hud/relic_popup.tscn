@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch4q3lelkhswx"]
+[gd_scene load_steps=8 format=3 uid="uid://ch4q3lelkhswx"]
 
 [ext_resource type="Script" path="res://scripts/hud/relic_popup.gd" id="1_3pdwg"]
 [ext_resource type="Texture2D" uid="uid://cgra47najjdja" path="res://assets/gameplay/relics/philosopher_stone.tga" id="1_qetqd"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="2_bog3n"]
 [ext_resource type="Texture2D" uid="uid://bis0eay2vp4u4" path="res://assets/hud/button.tga" id="3_oyx7a"]
+[ext_resource type="AudioStream" uid="uid://dbb01jwefding" path="res://assets/sounds/click_menu.wav" id="5_ryxxt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgovs"]
 
@@ -125,5 +126,8 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_klyr5")
 text = "Close"
 flat = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ryxxt")
 
 [connection signal="pressed" from="Panel/VBoxContainer/CloseContainer/CloseButton" to="." method="_on_close_button_pressed"]

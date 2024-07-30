@@ -5,11 +5,14 @@ extends Area2D
 #On Ready
 @onready var timer = $Timer
 @onready var sprite = $AnimSprite
+@onready var audio = $Audio
 
 # Properties
 @export var speed : float = 750
 @export var loop_animation : bool = false
 @export var particle : PackedScene
+@export var shoot_sound : AudioStream
+@export var explosion_sound : AudioStream
 
 # Variables
 var damage : float = 0
@@ -19,6 +22,7 @@ var element : Types.Elements
 
 func _ready():
 	timer.start()
+	play_audio(shoot_sound)
 
 func _physics_process(delta):
 	var x_offset = transform.x * speed * delta
@@ -42,6 +46,11 @@ func _on_body_entered(body):
 		if not puzzle.try_solve_piece(self):
 			return
 	spawn_particle()
+	play_audio(explosion_sound)
+	sprite.visible = false
+	speed = 0
+	monitoring = false
+	await get_tree().create_timer(2).timeout
 	queue_free()
 	
 func _on_timer_timeout():
@@ -65,3 +74,9 @@ func spawn_particle():
 	p.emitting = true
 	p.transform = transform
 	get_tree().current_scene.add_child(p)
+
+func play_audio(track):
+	if not audio or not track:
+		return
+	audio.stream = track
+	audio.play()

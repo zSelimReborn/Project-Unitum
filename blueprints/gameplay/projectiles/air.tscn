@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbxnsgdnf0rt8"]
+[gd_scene load_steps=9 format=3 uid="uid://dbxnsgdnf0rt8"]
 
 [ext_resource type="PackedScene" uid="uid://cpxa5h7iq7wux" path="res://blueprints/gameplay/projectile.tscn" id="1_1tnmt"]
 [ext_resource type="Texture2D" uid="uid://duxgrsqobovua" path="res://assets/projectiles/air_ball.png" id="2_b6vje"]
 [ext_resource type="PackedScene" uid="uid://dkdafwaajclfx" path="res://blueprints/particles/air_explosion.tscn" id="2_nwe7w"]
+[ext_resource type="AudioStream" uid="uid://b84w56i3wepqj" path="res://assets/sounds/sphere_shoot.wav" id="3_jexf7"]
+[ext_resource type="AudioStream" uid="uid://51em4c41mwva" path="res://assets/sounds/sphere_hit.wav" id="4_brueg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6ltb"]
 atlas = ExtResource("2_b6vje")
@@ -29,7 +31,10 @@ animations = [{
 
 [node name="Projectile" instance=ExtResource("1_1tnmt")]
 collision_mask = 51
+speed = 250.0
 particle = ExtResource("2_nwe7w")
+shoot_sound = ExtResource("3_jexf7")
+explosion_sound = ExtResource("4_brueg")
 
 [node name="AnimSprite" parent="." index="0"]
 position = Vector2(0, 0)
@@ -40,3 +45,7 @@ frame_progress = 0.545678
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 0)
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." index="3"]
+pitch_scale = 1.5
+max_distance = 200.0

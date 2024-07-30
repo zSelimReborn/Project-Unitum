@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://pjebmhfpiq0k"]
+[gd_scene load_steps=10 format=3 uid="uid://pjebmhfpiq0k"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/interactables/relic.gd" id="1_xyt46"]
 [ext_resource type="Texture2D" uid="uid://bvcbmocsoruny" path="res://assets/gameplay/interactables/closed_chest.png" id="2_rhavm"]
 [ext_resource type="Texture2D" uid="uid://cgra47najjdja" path="res://assets/gameplay/relics/philosopher_stone.tga" id="2_tcop4"]
+[ext_resource type="AudioStream" uid="uid://nwuk55ldp0k4" path="res://assets/sounds/locker.wav" id="3_rao81"]
 [ext_resource type="Texture2D" uid="uid://b05g5kxj184iq" path="res://assets/gameplay/interactables/opened_chest.png" id="3_waa36"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_om5g8"]
@@ -41,6 +42,7 @@ script = ExtResource("1_xyt46")
 ui_texture = ExtResource("2_tcop4")
 ui_text = "Philosphers Stone"
 tag = "philo"
+opening_sound = ExtResource("3_rao81")
 interaction_text = "Open Chest"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -51,3 +53,5 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -15)
 shape = SubResource("RectangleShape2D_gy32j")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]

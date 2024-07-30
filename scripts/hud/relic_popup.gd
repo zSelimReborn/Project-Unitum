@@ -7,6 +7,7 @@ extends Control
 @onready var relic_type = $Panel/VBoxContainer/HBoxContainer/RelicType
 @onready var relic_name = $Panel/VBoxContainer/RelicName
 @onready var relic_description = $Panel/VBoxContainer/Description
+@onready var audio = $Audio
 
 # Properties
 @export var base_description = "New relic found. You gained %1 boost in %2"
@@ -24,6 +25,7 @@ var type_strings = {
 }
 
 func _on_close_button_pressed():
+	play_button_sound()
 	on_popup_close.emit()
 
 func setup_values(type, data):
@@ -57,3 +59,8 @@ func build_description(type: Types.PlayerState):
 	description = description.replace("%1", stats["value"])
 	description = description.replace("%2", stats["label"])
 	return description
+
+func play_button_sound():
+	if not audio:
+		return
+	audio.play()

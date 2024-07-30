@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://fdye2c0ta25j"]
+[gd_scene load_steps=10 format=3 uid="uid://fdye2c0ta25j"]
 
 [ext_resource type="Script" path="res://scripts/hud/the_end_menu.gd" id="1_u8x3o"]
 [ext_resource type="PackedScene" uid="uid://lv8tte70fy6x" path="res://scenes/main_menu_level.tscn" id="2_m42et"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="2_qsy35"]
 [ext_resource type="Texture2D" uid="uid://bis0eay2vp4u4" path="res://assets/hud/button.tga" id="3_12sva"]
 [ext_resource type="Texture2D" uid="uid://dqjy4rnqysw7i" path="res://assets/hud/menu/sky.png" id="3_u450q"]
+[ext_resource type="AudioStream" uid="uid://dbb01jwefding" path="res://assets/sounds/click_menu.wav" id="6_kqk4p"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kkuev"]
 texture = ExtResource("3_u450q")
@@ -188,6 +189,9 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_8yvhp")
 text = "Exit Game"
 flat = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_kqk4p")
 
 [connection signal="pressed" from="Background/Container/Buttons/RestartContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Background/Container/Buttons/ExitContainer/ExitButton" to="." method="_on_exit_button_pressed"]

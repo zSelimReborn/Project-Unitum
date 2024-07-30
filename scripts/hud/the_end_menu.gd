@@ -11,6 +11,7 @@ extends Control
 
 # On Ready
 @onready var end_description = $Background/Container/EndDescription
+@onready var audio = $Audio
 
 # Variables
 var initial_level_path = null
@@ -47,8 +48,15 @@ func setup_end_description():
 	end_description.text = text
 
 func _on_restart_button_pressed():
+	play_button_sound()
 	PlayerStorage.reset()
 	SceneManager.goto_scene(initial_level_path)
 
 func _on_exit_button_pressed():
+	play_button_sound()
 	get_tree().quit()
+
+func play_button_sound():
+	if not audio:
+		return
+	audio.play()

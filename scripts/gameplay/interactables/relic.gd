@@ -4,6 +4,7 @@ extends BaseInteractable
 
 # On Ready
 @onready var sprite = $Sprite
+@onready var audio = $Audio
 
 # Properties
 @export var opened_anim : String = "opened"
@@ -11,6 +12,7 @@ extends BaseInteractable
 @export var ui_texture : Texture2D
 @export var ui_text : String
 @export var tag : String
+@export var opening_sound : AudioStream
 
 # Variables
 var opened = false
@@ -45,4 +47,7 @@ func on_opened():
 	if not sprite:
 		printerr("relic cannot change state, no sprite")
 		return
+	if audio:
+		audio.stream = opening_sound
+		audio.play()
 	sprite.play(opened_anim)

@@ -192,6 +192,8 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_ma0a6")
 text = "Exit Game"
 flat = true
 
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="pressed" from="Container/Buttons/RestartContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Container/Buttons/BackContainer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Container/Buttons/ExitContainer/ExitButton" to="." method="_on_exit_button_pressed"]

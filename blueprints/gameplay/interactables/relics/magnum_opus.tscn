@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd3ajkgf1nma0"]
+[gd_scene load_steps=10 format=3 uid="uid://cd3ajkgf1nma0"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/interactables/relic.gd" id="1_i51cj"]
 [ext_resource type="Texture2D" uid="uid://b27gohbi3krso" path="res://assets/gameplay/relics/magnum_opus.tga" id="2_gp4tw"]
+[ext_resource type="AudioStream" uid="uid://nwuk55ldp0k4" path="res://assets/sounds/locker.wav" id="3_dw6hs"]
 [ext_resource type="Texture2D" uid="uid://bvcbmocsoruny" path="res://assets/gameplay/interactables/closed_chest.png" id="3_uxcsi"]
 [ext_resource type="Texture2D" uid="uid://b05g5kxj184iq" path="res://assets/gameplay/interactables/opened_chest.png" id="4_sf778"]
 
@@ -42,6 +43,7 @@ relic_type = 1
 ui_texture = ExtResource("2_gp4tw")
 ui_text = "Magnum Opus"
 tag = "magnum"
+opening_sound = ExtResource("3_dw6hs")
 interaction_text = "Open Chest"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -52,3 +54,5 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -15)
 shape = SubResource("RectangleShape2D_gy32j")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]

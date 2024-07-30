@@ -29,6 +29,7 @@ signal on_death
 var is_alive : bool = true
 var current_impulse = Vector2()
 var kill_count = 0
+var landing = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -63,7 +64,12 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor() and apply_gravity:
 		velocity.y += gravity * delta
-	
+		if not landing:
+			landing = true
+	if is_on_floor() and landing:
+		landed()
+		landing = false
+
 	move_and_slide()
 	
 	# Consume impulse
@@ -74,6 +80,9 @@ func _physics_process(delta):
 			velocity.x = 0
 	
 	process_animation(delta)
+	
+func landed():
+	pass
 	
 func process_animation(_delta):
 	if is_on_floor():

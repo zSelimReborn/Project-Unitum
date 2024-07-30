@@ -7,9 +7,11 @@ extends BaseInteractable
 @export var is_next_level : bool = false
 @export var next_level_path : PackedScene
 @export var spawn_point : Node2D
+@export var opening_sound : AudioStream
 
 # On Ready
 @onready var sprite = $Sprite
+@onready var audio = $Audio
 
 # Variables
 var puzzle_listener_component = null
@@ -30,6 +32,9 @@ func _ready():
 func on_solved():
 	if not sprite:
 		return
+	if audio:
+		audio.stream = opening_sound
+		audio.play()
 	sprite.play("opened")
 	
 func interact(player: Player):

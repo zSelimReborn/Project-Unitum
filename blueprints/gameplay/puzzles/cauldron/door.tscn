@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd60doqqhf8hf"]
+[gd_scene load_steps=9 format=3 uid="uid://dd60doqqhf8hf"]
 
 [ext_resource type="Script" path="res://scripts/gameplay/puzzle/door.gd" id="1_3oq0g"]
 [ext_resource type="Texture2D" uid="uid://c5njr4t55vcli" path="res://assets/gameplay/puzzles/cauldron/door.tga" id="1_iqr3c"]
+[ext_resource type="AudioStream" uid="uid://nwuk55ldp0k4" path="res://assets/sounds/locker.wav" id="2_np1ma"]
 [ext_resource type="Texture2D" uid="uid://srsip0l27xp4" path="res://assets/gameplay/puzzles/cauldron/door_open.tga" id="3_563of"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w3wp"]
@@ -37,6 +38,7 @@ size = Vector2(20, 23)
 [node name="Door" type="Area2D"]
 collision_layer = 4
 script = ExtResource("1_3oq0g")
+opening_sound = ExtResource("2_np1ma")
 interaction_text = "Open Door"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -48,5 +50,7 @@ autoplay = "closed"
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_t20kf")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

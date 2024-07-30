@@ -6,6 +6,8 @@ extends CanvasLayer
 @export var player : Player
 @export var level_name : String
 @export var initial_level : PackedScene
+@export var open_menu_sound : AudioStream
+@export var close_menu_sound : AudioStream
 
 # On Ready
 @onready var player_bar = $MainContainer/TopContainer/PlayerBar
@@ -17,6 +19,8 @@ extends CanvasLayer
 @onready var death_menu = $PopupContainer/PopupBackground/DeathMenu
 @onready var interact_text = $MainContainer/BottomGrid/InteractPanel/InteractText
 @onready var dialogue_box = $MainContainer/BottomGrid/DialoguePanel/DialogueBox
+
+@onready var audio = $Audio
 
 # Variables
 var initial_level_path = null
@@ -174,7 +178,16 @@ func toggle_popup(show: bool):
 		popup_container.show()
 	else:
 		popup_container.hide()
-			
+
+func play_menu_audio(open: bool):
+	if not audio:
+		return
+	var track = open_menu_sound if open else close_menu_sound
+	if audio.is_playing():
+		return
+	audio.stream = track
+	audio.play()
+
 func toggle_pause_menu(show: bool):
 	if not pause_menu:
 		printerr("unable to toggle pause menu, no menu")
@@ -184,6 +197,7 @@ func toggle_pause_menu(show: bool):
 	else:
 		pause_menu.hide()
 	toggle_popup(show)
+	play_menu_audio(show)	
 	
 func game_over():
 	if not death_menu:

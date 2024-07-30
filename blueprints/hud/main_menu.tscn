@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bouy5qlcenfn7"]
+[gd_scene load_steps=13 format=3 uid="uid://bouy5qlcenfn7"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_i3gxv"]
 [ext_resource type="PackedScene" uid="uid://cvkaeptfdn6kb" path="res://scenes/levels/fire_level.tscn" id="2_yyka7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://di4xifhmeul7k" path="res://logo.svg" id="4_rnj4d"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="5_4wnv4"]
 [ext_resource type="Texture2D" uid="uid://bis0eay2vp4u4" path="res://assets/hud/button.tga" id="6_c8fsm"]
+[ext_resource type="AudioStream" uid="uid://dbb01jwefding" path="res://assets/sounds/click_menu.wav" id="7_a3aba"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xtac"]
 texture = ExtResource("3_b4430")
@@ -378,6 +379,9 @@ theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxTexture_0sgr4")
 text = "Back"
 flat = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_a3aba")
 
 [connection signal="pressed" from="Panel/MainContainer/NewGameContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="Panel/MainContainer/CreditsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

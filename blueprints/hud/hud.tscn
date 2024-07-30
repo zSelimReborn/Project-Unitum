@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://dw024ehm7ov8"]
+[gd_scene load_steps=19 format=3 uid="uid://dw024ehm7ov8"]
 
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_olqm0"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="1_pxjbe"]
 [ext_resource type="PackedScene" uid="uid://cky3dnlicu5tl" path="res://blueprints/hud/level_name.tscn" id="2_78kd7"]
+[ext_resource type="AudioStream" uid="uid://lwf61v30qr4l" path="res://assets/sounds/open_menu.wav" id="2_bherk"]
 [ext_resource type="PackedScene" uid="uid://bexa2bw1ch6qh" path="res://blueprints/hud/player_bar.tscn" id="3_4bxo4"]
+[ext_resource type="AudioStream" uid="uid://coqtsxh2v7vt0" path="res://assets/sounds/close_menu.wav" id="3_jyjus"]
 [ext_resource type="Texture2D" uid="uid://de1q7ue1yskrp" path="res://assets/hud/keyboard/a_key.tga" id="4_0kd5y"]
 [ext_resource type="PackedScene" uid="uid://bmj6k7owgeucs" path="res://blueprints/hud/interact_text.tscn" id="4_8h7fv"]
 [ext_resource type="PackedScene" uid="uid://bwyt4ewy36lcr" path="res://blueprints/hud/dialogue_box.tscn" id="4_r3vgv"]
@@ -21,6 +23,8 @@
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_olqm0")
+open_menu_sound = ExtResource("2_bherk")
+close_menu_sound = ExtResource("3_jyjus")
 
 [node name="MainContainer" type="NinePatchRect" parent="."]
 anchors_preset = 15
@@ -253,3 +257,5 @@ layout_mode = 1
 [node name="DeathMenu" parent="PopupContainer/PopupBackground" instance=ExtResource("13_u61i7")]
 visible = false
 layout_mode = 1
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
