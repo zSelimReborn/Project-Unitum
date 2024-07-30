@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b75o8vpamtdpb"]
+[gd_scene load_steps=26 format=3 uid="uid://b75o8vpamtdpb"]
 
 [ext_resource type="Shader" path="res://assets/shaders/greyscale.gdshader" id="1_q7ugf"]
 [ext_resource type="PackedScene" uid="uid://dac3xdxvmds7h" path="res://blueprints/characters/player.tscn" id="1_qle6k"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bysxvdpqire16" path="res://blueprints/gameplay/puzzles/cauldron/cauldron.tscn" id="7_se3yf"]
 [ext_resource type="PackedScene" uid="uid://dd60doqqhf8hf" path="res://blueprints/gameplay/puzzles/cauldron/door.tscn" id="9_7swxy"]
 [ext_resource type="PackedScene" uid="uid://dw024ehm7ov8" path="res://blueprints/hud/hud.tscn" id="11_ntrn2"]
-[ext_resource type="PackedScene" uid="uid://bgrldxlq6x0ob" path="res://blueprints/gameplay/enemies/fire_enemy.tscn" id="11_u0shf"]
 [ext_resource type="PackedScene" uid="uid://bjrdo0amddwtf" path="res://blueprints/gameplay/puzzles/secret_wall/fire_wall.tscn" id="12_pvvmp"]
 [ext_resource type="PackedScene" uid="uid://dgxl4jqedkcvn" path="res://blueprints/gameplay/puzzles/secret_wall/ice_wall.tscn" id="13_16q5k"]
 [ext_resource type="PackedScene" uid="uid://cqf6kgo4fo4p5" path="res://blueprints/gameplay/puzzles/secret_wall/air_wall.tscn" id="14_p5qco"]
@@ -175,12 +174,6 @@ spawn_point = NodePath("../CharacterPoint")
 
 [node name="CharacterPoint" type="Node2D" parent="EntranceGameplay"]
 position = Vector2(-315, 35)
-
-[node name="FireEnemy" parent="EntranceGameplay" instance=ExtResource("11_u0shf")]
-position = Vector2(224, 48)
-jump_velocity = 0.0
-walk_animation = ""
-base_damage_multiplier = 1.0
 
 [node name="Torch" parent="EntranceGameplay" instance=ExtResource("6_u06n0")]
 position = Vector2(-247, 5)

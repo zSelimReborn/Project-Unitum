@@ -19,6 +19,7 @@ config/icon="res://logo.svg"
 
 PlayerStorage="*res://scripts/globals/player_storage.gd"
 SceneManager="*res://scripts/globals/scene_manager.gd"
+AudioManager="*res://scripts/globals/audio_manager.gd"
 
 [input]
 

@@ -197,10 +197,8 @@ projectile_class = ExtResource("2_8podg")
 target_sprite_scale_loading_shoot = 2.0
 heal_class = ExtResource("3_m6sdr")
 walk_speed = 50.0
-jump_velocity = null
 apply_gravity = false
 idle_animation = "fire"
-walk_animation = null
 max_health = 100.0
 base_damage_multiplier = 0.1
 
@@ -236,12 +234,12 @@ position = Vector2(15, 0)
 position = Vector2(0, -10)
 rotation = 1.5708
 target_position = Vector2(0, 25)
-collision_mask = 251
+collision_mask = 243
 collide_with_areas = true
 
 [node name="RightCast" type="RayCast2D" parent="."]
 position = Vector2(0, -10)
 rotation = -1.5708
 target_position = Vector2(0, 25)
-collision_mask = 251
+collision_mask = 243
 collide_with_areas = true

@@ -21,6 +21,7 @@ var instigator_group = null
 var element : Types.Elements
 
 func _ready():
+	add_to_group("projectile")
 	timer.start()
 	play_audio(shoot_sound)
 
@@ -46,11 +47,7 @@ func _on_body_entered(body):
 		if not puzzle.try_solve_piece(self):
 			return
 	spawn_particle()
-	play_audio(explosion_sound)
-	sprite.visible = false
-	speed = 0
-	monitoring = false
-	await get_tree().create_timer(2).timeout
+	deferred_audio(explosion_sound)
 	queue_free()
 	
 func _on_timer_timeout():
@@ -75,8 +72,10 @@ func spawn_particle():
 	p.transform = transform
 	get_tree().current_scene.add_child(p)
 
+func deferred_audio(track):
+	AudioManager.play_sound(track, transform, 500)
+	return	
+
 func play_audio(track):
-	if not audio or not track:
-		return
 	audio.stream = track
 	audio.play()
