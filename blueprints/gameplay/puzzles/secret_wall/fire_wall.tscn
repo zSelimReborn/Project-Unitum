@@ -43,19 +43,19 @@ position = Vector2(0, -16)
 texture = ExtResource("2_u6p6s")
 
 [node name="SecondSprite" type="Sprite2D" parent="SpriteContainer"]
-position = Vector2(0, -47)
+position = Vector2(0, -48)
 texture = ExtResource("2_u6p6s")
 
 [node name="ThirdSprite" type="Sprite2D" parent="SpriteContainer"]
-position = Vector2(0, -78)
+position = Vector2(0, -80)
 texture = ExtResource("2_u6p6s")
 
 [node name="FourthSprite" type="Sprite2D" parent="SpriteContainer"]
-position = Vector2(0, -109)
+position = Vector2(0, -111)
 texture = ExtResource("2_u6p6s")
 
 [node name="FifthSprite" type="Sprite2D" parent="SpriteContainer"]
-position = Vector2(0, -140)
+position = Vector2(0, -143)
 texture = ExtResource("2_u6p6s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

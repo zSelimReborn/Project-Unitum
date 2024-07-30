@@ -26,7 +26,7 @@ shader_parameter/speed = 1.0
 shader_parameter/wait_cycles = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5rda"]
-size = Vector2(31, 94)
+size = Vector2(31, 156)
 
 [node name="IceWall" type="StaticBody2D"]
 collision_layer = 32
@@ -51,6 +51,14 @@ texture = ExtResource("4_mg021")
 position = Vector2(0, -78)
 texture = ExtResource("4_mg021")
 
+[node name="FourthSprite" type="Sprite2D" parent="SpriteContainer"]
+position = Vector2(0, -110)
+texture = ExtResource("4_mg021")
+
+[node name="FifthSprite" type="Sprite2D" parent="SpriteContainer"]
+position = Vector2(0, -142)
+texture = ExtResource("4_mg021")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -48)
+position = Vector2(-0.5, -79)
 shape = SubResource("RectangleShape2D_r5rda")
