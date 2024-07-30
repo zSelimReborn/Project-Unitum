@@ -189,10 +189,11 @@ func game_over():
 	if not death_menu:
 		printerr("unable to toggle death menu, no menu")
 		return
+	toggle_popup(true)	
 	relic_popup.hide()
 	pause_menu.hide()
 	death_menu.show()
-	toggle_popup(true)
+	death_menu.grab_click_focus()
 	
 func on_continue_pressed():
 	if not player:

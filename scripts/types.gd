@@ -19,11 +19,11 @@ static var ElementString = {
 }
 
 static var ElementTextures = {
-	Elements.WATER: {
+	Elements.FIRE: {
 		"inactive": preload("res://assets/gameplay/elements/fire_ui_inactive.png"),
 		"active": preload("res://assets/gameplay/elements/fire_ui_active.png")
 	},
-	Elements.FIRE: {
+	Elements.WATER: {
 		"inactive": preload("res://assets/gameplay/elements/water_ui_inactive.png"),
 		"active": preload("res://assets/gameplay/elements/water_ui_active.png")
 	},

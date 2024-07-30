@@ -198,7 +198,6 @@ pieces = [NodePath("../../Cauldron2")]
 
 [node name="Cauldron" parent="EntranceGameplay" instance=ExtResource("7_se3yf")]
 position = Vector2(-289, 50)
-element = 2
 
 [node name="Cauldron2" parent="EntranceGameplay" instance=ExtResource("7_se3yf")]
 position = Vector2(340, 49)

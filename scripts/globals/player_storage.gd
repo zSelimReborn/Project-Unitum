@@ -1,9 +1,9 @@
 extends Node
 
-var kill_count : int = 2
+var kill_count : int = 0
 var relics = {
-	Types.PlayerState.Character: 2,
-	Types.PlayerState.Shadow: 1
+	Types.PlayerState.Character: 0,
+	Types.PlayerState.Shadow: 0
 }
 var opened_chest = []
 var ending = Types.Ending.None
