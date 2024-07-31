@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtxxylo74asid"]
+
+[ext_resource type="Shader" path="res://assets/shaders/tree_border.gdshader" id="1_k0ybf"]
+[ext_resource type="Texture2D" uid="uid://bvq0gjivq1oxc" path="res://assets/gameplay/puzzles/transform_tree/fire_tree.tga" id="2_55phk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3m5a"]
+shader = ExtResource("1_k0ybf")
+shader_parameter/enabled = false
+
+[node name="TreeBorder" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_c3m5a")
+position = Vector2(0, -48)
+texture = ExtResource("2_55phk")

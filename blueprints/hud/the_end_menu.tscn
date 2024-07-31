@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://fdye2c0ta25j"]
+[gd_scene load_steps=9 format=3 uid="uid://fdye2c0ta25j"]
 
 [ext_resource type="Script" path="res://scripts/hud/the_end_menu.gd" id="1_u8x3o"]
-[ext_resource type="PackedScene" uid="uid://lv8tte70fy6x" path="res://scenes/main_menu_level.tscn" id="2_m42et"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="2_qsy35"]
 [ext_resource type="Texture2D" uid="uid://bis0eay2vp4u4" path="res://assets/hud/button.tga" id="3_12sva"]
 [ext_resource type="Texture2D" uid="uid://dqjy4rnqysw7i" path="res://assets/hud/menu/sky.png" id="3_u450q"]
@@ -28,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u8x3o")
-initial_level = ExtResource("2_m42et")
+initial_level = "res://scenes/main_menu_level.tscn"
 human_description = "It seems that you lost your shadow... but don't give up wanderer! You'll find a way."
 shadow_description = "You're just a shadow now... you took freedom a bit too seriously."
 good_description = "You and your shadow are now free. Are you two still going to share your life together?"

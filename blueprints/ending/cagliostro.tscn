@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://daqg4uolcf6yy"]
+[gd_scene load_steps=10 format=3 uid="uid://daqg4uolcf6yy"]
 
 [ext_resource type="Script" path="res://scripts/level/cagliostro.gd" id="1_8wmgq"]
 [ext_resource type="Texture2D" uid="uid://2u86ujqar6p3" path="res://assets/ending/cagliostro_shadow.png" id="2_1x5hy"]
 [ext_resource type="PackedScene" uid="uid://vta7e23qonpm" path="res://blueprints/characters/shadow.tscn" id="2_3hd5b"]
-[ext_resource type="PackedScene" uid="uid://opecqgxt8fyr" path="res://scenes/end_menu_level.tscn" id="3_ohrnm"]
 [ext_resource type="Texture2D" uid="uid://ccwvpkj7ckp0v" path="res://assets/ending/tomb.png" id="3_vowep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2vur"]
@@ -43,7 +42,7 @@ collision_layer = 4
 script = ExtResource("1_8wmgq")
 shake_duration = 2.0
 shadow_class = ExtResource("2_3hd5b")
-end_menu = ExtResource("3_ohrnm")
+end_menu = "res://scenes/end_menu_level.tscn"
 instant_interact = null
 interaction_text = "Speak to Cagliostro"
 interaction_hint = null

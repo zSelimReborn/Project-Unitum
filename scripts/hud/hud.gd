@@ -5,7 +5,7 @@ extends CanvasLayer
 # Properties
 @export var player : Player
 @export var level_name : String
-@export var initial_level : PackedScene
+@export var initial_level : String
 @export var open_menu_sound : AudioStream
 @export var close_menu_sound : AudioStream
 
@@ -42,7 +42,7 @@ func setup_initial_level_path():
 		printerr("hud, initial level empty, fall back to main menu")
 		initial_level_path = "res://scenes/main_menu_level.tscn"
 	else:
-		initial_level_path = initial_level.resource_path
+		initial_level_path = initial_level
 	
 func setup_level_name():
 	if not level_name_object:

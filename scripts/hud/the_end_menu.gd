@@ -3,7 +3,7 @@ class_name TheEndMenu
 extends Control
 
 # Properties
-@export var initial_level : PackedScene
+@export var initial_level : String
 @export var human_description : String
 @export var shadow_description : String
 @export var good_description : String
@@ -21,7 +21,7 @@ func setup_initial_level_path():
 		printerr("end menu, initial level empty, fall back to main menu")
 		initial_level_path = "res://scenes/main_menu_level.tscn"
 	else:
-		initial_level_path = initial_level.resource_path
+		initial_level_path = initial_level
 		
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

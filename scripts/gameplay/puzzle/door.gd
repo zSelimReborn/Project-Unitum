@@ -5,7 +5,7 @@ extends BaseInteractable
 # Properties
 @export var is_fake : bool = false
 @export var is_next_level : bool = false
-@export var next_level_path : PackedScene
+@export var next_level_path : String
 @export var spawn_point : Node2D
 @export var opening_sound : AudioStream
 
@@ -69,4 +69,4 @@ func go_new_level():
 	if not next_level_path:
 		printerr("door unable to load next level, empty path")
 		return false
-	SceneManager.goto_scene(next_level_path.resource_path)
+	SceneManager.goto_scene(next_level_path)

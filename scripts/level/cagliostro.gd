@@ -10,7 +10,7 @@ extends BaseInteractable
 @export var shadow_class : PackedScene
 @export var shadow_spawn_point : Node2D
 @export var end_menu_wait : float = 2
-@export var end_menu : PackedScene
+@export var end_menu : String
 
 # On Ready
 @onready var sprite = $AnimatedSprite2D
@@ -169,4 +169,4 @@ func go_end_menu():
 		printerr("unable to go end menu, no class")
 		return
 	await get_tree().create_timer(end_menu_wait).timeout
-	SceneManager.goto_scene(end_menu.resource_path)
+	SceneManager.goto_scene(end_menu)

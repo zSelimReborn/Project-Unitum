@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bouy5qlcenfn7"]
+[gd_scene load_steps=12 format=3 uid="uid://bouy5qlcenfn7"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_i3gxv"]
-[ext_resource type="PackedScene" uid="uid://cvkaeptfdn6kb" path="res://scenes/levels/fire_level.tscn" id="2_yyka7"]
 [ext_resource type="Texture2D" uid="uid://dqjy4rnqysw7i" path="res://assets/hud/menu/sky.png" id="3_b4430"]
 [ext_resource type="Texture2D" uid="uid://di4xifhmeul7k" path="res://logo.svg" id="4_rnj4d"]
 [ext_resource type="FontFile" uid="uid://cc4n1yg7bibc8" path="res://assets/fonts/paint/TMT-Paint-Regular.otf" id="5_4wnv4"]
@@ -33,7 +32,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i3gxv")
-first_level = ExtResource("2_yyka7")
+first_level = "res://scenes/levels/fire_level.tscn"
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

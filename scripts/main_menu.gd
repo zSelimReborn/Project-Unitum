@@ -3,7 +3,8 @@ class_name MainMenu
 extends Control
 
 # Properties
-@export var first_level : PackedScene
+@export var first_level : String
+var temp = preload("res://scenes/levels/earth_level.tscn")
 
 # On Ready
 @onready var main_container = $Panel/MainContainer
@@ -16,7 +17,7 @@ func _on_new_game_button_pressed():
 		return
 	
 	play_button_sound()	
-	SceneManager.goto_scene(first_level.resource_path)
+	SceneManager.goto_scene(first_level)
 
 
 func _on_exit_button_pressed():

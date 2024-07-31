@@ -7,4 +7,5 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="EndMenu" parent="CanvasLayer" instance=ExtResource("1_v7gl6")]
-pacifist_description = null
+initial_level = "res://scenes/main_menu_level.tscn"
+pacifist_description = "You truly are formidable. Live your life. "
